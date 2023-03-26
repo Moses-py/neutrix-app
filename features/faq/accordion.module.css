@@ -1,0 +1,58 @@
+.title {
+  height: auto;
+  letter-spacing: 1px;
+  text-align: left;
+  position: relative;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+  transition: all 0.2s ease-in;
+}
+
+.title:hover {
+  color: #000;
+}
+
+.title:active {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.content {
+  height: 30px;
+  background-color: transparent;
+  border-radius: 4px;
+  color: #111;
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+  margin-top: -30px;
+  text-align: left;
+  transition: all 200ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.content_open {
+  margin-top: 0px;
+  height: auto;
+  transition: all 350ms cubic-bezier(0.08, 1.09, 0.32, 1.275);
+}
+
+.content_text {
+  padding: 15px;
+  visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+  transition: all 0.2s ease-in;
+}
+
+.content_text_open {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.8s ease-in;
+  color: #111;
+}
+
+.arrow_wrapper {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}

@@ -1,0 +1,7 @@
+.bg_courses {
+  background-image: url("../../public/robot-handshake-human-background-futuristic-digital-age.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+}
