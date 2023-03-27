@@ -3,7 +3,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { AccordionFAQ } from "./Accordion";
+import AccordionFAQ from "./Accordion";
 import ParagraphText from "@/components/typography/ParagraphText";
 
 export default function FAQ() {
