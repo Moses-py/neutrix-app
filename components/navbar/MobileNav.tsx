@@ -24,7 +24,7 @@ const MobileNav = () => {
             <Link href="">Blog</Link>
           </li>
           <li>
-            <button className="bg-textDark border-none text-md px-12 py-2 my-3 rounded-full text-textLight hover:bg-textLight hover:text-textDark uppercase font-secondary">
+            <button className="bg-textLight border-none text-md px-12 py-2 my-3 rounded-full text-textDark  uppercase font-secondary">
               Log in
             </button>
           </li>
