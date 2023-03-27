@@ -72,10 +72,10 @@
 
 .nav {
   position: fixed;
-  top: 1.7rem;
+  top: 2rem;
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   padding: 0;
   margin: 0;
   z-index: 15;
@@ -210,7 +210,7 @@
     left: 30px;
   }
   .nav {
-    right: 40px;
+    right: 45px;
   }
   /* h1 {
     font-size: 9vw;
