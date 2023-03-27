@@ -75,7 +75,7 @@ const Accordion = createClass({
           className={`${styles.title} w-100 border border-primary hover:bg-slate font-normal text-textDark md:leading-48 leading-28`}
           onClick={this.click.bind(null, i)}
         >
-          <div className={`hidden md:block ${styles.arrow_wrapper}`}>
+          <div className={`block ${styles.arrow_wrapper}`}>
             <i className="text-textDark">
               {i.open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
             </i>
