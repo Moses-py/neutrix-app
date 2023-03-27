@@ -10,12 +10,6 @@ const Footer = () => {
   return (
     <>
       <section id="footer" className="relative mt-[4.5rem] bg-[#111] py-[2rem]">
-        {/* <div className={styles.waves}>
-          <div className={`${styles.wave} ${styles.wave1}`} id="wave1"></div>
-          <div className={`${styles.wave} ${styles.wave2}`} id="wave2"></div>
-          <div className={`${styles.wave} ${styles.wave3}`} id="wave3"></div>
-          <div className={`${styles.wave} ${styles.wave4}`} id="wave4"></div>
-        </div> */}
         <div className="container flex flex-col md:flex-row relative z-10 items-center text-textLight py-[2rem]">
           <div className="newsletter w-full md:w-1/3">
             <div className="footer_subheading my-3">

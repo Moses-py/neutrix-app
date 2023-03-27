@@ -26,7 +26,7 @@ const Hero: React.FunctionComponent = () => {
         <Navbar />
         <div className={`${styles.overlay}`} />
 
-        <div className="container flex flex-row items-center relative z-10 lg:pt-[4rem] pb-[4rem] sm:mb-0">
+        <div className="container flex flex-row items-center relative z-[5] lg:pt-[4rem] pb-[4rem] sm:mb-0">
           <div className="flex flex-col justify-center gap-8 my-auto w-full md:w-[75%] lg:w-[45%] 2xl:w-[35%]">
             <div className="relative">
               <div className={`${styles.box_1}`} />

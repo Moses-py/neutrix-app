@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Button from "../button/Button";
-import Headertext from "../typography/Headertext";
-
+import MobileNav from "./MobileNav";
 const Navbar: React.FunctionComponent = () => {
   return (
     <>
@@ -9,6 +8,10 @@ const Navbar: React.FunctionComponent = () => {
         <h1 className="text-textLight leading-64 text-[36px] font-primary">
           Neutrix
         </h1>
+        <div className="lg:hidden block">
+          <MobileNav />
+        </div>
+
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between">
             <li className="mx-4 text-sm text-textLight">
