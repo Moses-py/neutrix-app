@@ -15,13 +15,13 @@ const MobileNav = () => {
       <nav className={`${styles.nav} z-20`}>
         <ul className="pt-5">
           <li>
-            <Link href="">Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
             <Link href="">Neuclass</Link>
           </li>
           <li>
-            <Link href="">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </li>
           <li>
             <button className="bg-textLight border-none text-md px-12 py-2 my-3 rounded-full text-textDark  uppercase font-secondary">

@@ -1,10 +1,13 @@
 export const syllabusList = [
   [
-    "Linear algebra",
-    "Differentiation",
-    "Integration",
-    "Set theory",
-    "General mathematics",
+    "Introduction to Python programming",
+    "Use of Anaconda and Jupyter Notebooks",
+    "Introduction to Pandas and Numpy",
+    "Data gathering from multiple sources (eg CSV, HTML files, Txt files etc)",
+    "Data cleaning and manipulation using Pandas",
+    "Data visualization using Matplotlib and Seaborn",
+    "Exploratory data analysis",
+    "Project",
   ],
   [
     "Introduction to Python programming",
@@ -28,14 +31,12 @@ export const syllabusList = [
     "Understanding convolutional neural network",
     "Project: Object detection with Pytorch",
   ],
+
   [
-    "Introduction to Python programming",
-    "Use of Anaconda and Jupyter Notebooks",
-    "Introduction to Pandas and Numpy",
-    "Data gathering from multiple sources (eg CSV, HTML files, Txt files etc)",
-    "Data cleaning and manipulation using Pandas",
-    "Data visualization using Matplotlib and Seaborn",
-    "Exploratory data analysis",
-    "Project",
+    "Linear algebra",
+    "Differentiation",
+    "Integration",
+    "Set theory",
+    "General mathematics",
   ],
 ];
