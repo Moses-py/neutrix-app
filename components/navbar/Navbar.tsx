@@ -14,16 +14,16 @@ const Navbar: React.FunctionComponent = () => {
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between">
-            <li className="mx-4 text-sm text-textLight">
+            <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Home</Link>
             </li>
-            <li className="mx-4 text-sm text-textLight">
+            <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Neuclass</Link>
             </li>
-            <li className="mx-4 text-sm text-textLight">
-              <Link href="/">Blog</Link>
+            <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
+              <Link href="/blog">Blog</Link>
             </li>
-            <li className="mx-4 text-sm text-textLight">
+            <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Contact</Link>
             </li>
           </ul>
