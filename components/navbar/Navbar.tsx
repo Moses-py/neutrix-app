@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Button from "../button/Button";
-import MobileNav from "./MobileNav";
+import LoginIcon from "@mui/icons-material/Login";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 const Navbar: React.FunctionComponent = () => {
   return (
     <>
@@ -8,12 +9,9 @@ const Navbar: React.FunctionComponent = () => {
         <h1 className="text-textLight leading-64 text-[36px] font-primary">
           Neutrix
         </h1>
-        {/* <div className="lg:hidden block">
-          <MobileNav />
-        </div> */}
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
-          <ul className="flex flex-row items-center justify-between">
+          <ul className="flex flex-row items-center justify-between font-semibold">
             <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Home</Link>
               <hr className="w-full transition-all duration-700 ease-in-out bg-orange-400 border border-orange-400" />
@@ -32,8 +30,18 @@ const Navbar: React.FunctionComponent = () => {
             </li>
           </ul>
           <div className="container flex flex-row gap-4">
-            <Button type="filled">Log in</Button>
-            <Button type="outlined">Sign up</Button>
+            <Link href="/login">
+              <Button type="filled">
+                <LoginIcon />
+                Log in
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button type="outlined">
+                <VpnKeyIcon />
+                Sign up
+              </Button>
+            </Link>
           </div>
         </nav>
       </div>

@@ -1,6 +1,12 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import styles from "./navbar.module.css";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import ExploreIcon from "@mui/icons-material/Explore";
+import RssFeedIcon from "@mui/icons-material/RssFeed";
+import LoginIcon from "@mui/icons-material/Login";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import SchoolIcon from "@mui/icons-material/School";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -25,48 +31,61 @@ const BottomNav = () => {
         <div className="container p-[2rem]">
           <ul className="flex flex-col justify-evenly items-center gap-4 text-textLight text-[18px]">
             <Link
-              className="bg-blue-800 w-full text-center py-3 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/"
               onClick={() => setOpenNav(!openNav)}
             >
+              <HomeIcon />
               Home
             </Link>
             <Link
-              className="bg-blue-800 w-full text-center py-3 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="#about"
               onClick={() => setOpenNav(!openNav)}
             >
+              <InfoIcon />
               About
             </Link>
             <Link
-              className="bg-blue-800 w-full text-center py-3 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="#courses"
               onClick={() => setOpenNav(!openNav)}
             >
+              <ExploreIcon />
               Explore
             </Link>
             <Link
-              className="bg-blue-800 w-full text-center py-3 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/"
               onClick={() => setOpenNav(!openNav)}
             >
+              <SchoolIcon />
               Neuclass
             </Link>
             <Link
-              className="bg-blue-800 w-full text-center py-3 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/blog"
               onClick={() => setOpenNav(!openNav)}
             >
+              <RssFeedIcon />
               Blog
             </Link>
             <div className=" mb-4 grid grid-cols-2 gap-4 w-full">
-              <button className="w-full p-2 bg-primary text-textDark">
+              <Link
+                href="/login"
+                className="w-full flex items-center justify-center gap-2 p-2 bg-primary text-textDark text-center"
+              >
+                <LoginIcon />
                 Log in
-              </button>
+              </Link>
 
-              <button className="w-full p-2 border border-primary bg-transparent text-textDark ">
+              <Link
+                href="/register"
+                className="w-full flex items-center gap-2 justify-center p-2 border border-primary bg-transparent text-textDark text-center"
+              >
+                <VpnKeyIcon />
                 Sign up
-              </button>
+              </Link>
             </div>
           </ul>
         </div>

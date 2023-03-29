@@ -3,17 +3,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { syllabusList } from "./courseSyllabus";
 import CheckIcon from "@mui/icons-material/Check";
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 interface ModalProps {
   open: boolean;
@@ -49,24 +38,6 @@ export default function Syllabus({ open, updateModal, syllabus }: ModalProps) {
             })}
           </ul>
         </div>
-        {/* <Box sx={style}>
-          <div className="">
-            <ul className="">
-              {syllabusList[syllabus].map((syllabusItem) => {
-                return (
-                  <>
-                    <li
-                      key={syllabusList[syllabus].indexOf(syllabusItem)}
-                      className="leading-32 text-xs"
-                    >
-                      <CheckIcon /> {syllabusItem}
-                    </li>
-                  </>
-                );
-              })}
-            </ul>
-          </div>
-        </Box> */}
       </Modal>
     </div>
   );
