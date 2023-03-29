@@ -14,7 +14,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
 }) => {
   return (
     <>
-      <section className={`${styles.bg_courses} p-[5%] relative `}>
+      <section id="courses" className={`${styles.bg_courses} p-[5%] relative `}>
         <div className="container rounded-lg p-4 md:p-[5%] flex lg:flex-row flex-col bg-[#121228] relative">
           <Image
             className="absolute bottom-0 left-0"

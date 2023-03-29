@@ -8,14 +8,18 @@ const Navbar: React.FunctionComponent = () => {
         <h1 className="text-textLight leading-64 text-[36px] font-primary">
           Neutrix
         </h1>
-        <div className="lg:hidden block">
+        {/* <div className="lg:hidden block">
           <MobileNav />
-        </div>
+        </div> */}
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between">
             <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Home</Link>
+              <hr className="w-full transition-all duration-700 ease-in-out bg-orange-400 border border-orange-400" />
+            </li>
+            <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
+              <Link href="#about">About</Link>
             </li>
             <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
               <Link href="/">Neuclass</Link>
@@ -24,7 +28,7 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="/blog">Blog</Link>
             </li>
             <li className="mx-4 text-sm text-textLight hover:cursor-default hover:text-orange-400">
-              <Link href="/">Contact</Link>
+              <Link href="#courses">Explore</Link>
             </li>
           </ul>
           <div className="container flex flex-row gap-4">

@@ -4,6 +4,7 @@ import Headertext from "@/components/typography/Headertext";
 import ParagraphText from "@/components/typography/ParagraphText";
 import styles from "./hero.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero: React.FunctionComponent = () => {
   return (
@@ -46,7 +47,12 @@ const Hero: React.FunctionComponent = () => {
               </ParagraphText>
             </div>
             <div className="button">
-              <Button type="filled">Learn More</Button>
+              <Link
+                className="bg-primary border-none text-sm px-12 py-2 my-3 rounded-full text-textDark font-secondary"
+                href="#courses"
+              >
+                Explore courses
+              </Link>
             </div>
           </div>
         </div>
