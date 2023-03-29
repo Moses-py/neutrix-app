@@ -38,13 +38,13 @@ const Hero: React.FunctionComponent = () => {
               </Headertext>
             </div>
             <div>
-              <ParagraphText>
+              <p className="md:text-slate text-textLight leading-24 text-sm p-0 m-0 font-secondary font-light">
                 We are building job-ready digital skills that catalyze
                 technological growth and achievements. We offer a targeted skill
                 empowerment journey through our 1:1 live mentorship programme
                 and lessons. Our lessons are continually refined and updated to
                 meet the dynamic needs of our users.
-              </ParagraphText>
+              </p>
             </div>
             <div className="button">
               <Link
