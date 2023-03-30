@@ -10,7 +10,7 @@ const Hero: React.FunctionComponent = () => {
   return (
     <>
       <section
-        className={`${styles.hero} relative h-auto lg:h-[90vh] pt-[10%] md:pt-[5%] lg:pt-[3%]`}
+        className={`${styles.hero} relative h-auto pt-[10%] md:pt-[5%] lg:pt-[3%]`}
       >
         <Image
           className="hidden 2xl:block absolute bottom-0 left-0 "
@@ -26,9 +26,6 @@ const Hero: React.FunctionComponent = () => {
           width={300}
           alt=""
         />
-        {/* <div className="lg:container relative w-full">
-          <Navbar />
-        </div> */}
 
         <div className={`${styles.overlay}`} />
 
@@ -36,7 +33,7 @@ const Hero: React.FunctionComponent = () => {
           <Navbar />
         </div>
 
-        <div className="container flex flex-row items-center relative md:h-[100%] z-[5] md:mt-[2rem]">
+        <div className="container flex flex-row items-center relative md:h-[100%] z-[5] md:mt-[2rem] lg:mt-[8%]">
           <div className="flex flex-col justify-center gap-8 my-auto w-full md:w-[75%] lg:w-[45%] 2xl:w-[35%]">
             <div className="relative">
               <div className={`${styles.box_1}`} />
