@@ -18,10 +18,14 @@ const BottomNav = () => {
       <span
         className={`lg:hidden fixed bottom-5 ${
           openNav ? "left-[90%]" : "left-[50%]"
-        } translate-x-[-50%] h-[60px] w-[60px] rounded-full bg-primary z-[1000] flex justify-center items-center transition-all duration-[850ms] ease-in-out`}
+        } translate-x-[-50%] h-[60px] w-[60px] rounded-full bg-[#121228] z-[1000] flex justify-center items-center transition-all duration-[850ms] ease-in-out`}
         onClick={() => setOpenNav(!openNav)}
       >
-        {openNav ? <CloseIcon /> : <MenuIcon />}
+        {openNav ? (
+          <CloseIcon sx={{ color: "#fff" }} />
+        ) : (
+          <MenuIcon sx={{ color: "#fff" }} />
+        )}
       </span>
       <div
         className={`box w-full ${
@@ -31,7 +35,7 @@ const BottomNav = () => {
         <div className="container p-[2rem]">
           <ul className="flex flex-col justify-evenly items-center gap-4 text-textLight text-[18px]">
             <Link
-              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/"
               onClick={() => setOpenNav(!openNav)}
             >
@@ -39,7 +43,7 @@ const BottomNav = () => {
               Home
             </Link>
             <Link
-              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="#about"
               onClick={() => setOpenNav(!openNav)}
             >
@@ -47,7 +51,7 @@ const BottomNav = () => {
               About
             </Link>
             <Link
-              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="#courses"
               onClick={() => setOpenNav(!openNav)}
             >
@@ -55,7 +59,7 @@ const BottomNav = () => {
               Explore
             </Link>
             <Link
-              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/"
               onClick={() => setOpenNav(!openNav)}
             >
@@ -63,7 +67,7 @@ const BottomNav = () => {
               Neuclass
             </Link>
             <Link
-              className="bg-blue-800 flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
               href="/blog"
               onClick={() => setOpenNav(!openNav)}
             >
@@ -73,7 +77,7 @@ const BottomNav = () => {
             <div className=" mb-4 grid grid-cols-2 gap-4 w-full">
               <Link
                 href="/login"
-                className="w-full flex items-center justify-center gap-2 p-2 bg-primary text-textDark text-center"
+                className="w-full flex items-center justify-center gap-2 p-2 bg-[#121228] text-textLight text-center"
               >
                 <LoginIcon />
                 Log in
@@ -81,7 +85,7 @@ const BottomNav = () => {
 
               <Link
                 href="/register"
-                className="w-full flex items-center gap-2 justify-center p-2 border border-primary bg-transparent text-textDark text-center"
+                className="w-full flex items-center gap-2 justify-center p-2 border border-[#121228] bg-transparent text-textDark text-center"
               >
                 <VpnKeyIcon />
                 Sign up

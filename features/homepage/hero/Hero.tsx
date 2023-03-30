@@ -9,7 +9,9 @@ import Link from "next/link";
 const Hero: React.FunctionComponent = () => {
   return (
     <>
-      <section className={`${styles.hero} relative`}>
+      <section
+        className={`${styles.hero} relative h-[80vh] md:h-[60vh] lg:h-[90vh] pt-[10%] md:pt-[5%] lg:pt-[3%]`}
+      >
         <Image
           className="hidden 2xl:block absolute bottom-0 left-0 "
           src="/robot-hand-finger-pointing-ai-technology-backgrou-2022-09-16-09-23-42-utc 1.png"
@@ -24,10 +26,17 @@ const Hero: React.FunctionComponent = () => {
           width={300}
           alt=""
         />
-        <Navbar />
+        {/* <div className="lg:container relative w-full">
+          <Navbar />
+        </div> */}
+
         <div className={`${styles.overlay}`} />
 
-        <div className="container flex flex-row items-center relative z-[5] lg:pt-[4rem] pb-[4rem] sm:mb-0">
+        <div className="lg:px-[2rem] mb-[12%] md:mb-0">
+          <Navbar />
+        </div>
+
+        <div className="container flex flex-row items-center relative md:h-[100%] z-[5]">
           <div className="flex flex-col justify-center gap-8 my-auto w-full md:w-[75%] lg:w-[45%] 2xl:w-[35%]">
             <div className="relative">
               <div className={`${styles.box_1}`} />

@@ -1,0 +1,6 @@
+.bg {
+  background-image: url("../../public/curved6.jpg");
+  background-size: cover;
+  transform: skewX(16);
+  height: 100vh;
+}
