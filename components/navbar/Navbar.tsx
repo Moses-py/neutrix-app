@@ -10,8 +10,10 @@ const Navbar: React.FunctionComponent = () => {
         className={`md:${styles.navbar} w-100 lg:bg-textLight container flex flex-row relative justify-between items-center z-10 rounded-full lg:border-[0.5px] lg:border-[#61616154]`}
       >
         <h1 className=" text-textDark lg:text-textDark leading-64 text-[36px] font-primary">
-          <div className="bg-textLight w-[50px] h-[50px] rounded-full p-1 flex items-center gap-3">
-            <Image src="/triangle.png" alt="" width={50} height={50} />
+          <div className="flex items-center gap-3">
+            <div className="bg-textLight w-[50px] h-[50px] rounded-full p-1">
+              <Image src="/triangle.png" alt="" width={50} height={50} />
+            </div>
             <h1 className="text-md text-textLight lg:text-textDark">Neutrix</h1>
           </div>
         </h1>
