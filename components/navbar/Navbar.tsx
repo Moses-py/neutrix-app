@@ -28,7 +28,7 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="#about">About</Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
-              <Link href="/">Neuclass</Link>
+              <Link href="/neuclass">Neuclass</Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
               <Link href="/blog">Blog</Link>
@@ -37,13 +37,13 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="#courses">Explore</Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
-              <Link href="#courses" className="flex items-center gap-2">
+              <Link href="/login" className="flex items-center gap-2">
                 <LoginIcon />
                 Log in
               </Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
-              <Link href="#courses" className="flex items-center gap-2">
+              <Link href="/register" className="flex items-center gap-2">
                 <VpnKeyIcon />
                 Sign up
               </Link>

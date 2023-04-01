@@ -24,18 +24,19 @@ export default function Syllabus({ open, updateModal, syllabus }: ModalProps) {
         >
           <p className="my-3 text-md font-bold">Course curiculum</p>
           <ul className="">
-            {syllabusList[syllabus].map((syllabusItem) => {
-              return (
-                <>
-                  <li
-                    key={syllabusList[syllabus].indexOf(syllabusItem)}
-                    className="leading-32 text-xs"
-                  >
-                    <CheckIcon /> {syllabusItem}
-                  </li>
-                </>
-              );
-            })}
+            {syllabusList.length > 0 &&
+              syllabusList[syllabus].map((syllabusItem) => {
+                return (
+                  <>
+                    <li
+                      key={syllabusList[syllabus].indexOf(syllabusItem)}
+                      className="leading-32 text-xs"
+                    >
+                      <CheckIcon /> {syllabusItem}
+                    </li>
+                  </>
+                );
+              })}
           </ul>
         </div>
       </Modal>

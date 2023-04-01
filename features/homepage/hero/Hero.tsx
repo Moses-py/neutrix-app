@@ -1,7 +1,5 @@
-import Button from "@/components/button/Button";
 import Navbar from "@/components/navbar/Navbar";
 import Headertext from "@/components/typography/Headertext";
-import ParagraphText from "@/components/typography/ParagraphText";
 import styles from "./hero.module.css";
 import Image from "next/image";
 import Link from "next/link";

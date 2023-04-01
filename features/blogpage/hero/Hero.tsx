@@ -59,13 +59,13 @@ const Hero = () => {
                 <Link href="/blog">Blog</Link>
               </li>
               <li className="hover:cursor-default hover:text-orange-400">
-                <Link href="">Neuclass</Link>
+                <Link href="/neuclass">Neuclass</Link>
               </li>
               <li className="hover:cursor-default hover:text-orange-400">
-                <Link href="">Login</Link>
+                <Link href="/login">Login</Link>
               </li>
               <li className="hover:cursor-default hover:text-orange-400">
-                <Link href="">Signup</Link>
+                <Link href="/register">Signup</Link>
               </li>
             </ul>
           </div>

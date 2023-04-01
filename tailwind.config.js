@@ -63,6 +63,8 @@ module.exports = {
         textGrey: "#777777",
         textLight: "#F1F1F1",
         textDark: "#000000",
+        misc: "#121228",
+        d_main: "#344767",
       },
     },
   },
