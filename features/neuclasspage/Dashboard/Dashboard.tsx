@@ -15,7 +15,7 @@ const Dashboard = () => {
           <div
             className={`fixed ${
               openTab ? "left-0" : "left-[-100%]"
-            }  top-0 lg:relative lg:left-0 z-50 transition-all ease-in-out duration-[1500]`}
+            }  top-0 lg:relative lg:left-0 z-50 transition-all ease-in-out duration-[900]`}
           >
             <DashboardLeft
               setTabs={setTabs}

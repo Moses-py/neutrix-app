@@ -19,7 +19,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
     <>
       <div className="h-[100vh] w-full min-h-0 flex flex-col">
         <div className="lg:px-0 sm:px-[2rem] px-[1rem] flex-0">
-          <div className="dashnav flex flex-row justify-between items-center lg:pr-[2rem]">
+          <div className="flex flex-row justify-between items-center lg:pr-[2rem]">
             <div className="dash_route">
               <span className="text-gray-400 font-light font-secondary">
                 Neuclass
@@ -62,7 +62,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
           <h2 className="font-bold uppercase leading-36">{title}</h2>
         </div>
         {/* Dashboard contents */}
-        <div className="dash_contents py-3 lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll">
+        <div className="dash_contents pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll">
           {title === "Courses" && <DashCourses />}
           {title === "My Courses" && <MyCourse />}
           {title === "Bookmarks" && <Bookmark />}

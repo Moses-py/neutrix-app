@@ -3,10 +3,13 @@ import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import BackgroundImageSelector from "./BackgroundImageSelector";
 import HideImageRoundedIcon from "@mui/icons-material/HideImageRounded";
 import optimizeBg from "@/helpers/optimizeBackground";
-import { SingleNoteProps } from "./SingleNote";
 
 interface NotebookInputContainerProps {
-  noteList: (notes: { title: string; content: string; image: string }) => void;
+  noteList: (notes: {
+    title?: string;
+    content?: string;
+    image?: string;
+  }) => void;
 }
 
 const NotebookInputContainer: React.FunctionComponent<

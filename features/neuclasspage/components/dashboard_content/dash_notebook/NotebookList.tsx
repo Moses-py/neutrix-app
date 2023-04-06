@@ -70,12 +70,12 @@ const NotebookList: React.FunctionComponent<NotebookListProps> = ({
             style={{
               backgroundImage: `url(${optimizeBg(modalData.note.image)})`,
             }}
-            className={`container border border-primary md:w-auto w-[90vw] h-[60vh] lg:h-auto absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-textLight overflow-y-scroll py-[2rem]`}
+            className={`container border border-primary md:w-auto bg-no-repeat bg-center bg-cover w-[90vw] h-[60vh] lg:h-auto absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-textLight overflow-y-scroll py-[2rem]`}
           >
-            <p className="my-4 font-secondary font-bold text-md">
+            <p className="my-4 font-secondary font-bold text-md break-all">
               {modalData.note.title}
             </p>
-            <p className="my-4 font-secondary font-normal text-xs">
+            <p className="my-4 font-secondary font-normal text-xs break-all">
               {modalData.note.content}
             </p>
           </div>
