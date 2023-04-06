@@ -22,7 +22,7 @@
   background: #54f2f2;
 }
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 * {
