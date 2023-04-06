@@ -6,7 +6,7 @@ import optimizeBg from "@/helpers/optimizeBackground";
 import { SingleNoteProps } from "./SingleNote";
 
 interface NotebookInputContainerProps {
-  noteList: (notes: SingleNoteProps) => void;
+  noteList: (notes: { title: string; content: string; image: string }) => void;
 }
 
 const NotebookInputContainer: React.FunctionComponent<
