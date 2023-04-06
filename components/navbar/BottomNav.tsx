@@ -60,7 +60,7 @@ const BottomNav = () => {
             </Link>
             <Link
               className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="/neuclass"
+              href="/neuclass/"
               onClick={() => setOpenNav(!openNav)}
             >
               <SchoolIcon />

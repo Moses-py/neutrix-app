@@ -27,7 +27,7 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
             <button className="px-5 py-3 my-3 bg-misc rounded-xl ">
               Add Course
             </button>
-            <button className="px-5 py-3 my-3 bg-textLight border border-misc text-textDark rounded-md ">
+            <button className="px-5 py-3 my-3 bg-textLight text-misc rounded-xl ">
               View syllabus
             </button>
           </div>

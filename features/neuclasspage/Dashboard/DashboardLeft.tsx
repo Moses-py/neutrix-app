@@ -1,31 +1,39 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import Subheader from "../components/typography/Subheader";
 import DashboardLink from "../components/link/DashboardLink";
 import switchArray from "@/helpers/switchArray";
+import CloseIcon from "@mui/icons-material/Close";
+
 interface D_left {
   setTabs: (id: number) => void;
   tabs: number;
   setTabTitle: (text: string) => void;
+  setOpenTab: () => void;
 }
 
 const DashboardLeft: React.FunctionComponent<D_left> = ({
   setTabs,
   tabs,
   setTabTitle,
+  setOpenTab,
 }) => {
   return (
     <>
-      <div className="container h-full min-w-[300px] w-1/6 py-[2rem]">
-        <div className="logo flex flex-row gap-2 items-center mb-5">
-          <Image src="/triangle.png" alt="" width={30} height={30} />
-          <p className="text-xs font-semibold text-center">
-            Neuclass Dashboard
-          </p>
+      <div className="md:container px-[1rem] min-w-[300px] w-1/6 pt-[2rem] pb-[3rem] bg-white lg:bg-transparent">
+        <div className="flex justify-between items-center">
+          <div className="logo flex flex-row gap-2 items-center mb-2">
+            <Image src="/triangle.png" alt="" width={30} height={30} />
+            <p className="text-xs font-semibold text-center flex justify-between items-center">
+              Neuclass <span className="hidden lg:inline">Dashboard</span>
+            </p>
+          </div>
+          <span className="lg:hidden block mb-2" onClick={setOpenTab}>
+            <CloseIcon />
+          </span>
         </div>
 
         {/* Divider rule */}
-        <hr className="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent mb-5" />
+        <hr className="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent mb-3" />
 
         {/* DashboardLinks */}
         <div className="learning">
@@ -33,7 +41,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Learning</Subheader>
           <div className="learning_links">
             <ul className="flex flex-col">
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -52,7 +60,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   Courses
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -71,7 +79,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   My Courses
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -90,7 +98,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   Bookmarks
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -102,11 +110,11 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   }
                   selected={switchArray(3, tabs)}
                   updateTab={setTabs}
-                  title="Notepad"
+                  title="Notebook"
                   updateTitle={setTabTitle}
                   id={3}
                 >
-                  Notepad
+                  Notebook
                 </DashboardLink>
               </li>
             </ul>
@@ -116,7 +124,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Billing</Subheader>
           <div className="billing_links">
             <ul className="flex flex-col">
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -135,7 +143,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   Cards
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -161,7 +169,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Account</Subheader>
           <div className="account_links">
             <ul className="flex flex-col">
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -180,7 +188,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   Profile
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -199,7 +207,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   Settings
                 </DashboardLink>
               </li>
-              <li>
+              <li onClick={setOpenTab}>
                 <DashboardLink
                   icon={
                     <Image

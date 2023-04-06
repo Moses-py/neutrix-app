@@ -20,29 +20,29 @@ const Navbar: React.FunctionComponent = () => {
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between font-semibold">
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/">Home</Link>
-              <hr className="w-full transition-all duration-700 ease-in-out bg-orange-400 border border-orange-400" />
+              <hr className="w-full transition-all duration-700 ease-in-out bg-orange border border-orange" />
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="#about">About</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/neuclass">Neuclass</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/blog">Blog</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="#courses">Explore</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/login" className="flex items-center gap-2">
                 <LoginIcon />
                 Log in
               </Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange-400">
+            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/register" className="flex items-center gap-2">
                 <VpnKeyIcon />
                 Sign up
