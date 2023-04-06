@@ -33,7 +33,7 @@ const SingleNote: React.FunctionComponent<SingleNoteProps> = ({
 
           {content ? (
             <p className="font-xs font-primary my-2 break-all">
-              {content.substring(0, 250)}...
+              {content.substring(0, 350)}...
             </p>
           ) : (
             <p className="text-md font-secondary">Empty Note</p>

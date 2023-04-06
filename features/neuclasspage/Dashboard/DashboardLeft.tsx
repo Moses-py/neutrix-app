@@ -19,7 +19,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
 }) => {
   return (
     <>
-      <div className="md:container px-[1rem] min-w-[300px] w-1/6 pt-[2rem] bg-white lg:bg-transparent">
+      <div className="md:container px-[1rem] min-w-[300px] w-1/6 pt-[2rem] h-[100%] bg-white lg:bg-transparent">
         <div className="flex justify-between items-center">
           <div className="logo flex flex-row gap-2 items-center mb-2">
             <Image src="/triangle.png" alt="" width={30} height={30} />

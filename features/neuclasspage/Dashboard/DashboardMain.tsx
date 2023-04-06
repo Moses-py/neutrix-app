@@ -17,7 +17,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
 }) => {
   return (
     <>
-      <div className="h-[100vh] w-full min-h-0 flex flex-col">
+      <div className="h-[95vh] w-full min-h-0 flex flex-col">
         <div className="lg:px-0 sm:px-[2rem] px-[1rem] flex-0">
           <div className="flex flex-row justify-between items-center lg:pr-[2rem]">
             <div className="dash_route">

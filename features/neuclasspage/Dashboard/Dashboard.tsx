@@ -8,12 +8,12 @@ const Dashboard = () => {
   const [openTab, setOpenTab] = useState(false);
   return (
     <>
-      <section className="bg-gray-50 px-2 py-6 h-full relative">
+      <section className="bg-gray-50 px-2 py-6 h-full relative overflow-auto">
         {/* Div container holds all sections of the dashboard */}
         <div className="flex flex-row gap-3">
           {/* Side Nav section */}
           <div
-            className={`fixed ${
+            className={`absolute ${
               openTab ? "left-0" : "left-[-100%]"
             }  top-0 lg:relative lg:left-0 z-50 transition-all ease-in-out duration-[900]`}
           >
