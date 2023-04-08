@@ -12,11 +12,11 @@ const Plan: React.FunctionComponent<PlanProps> = ({ title, premium }) => {
           {premium ? "Lifetime Premium plan" : "45-minute Free trial session"}
         </p>
         {/* Course Title */}
-        <h1 className="font-bold text-md font-secondary leading-32">{title}</h1>
+        <h1 className="font-bold text-sm font-secondary leading-32">{title}</h1>
         {/* expiry */}
         <div className="expiry my-5">
           <p className="font-secondary text-xs font-normal">Plan expires:</p>
-          <p className="font-secondary text-sm font-semibold ">
+          <p className="font-secondary text-xs font-semibold ">
             {premium ? "Lifetime" : "Thursday, 24 Feb, 2023"}
           </p>
         </div>
@@ -26,7 +26,7 @@ const Plan: React.FunctionComponent<PlanProps> = ({ title, premium }) => {
           <div>
             <p className="font-normal font-secondary">Minutes left</p>
 
-            <p className="font-semibold text-sm">00: 34: 26</p>
+            <p className="font-semibold text-xs">00: 34: 26</p>
           </div>
         )}
       </div>

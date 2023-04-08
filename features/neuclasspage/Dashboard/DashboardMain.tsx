@@ -7,6 +7,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Notebook from "../components/dashboard_content/dash_notebook/Notebook";
 import Subscription from "../components/dashboard_content/dash_plans/Subscription";
 import Footer from "@/features/homepage/footer/Footer";
+import Profile from "../components/dashboard_content/dash_profile/Profile";
+import BankCard from "../components/dashboard_content/dash_card/BankCard";
 
 interface D_main {
   title: string;
@@ -55,7 +57,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                     />
                   </Link>
                 </li>
-                <li onClick={setOpenTab}>
+                <li className="lg:hidden block" onClick={setOpenTab}>
                   <MenuIcon />
                 </li>
               </ul>
@@ -64,12 +66,14 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
           <h2 className="font-bold uppercase leading-36">{title}</h2>
         </div>
         {/* Dashboard contents */}
-        <div className="dash_contents pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
+        <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
           {title === "Courses" && <DashCourses />}
           {title === "My Courses" && <MyCourse />}
           {title === "Bookmarks" && <Bookmark />}
           {title === "Notebook" && <Notebook />}
           {title === "My Plan" && <Subscription />}
+          {title === "Profile" && <Profile />}
+          {title === "Cards" && <BankCard />}
         </div>
       </div>
     </>

@@ -19,7 +19,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
 }) => {
   return (
     <>
-      <div className="md:container px-[1rem] min-w-[300px] w-1/6 pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
+      <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
         <div className="flex justify-between items-center">
           <div className="logo flex flex-row gap-2 items-center mb-2">
             <Image src="/triangle.png" alt="" width={30} height={30} />
@@ -186,44 +186,6 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                   id={6}
                 >
                   Profile
-                </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
-                <DashboardLink
-                  icon={
-                    <Image
-                      src="/icons/settings.png"
-                      alt="settings_icon"
-                      width={25}
-                      height={25}
-                    />
-                  }
-                  selected={switchArray(7, tabs)}
-                  updateTab={setTabs}
-                  title="Settings"
-                  updateTitle={setTabTitle}
-                  id={7}
-                >
-                  Settings
-                </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
-                <DashboardLink
-                  icon={
-                    <Image
-                      src="/icons/sign_in.png"
-                      alt="login_icon"
-                      width={25}
-                      height={25}
-                    />
-                  }
-                  selected={switchArray(8, tabs)}
-                  updateTab={setTabs}
-                  title="Sign in"
-                  updateTitle={setTabTitle}
-                  id={8}
-                >
-                  Sign in
                 </DashboardLink>
               </li>
             </ul>

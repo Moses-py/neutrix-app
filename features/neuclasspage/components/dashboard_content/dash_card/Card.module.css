@@ -1,0 +1,62 @@
+.logo svg {
+  height: 48px;
+  width: 54px;
+}
+
+.container {
+  position: relative;
+}
+
+.card {
+  background: radial-gradient(circle, white 0%, #d5d5d5 100%);
+  width: 350px;
+  height: 200px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.card .remove,
+.card .logo {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.card .remove {
+  top: 30px;
+  right: 30px;
+  opacity: 0.9;
+  color: black;
+}
+
+.card .remove:hover {
+  color: #f06b5d;
+}
+
+.card .logo {
+  top: 20px;
+  left: 30px;
+  font-size: 3em;
+  opacity: 1;
+}
+
+.card .number,
+.card .owner {
+  display: block;
+  position: absolute;
+  left: 30px;
+  cursor: default;
+  color: black;
+  opacity: 0.9;
+  transition: color 0.7s ease-out;
+}
+
+.card .number {
+  bottom: 60px;
+  letter-spacing: 4px;
+}
+
+.card .owner {
+  bottom: 30px;
+  letter-spacing: 1px;
+}

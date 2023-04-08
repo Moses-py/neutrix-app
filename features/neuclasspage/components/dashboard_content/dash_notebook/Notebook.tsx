@@ -6,6 +6,11 @@ const Notebook: React.FunctionComponent = () => {
   const [notelist, setNoteList] = useState([{}]);
   return (
     <>
+      <div className="header pb-[2rem]">
+        <h1 className="text-d_main uppercase text-sm font-bold font-secondary">
+          My Notes
+        </h1>
+      </div>
       <NotebookInputContainer
         noteList={(notes) =>
           setNoteList((prev) => {

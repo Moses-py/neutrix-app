@@ -1,13 +1,18 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
+ */
 module.exports = {
   content: [
+    "./node_modules/flowbite-react/**/*.js",
     "./features/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./public/**/*.html",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  plugins: [require("flowbite/plugin")],
   theme: {
     container: {
       center: true,
@@ -82,8 +87,8 @@ module.exports = {
         dash_5: "url('/public/backgrounds/dash_5.jpg')",
         dash_6: "url('/public/backgrounds/dash_6.jpg')",
         dash_7: "url('/public/backgrounds/dash_7.jpg')",
+        profile_bg: "url('/public/backgrounds/curved0.jpg')",
       },
     },
   },
-  plugins: [],
 };

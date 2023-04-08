@@ -5,6 +5,7 @@ import dash_4 from "../public/bg_large/dash_4.jpg";
 import dash_5 from "../public/bg_large/dash_5.jpg";
 import dash_6 from "../public/bg_large/dash_6.jpg";
 import dash_7 from "../public/bg_large/dash_7.jpg";
+import bg_profile from "../public/bg_large/curved8.jpg";
 
 export default function optimizeBg(bgString: string | undefined) {
   switch (bgString) {
@@ -22,6 +23,8 @@ export default function optimizeBg(bgString: string | undefined) {
       return dash_6.src;
     case "dash_7":
       return dash_7.src;
+    case "bg_profile":
+      return bg_profile.src;
     default:
       return "";
   }

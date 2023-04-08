@@ -4,7 +4,7 @@ const DashCourses = () => {
   return (
     <>
       <div className="header pb-[2rem]">
-        <h1 className="text-d_main uppercase text-md font-bold font-secondary">
+        <h1 className="text-d_main uppercase text-sm font-bold font-secondary">
           Explore Courses
         </h1>
       </div>
