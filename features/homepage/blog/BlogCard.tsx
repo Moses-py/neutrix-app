@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { motion } from "framer-motion";
 import Link from "next/link";
 interface BlogCardProps {
   image: string;
@@ -7,7 +8,12 @@ interface BlogCardProps {
 const BlogCard: React.FunctionComponent<BlogCardProps> = ({ image, title }) => {
   return (
     <>
-      <div className="blog_container border border-slate">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="blog_container border border-slate"
+      >
         <div className="image">
           <img src={image} alt="blog_image" className="w-full h-[250px]" />
         </div>
@@ -25,7 +31,7 @@ const BlogCard: React.FunctionComponent<BlogCardProps> = ({ image, title }) => {
             </Link>
           </p>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -3,10 +3,17 @@ import Subheading from "@/components/typography/Subheading";
 import Image from "next/image";
 import styles from "./about.module.css";
 import ValueCard from "./Value";
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <>
-      <section id="about">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        id="about"
+      >
         <div className="section my-[5rem] p-6 relative">
           <div
             className={`${styles.bg_about} container md:p-[4.5rem] sm:p-[2rem] p-[1rem] relative`}
@@ -41,7 +48,12 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="flex lg:flex-row flex-col justify-evenly items-center lg:gap-16 gap-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="flex lg:flex-row flex-col justify-evenly items-center lg:gap-16 gap-8"
+            >
               <ValueCard title="Inspiration">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Blanditiis aspernatur quas consectetur facere quo exercitationem
@@ -62,11 +74,11 @@ const About = () => {
                 Blanditiis aspernatur quas consectetur facere quo exercitationem
                 temporibus explicabo ut laboriosam rem.
               </ValueCard>
-            </div>
+            </motion.div>
             {/* Flex core values with titles */}
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

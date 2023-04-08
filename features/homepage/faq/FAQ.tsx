@@ -5,11 +5,17 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionFAQ from "./Accordion";
 import ParagraphText from "@/components/typography/ParagraphText";
+import { motion } from "framer-motion";
 
 export default function FAQ() {
   return (
     <>
-      <section id="faq">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        id="faq"
+      >
         <div className="md:container px-6 py-3">
           {/* SubHeading */}
           <div className="py-3">
@@ -26,7 +32,7 @@ export default function FAQ() {
         <div className="md:container">
           <AccordionFAQ />
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

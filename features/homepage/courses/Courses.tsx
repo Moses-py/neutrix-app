@@ -3,6 +3,7 @@ import CourseCard from "./CourseCard";
 import styles from "./courses.module.css";
 import Image from "next/image";
 import ParagraphText from "@/components/typography/ParagraphText";
+import { motion } from "framer-motion";
 
 interface CoursesProps {
   updateModal: () => void;
@@ -14,7 +15,13 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
 }) => {
   return (
     <>
-      <section id="courses" className={`${styles.bg_courses} p-[5%] relative `}>
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        id="courses"
+        className={`${styles.bg_courses} p-[5%] relative `}
+      >
         <div className="container rounded-lg p-4 md:p-[5%] flex lg:flex-row flex-col bg-[#121228] relative">
           <Image
             className="absolute bottom-0 left-0"
@@ -57,7 +64,12 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
               id={2}
             />
 
-            <div className="card p-6 flex flex-col gap-6 bg-[#121228] border border-primary rounded-sm relative">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="card p-6 flex flex-col gap-6 bg-[#121228] border border-primary rounded-sm relative"
+            >
               <span>
                 <Image src={`/build.png`} alt="" height={50} width={50} />
               </span>
@@ -74,10 +86,10 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
                   Customize
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

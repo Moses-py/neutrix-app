@@ -5,10 +5,18 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Headertext from "@/components/typography/Headertext";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
 const Footer = () => {
   return (
     <>
-      <section id="footer" className="relative mt-[4.5rem] bg-[#111] py-[2rem]">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        id="footer"
+        className="relative mt-[4.5rem] bg-[#111] py-[2rem]"
+      >
         <div className="container flex flex-col md:flex-row relative z-10 items-center text-textLight py-[2rem]">
           <div className="newsletter w-full md:w-1/3">
             <div className="footer_subheading my-3">
@@ -82,7 +90,7 @@ const Footer = () => {
           {/* Newsletter */}
           {/* Footer links */}
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

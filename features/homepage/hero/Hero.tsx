@@ -3,6 +3,7 @@ import Headertext from "@/components/typography/Headertext";
 import styles from "./hero.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Hero: React.FunctionComponent = () => {
   return (
@@ -31,17 +32,37 @@ const Hero: React.FunctionComponent = () => {
           <Navbar />
         </div>
 
-        <div className="container flex flex-row items-center relative md:h-[100%] z-[5] md:mt-[2rem] lg:mt-[8%]">
+        <motion.div className="container flex flex-row items-center relative md:h-[100%] z-[5] md:mt-[2rem] lg:mt-[8%]">
           <div className="flex flex-col justify-center gap-8 my-auto w-full md:w-[75%] lg:w-[45%] 2xl:w-[35%]">
             <div className="relative">
-              <div className={`${styles.box_1}`} />
-              <div className={`${styles.box_2}`} />
-              <Headertext>
-                Transforming <span className="text-primary">Talents</span> into{" "}
-                <span className="text-primary">Global Excellence</span>
-              </Headertext>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.5 }}
+                className={`${styles.box_1}`}
+              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.5 }}
+                className={`${styles.box_2}`}
+              />
+              <motion.div
+                initial={{ y: 100, opacity: 0.1 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Headertext>
+                  Transforming <span className="text-primary">Talents</span>{" "}
+                  into <span className="text-primary">Global Excellence</span>
+                </Headertext>
+              </motion.div>
             </div>
-            <div>
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
               <p className="md:text-slate text-textLight leading-24 text-sm p-0 m-0 font-secondary font-light">
                 We are building job-ready digital skills that catalyze
                 technological growth and achievements. We offer a targeted skill
@@ -49,17 +70,22 @@ const Hero: React.FunctionComponent = () => {
                 and lessons. Our lessons are continually refined and updated to
                 meet the dynamic needs of our users.
               </p>
-            </div>
-            <div className="button">
+            </motion.div>
+            <motion.div
+              className="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
               <Link
                 className="bg-primary border-none text-sm px-12 py-2 my-3 rounded-full text-textDark font-secondary"
                 href="#courses"
               >
                 Explore courses
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

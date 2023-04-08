@@ -1,6 +1,7 @@
 import Button from "@/components/button/Button";
 import ParagraphText from "@/components/typography/ParagraphText";
 import Subheading from "@/components/typography/Subheading";
+import { motion } from "framer-motion";
 import Image from "next/image";
 interface CourseCardProps {
   title: string;
@@ -24,7 +25,12 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
   }
   return (
     <>
-      <div className="card p-6 flex flex-col h-auto gap-6 bg-[#121228] border border-primary rounded-sm relative">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="card p-6 flex flex-col h-auto gap-6 bg-[#121228] border border-primary rounded-sm relative"
+      >
         <span>
           <Image src={`/${image}`} alt="" height={50} width={50} />
         </span>
@@ -42,7 +48,7 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
             Download Syllabus
           </button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

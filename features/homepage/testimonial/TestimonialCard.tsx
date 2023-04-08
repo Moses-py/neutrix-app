@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 interface TestimonialCardProps {
   bg: boolean;
@@ -13,7 +14,10 @@ const TestimonialCard: React.FunctionComponent<TestimonialCardProps> = ({
 }) => {
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
         className={`lg:container w-100 px-4 py-8 sm:rounded-full ${
           bg ? "bg-primary" : "border border-primary"
         }`}
@@ -36,7 +40,7 @@ const TestimonialCard: React.FunctionComponent<TestimonialCardProps> = ({
             <p className="author text-xs font-normal ">{position}</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -1,14 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/no-unescaped-entities */
-import Headertext from "@/components/typography/Headertext";
-import ParagraphText from "@/components/typography/ParagraphText";
-import Image from "next/image";
 import TestimonialCard from "./TestimonialCard";
+import { motion } from "framer-motion";
 
 const Testimonial = () => {
   return (
     <>
-      <section id="testimonial" className="my-[4.5rem]">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        id="testimonial"
+        className="my-[4.5rem]"
+      >
         <div className="md:container">
           <div className="relative mx-auto text-center my-[4.5rem]">
             <div className="headerText relative z-20">
@@ -47,7 +49,7 @@ const Testimonial = () => {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

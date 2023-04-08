@@ -3,20 +3,25 @@ import Image from "next/image";
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import styles from "./navbar.module.css";
+import { motion } from "framer-motion";
+
 const Navbar: React.FunctionComponent = () => {
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0 }}
         className={`md:${styles.navbar} w-100 lg:bg-textLight container flex flex-row relative justify-between items-center z-10 rounded-full lg:border-[0.5px] lg:border-[#61616154]`}
       >
-        <h1 className=" text-textDark lg:text-textDark leading-64 text-[36px] font-primary">
-          <div className="flex items-center gap-3">
-            <div className="bg-textLight w-[50px] h-[50px] rounded-full p-1">
-              <Image src="/triangle.png" alt="" width={50} height={50} />
-            </div>
-            <h1 className="text-md text-textLight lg:text-textDark">Neutrix</h1>
+        <motion.div className="flex items-center gap-3">
+          <div className="bg-textLight w-[50px] h-[50px] rounded-full p-1">
+            <Image src="/triangle.png" alt="" width={50} height={50} />
           </div>
-        </h1>
+          <h1 className="text-textLight lg:text-textDark leading-64 text-md font-primary">
+            Neutrix
+          </h1>
+        </motion.div>
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between font-semibold">
@@ -50,7 +55,7 @@ const Navbar: React.FunctionComponent = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </motion.div>
     </>
   );
 };

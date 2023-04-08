@@ -3,6 +3,7 @@ import Subheader from "../components/typography/Subheader";
 import DashboardLink from "../components/link/DashboardLink";
 import switchArray from "@/helpers/switchArray";
 import CloseIcon from "@mui/icons-material/Close";
+import { motion } from "framer-motion";
 
 interface D_left {
   setTabs: (id: number) => void;
@@ -19,7 +20,12 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
 }) => {
   return (
     <>
-      <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
+      <motion.div
+        initial={{ x: "-100%" }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent"
+      >
         <div className="flex justify-between items-center">
           <div className="logo flex flex-row gap-2 items-center mb-2">
             <Image src="/triangle.png" alt="" width={30} height={30} />
@@ -191,7 +197,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

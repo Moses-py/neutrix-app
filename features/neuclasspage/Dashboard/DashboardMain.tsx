@@ -9,6 +9,7 @@ import Subscription from "../components/dashboard_content/dash_plans/Subscriptio
 import Footer from "@/features/homepage/footer/Footer";
 import Profile from "../components/dashboard_content/dash_profile/Profile";
 import BankCard from "../components/dashboard_content/dash_card/BankCard";
+import { motion } from "framer-motion";
 
 interface D_main {
   title: string;
@@ -21,7 +22,12 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
 }) => {
   return (
     <>
-      <div className="h-[95vh] w-full min-h-0 flex flex-col">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="h-[95vh] w-full min-h-0 flex flex-col"
+      >
         <div className="lg:px-0 sm:px-[2rem] px-[1rem] flex-0">
           <div className="flex flex-row justify-between items-center lg:pr-[2rem]">
             <div className="dash_route">
@@ -33,16 +39,11 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
             </div>
             <div className="dash_links">
               <ul className="text-d_main font-semibold flex flex-row justify-evenly gap-[1rem]">
-                {/* <li className="hidden sm:block">
+                <li className="block">
                   <Link href="/" className="">
                     Home
                   </Link>
                 </li>
-                <li className="hidden sm:block">
-                  <Link href="/blog" className="">
-                    Blog
-                  </Link>
-                </li> */}
                 <li>
                   <Link
                     href="/login"
@@ -75,7 +76,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
           {title === "Profile" && <Profile />}
           {title === "Cards" && <BankCard />}
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
