@@ -45,29 +45,21 @@ const NotebookList: React.FunctionComponent<NotebookListProps> = ({
 
   return (
     <>
-      {notes[0].title ? (
-        <div className="lg:container grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 my-[3rem] ">
-          {noteData &&
-            noteData.map((note) => {
-              return (
-                <SingleNote
-                  key={noteData.indexOf(note)}
-                  id={noteData.indexOf(note)}
-                  title={note.title}
-                  content={note.content}
-                  image={note.image}
-                  updateModal={updateModal}
-                />
-              );
-            })}
-        </div>
-      ) : (
-        <div className="container flex items-center justify-center">
-          <p className="text-xs text-gray-400 italic font-secondary leading-[400px] 2xl:leading-[600px]">
-            Add a new note to store here...
-          </p>
-        </div>
-      )}
+      <div className="lg:container grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 my-[3rem] ">
+        {noteData &&
+          noteData.map((note) => {
+            return (
+              <SingleNote
+                key={noteData.indexOf(note)}
+                id={noteData.indexOf(note)}
+                title={note.title}
+                content={note.content}
+                image={note.image}
+                updateModal={updateModal}
+              />
+            );
+          })}
+      </div>
 
       <Modal
         open={modalData.open}
