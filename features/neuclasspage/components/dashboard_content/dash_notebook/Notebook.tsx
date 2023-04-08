@@ -13,7 +13,7 @@ const Notebook: React.FunctionComponent = () => {
           })
         }
       />
-      <div className="list">
+      <div className="list relative">
         <NotebookList notes={notelist} />
       </div>
     </>

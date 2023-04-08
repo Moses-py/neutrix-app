@@ -5,6 +5,8 @@ import DashCourses from "../components/dashboard_content/dash_courses/DashCourse
 import MyCourse from "../components/dashboard_content/dash_my_courses/MyCourse";
 import MenuIcon from "@mui/icons-material/Menu";
 import Notebook from "../components/dashboard_content/dash_notebook/Notebook";
+import Subscription from "../components/dashboard_content/dash_plans/Subscription";
+import Footer from "@/features/homepage/footer/Footer";
 
 interface D_main {
   title: string;
@@ -62,11 +64,12 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
           <h2 className="font-bold uppercase leading-36">{title}</h2>
         </div>
         {/* Dashboard contents */}
-        <div className="dash_contents pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll">
+        <div className="dash_contents pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
           {title === "Courses" && <DashCourses />}
           {title === "My Courses" && <MyCourse />}
           {title === "Bookmarks" && <Bookmark />}
           {title === "Notebook" && <Notebook />}
+          {title === "My Plan" && <Subscription />}
         </div>
       </div>
     </>

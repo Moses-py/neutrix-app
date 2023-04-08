@@ -1,5 +1,3 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { syllabusList } from "./courseSyllabus";
 import CheckIcon from "@mui/icons-material/Check";
@@ -28,10 +26,7 @@ export default function Syllabus({ open, updateModal, syllabus }: ModalProps) {
               syllabusList[syllabus].map((syllabusItem) => {
                 return (
                   <>
-                    <li
-                      key={syllabusList[syllabus].indexOf(syllabusItem)}
-                      className="leading-32 text-xs"
-                    >
+                    <li key={syllabusItem} className="leading-32 text-xs">
                       <CheckIcon /> {syllabusItem}
                     </li>
                   </>

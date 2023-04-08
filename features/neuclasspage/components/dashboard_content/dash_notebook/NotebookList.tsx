@@ -2,6 +2,7 @@ import { useState } from "react";
 import SingleNote from "./SingleNote";
 import optimizeBg from "@/helpers/optimizeBackground";
 import { Modal } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface NotebookListProps {
   notes: {
@@ -44,40 +45,61 @@ const NotebookList: React.FunctionComponent<NotebookListProps> = ({
 
   return (
     <>
-      <div className="lg:container grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 my-[3rem] ">
-        {noteData &&
-          noteData.map((note) => {
-            return (
-              <SingleNote
-                key={noteData.indexOf(note)}
-                id={noteData.indexOf(note)}
-                title={note.title}
-                content={note.content}
-                image={note.image}
-                updateModal={updateModal}
-              />
-            );
-          })}
-      </div>
+      {notes[0].title ? (
+        <div className="lg:container grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 my-[3rem] ">
+          {noteData &&
+            noteData.map((note) => {
+              return (
+                <SingleNote
+                  key={noteData.indexOf(note)}
+                  id={noteData.indexOf(note)}
+                  title={note.title}
+                  content={note.content}
+                  image={note.image}
+                  updateModal={updateModal}
+                />
+              );
+            })}
+        </div>
+      ) : (
+        <div className="container flex items-center justify-center">
+          <p className="text-xs text-gray-400 italic font-secondary leading-[400px] 2xl:leading-[600px]">
+            Add a new note to store here...
+          </p>
+        </div>
+      )}
+
       <Modal
         open={modalData.open}
         onClose={() => setModalData({ note: {}, open: false })}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="grid place-items-center p-5 h-[100vh]"
       >
-        <div className="mx-5">
-          <div
-            style={{
-              backgroundImage: `url(${optimizeBg(modalData.note.image)})`,
-            }}
-            className={`container border border-primary md:w-auto bg-no-repeat bg-center bg-cover w-[90vw] h-[60vh] lg:h-auto absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-textLight overflow-y-scroll py-[2rem]`}
-          >
-            <p className="my-4 font-secondary font-bold text-md break-all">
-              {modalData.note.title}
-            </p>
-            <p className="my-4 font-secondary font-normal text-xs break-all">
-              {modalData.note.content}
-            </p>
+        <div
+          style={{
+            backgroundImage: `url(${optimizeBg(modalData.note.image)})`,
+          }}
+          className={`container rounded-lg relative bg-no-repeat bg-center bg-cover w-full md:w-[80vw] lg:w-[50vw] xl:w-[30vw] h-[100%] bg-textLight overflow-y-scroll pt-[2rem] pb-[5rem]`}
+        >
+          <p className="my-4 font-secondary font-bold text-md break-all">
+            {modalData.note.title}
+          </p>
+          <p className="my-4 font-secondary font-normal text-xs break-all">
+            {modalData.note.content}
+          </p>
+
+          {/* Footer */}
+
+          <div className="fixed z-50 h-auto max-w-lg -translate-x-1/2 bg-white border rounded-full border-gray-200 bottom-8 left-1/2 dark:bg-gray-700 dark:border-gray-600">
+            <div
+              className="grid place-items-center p-2"
+              onClick={() => setModalData({ note: {}, open: false })}
+            >
+              <span className="font-bold font-secondary">
+                <CloseIcon />
+              </span>
+            </div>
           </div>
         </div>
       </Modal>
