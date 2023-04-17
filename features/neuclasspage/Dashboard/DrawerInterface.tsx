@@ -1,6 +1,7 @@
-import * as React from "react";
+import { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
+import { MainContext } from "@/context/Main";
 
 interface DrawerInterfaceProps {
   children: React.ReactNode;
@@ -11,7 +12,8 @@ const DrawerInterface: React.FunctionComponent<DrawerInterfaceProps> = ({
   children,
   updateDrawer,
 }) => {
-  const [state, setState] = React.useState(false);
+  const [state, setState] = useState(false);
+  const { openTab } = useContext(MainContext);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {

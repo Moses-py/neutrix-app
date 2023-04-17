@@ -33,7 +33,7 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="#about">About</Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
-              <Link href="/neuclass">Neuclass</Link>
+              <Link href="/neuclass/courses">Neuclass</Link>
             </li>
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/blog">Blog</Link>

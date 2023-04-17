@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import DashboardLeft from "./DashboardLeft";
 import DashboardMain from "./DashboardMain";
 import DrawerInterface from "./DrawerInterface";
 import useWindowSize from "@/helpers/useWindowSize";
+import Subscription from "../components/dashboard_content/dash_plans/Subscription";
+import { MainContext } from "@/context/Main";
 
 interface DashboardProps {
-  toggleDrawer: () => void;
+  children: React.ReactNode;
 }
-const Dashboard = () => {
-  const [tabs, setTabs] = useState(0);
+const Dashboard: React.FunctionComponent<DashboardProps> = ({ children }) => {
   const [tabTitle, setTabTitle] = useState("Courses");
-  const [openTab, setOpenTab] = useState(false);
+
+  const { openTab } = useContext(MainContext);
 
   const { width } = useWindowSize();
   return (
@@ -19,25 +21,15 @@ const Dashboard = () => {
         {/* Div container holds all sections of the dashboard */}
         <div className="flex flex-row gap-3">
           {width > 1024 ? (
-            <DashboardLeft
-              setTabs={setTabs}
-              tabs={tabs}
-              setTabTitle={setTabTitle}
-              setOpenTab={() => setOpenTab(false)}
-            />
+            <DashboardLeft setTabTitle={setTabTitle} />
           ) : (
             <DrawerInterface updateDrawer={openTab}>
-              <DashboardLeft
-                setTabs={setTabs}
-                tabs={tabs}
-                setTabTitle={setTabTitle}
-                setOpenTab={() => setOpenTab(false)}
-              />
+              <DashboardLeft setTabTitle={setTabTitle} />
             </DrawerInterface>
           )}
 
           {/* Main Dashboard content */}
-          <DashboardMain title={tabTitle} setOpenTab={() => setOpenTab(true)} />
+          {children}
         </div>
       </section>
     </>

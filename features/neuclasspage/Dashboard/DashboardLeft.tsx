@@ -4,20 +4,16 @@ import DashboardLink from "../components/link/DashboardLink";
 import switchArray from "@/helpers/switchArray";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { MainContext } from "@/context/Main";
+import { useContext } from "react";
 
 interface D_left {
-  setTabs: (id: number) => void;
-  tabs: number;
   setTabTitle: (text: string) => void;
-  setOpenTab: () => void;
 }
 
-const DashboardLeft: React.FunctionComponent<D_left> = ({
-  setTabs,
-  tabs,
-  setTabTitle,
-  setOpenTab,
-}) => {
+const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
+  const { updateTab, tabSelected, selectTab } = useContext(MainContext);
   return (
     <>
       <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
@@ -28,7 +24,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
               Neuclass <span className="hidden lg:inline">Dashboard</span>
             </p>
           </div>
-          <span className="lg:hidden block mb-2" onClick={setOpenTab}>
+          <span className="lg:hidden block mb-2" onClick={updateTab}>
             <CloseIcon />
           </span>
         </div>
@@ -42,7 +38,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Learning</Subheader>
           <div className="learning_links">
             <ul className="flex flex-col">
-              <li onClick={setOpenTab}>
+              <Link href="/neuclass/courses">
                 <DashboardLink
                   icon={
                     <Image
@@ -52,16 +48,13 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(0, tabs)}
-                  updateTab={setTabs}
-                  title="Courses"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(0, tabSelected)}
                   id={0}
                 >
                   Courses
                 </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
+              </Link>
+              <Link href="/neuclass/my_courses">
                 <DashboardLink
                   icon={
                     <Image
@@ -71,16 +64,13 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(1, tabs)}
-                  updateTab={setTabs}
-                  title="My Courses"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(1, tabSelected)}
                   id={1}
                 >
                   My Courses
                 </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
+              </Link>
+              <Link href="/neuclass/bookmarks">
                 <DashboardLink
                   icon={
                     <Image
@@ -90,16 +80,13 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(2, tabs)}
-                  updateTab={setTabs}
-                  title="Bookmarks"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(2, tabSelected)}
                   id={2}
                 >
                   Bookmarks
                 </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
+              </Link>
+              <Link href="/neuclass/notepad">
                 <DashboardLink
                   icon={
                     <Image
@@ -109,15 +96,12 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(3, tabs)}
-                  updateTab={setTabs}
-                  title="Notebook"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(3, tabSelected)}
                   id={3}
                 >
                   Notebook
                 </DashboardLink>
-              </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -125,7 +109,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Billing</Subheader>
           <div className="billing_links">
             <ul className="flex flex-col">
-              <li onClick={setOpenTab}>
+              <Link href="/neuclass/cards">
                 <DashboardLink
                   icon={
                     <Image
@@ -135,16 +119,13 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(4, tabs)}
-                  updateTab={setTabs}
-                  title="Cards"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(4, tabSelected)}
                   id={4}
                 >
                   Cards
                 </DashboardLink>
-              </li>
-              <li onClick={setOpenTab}>
+              </Link>
+              <Link href="/neuclass/billing">
                 <DashboardLink
                   icon={
                     <Image
@@ -154,15 +135,12 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(5, tabs)}
-                  updateTab={setTabs}
-                  title="My Plan"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(5, tabSelected)}
                   id={5}
                 >
                   My Plan
                 </DashboardLink>
-              </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -170,7 +148,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
           <Subheader>Account</Subheader>
           <div className="account_links">
             <ul className="flex flex-col">
-              <li onClick={setOpenTab}>
+              <Link href="/neuclass/profile">
                 <DashboardLink
                   icon={
                     <Image
@@ -180,15 +158,12 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({
                       height={25}
                     />
                   }
-                  selected={switchArray(6, tabs)}
-                  updateTab={setTabs}
-                  title="Profile"
-                  updateTitle={setTabTitle}
+                  selected={switchArray(6, tabSelected)}
                   id={6}
                 >
                   Profile
                 </DashboardLink>
-              </li>
+              </Link>
             </ul>
           </div>
         </div>

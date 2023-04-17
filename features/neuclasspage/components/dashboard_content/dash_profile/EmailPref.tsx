@@ -8,7 +8,6 @@ const EmailPref = () => {
         <div className="toggle1 my-4">
           <div className="flex items-center mb-4 text-xs font-secondary text-gray-900">
             <input
-              checked={true}
               id="default-checkbox-1"
               type="checkbox"
               value=""

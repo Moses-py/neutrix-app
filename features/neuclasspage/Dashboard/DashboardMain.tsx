@@ -6,28 +6,28 @@ import MyCourse from "../components/dashboard_content/dash_my_courses/MyCourse";
 import MenuIcon from "@mui/icons-material/Menu";
 import Notebook from "../components/dashboard_content/dash_notebook/Notebook";
 import Subscription from "../components/dashboard_content/dash_plans/Subscription";
-import Footer from "@/features/homepage/footer/Footer";
 import Profile from "../components/dashboard_content/dash_profile/Profile";
 import BankCard from "../components/dashboard_content/dash_card/BankCard";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { MainContext } from "@/context/Main";
+import { useContext } from "react";
 
 interface D_main {
-  title: string;
-  setOpenTab: () => void;
+  title?: string;
+  setOpenTab?: () => void;
+  component: string;
 }
 
 const DashboardMain: React.FunctionComponent<D_main> = ({
   title,
   setOpenTab,
+  component,
 }) => {
+  const { updateTab } = useContext(MainContext);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="h-[95vh] w-full min-h-0 flex flex-col"
-      >
+      <div className="h-[95vh] w-full min-h-0 flex flex-col">
         <div className="lg:px-0 sm:px-[2rem] px-[1rem] flex-0">
           <div className="flex flex-row justify-between items-center lg:pr-[2rem]">
             <div className="dash_route">
@@ -35,7 +35,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                 Neuclass
               </span>
               <span className="mx-1">/</span>
-              <span className="font-semibold">{title}</span>
+              <span className="font-semibold">{component}</span>
             </div>
             <div className="dash_links">
               <ul className="text-d_main font-semibold flex flex-row justify-evenly gap-[1rem]">
@@ -58,25 +58,24 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                     />
                   </Link>
                 </li>
-                <li className="lg:hidden block" onClick={setOpenTab}>
+                <li className="lg:hidden block" onClick={updateTab}>
                   <MenuIcon />
                 </li>
               </ul>
             </div>
           </div>
-          <h2 className="font-bold uppercase leading-36">{title}</h2>
         </div>
         {/* Dashboard contents */}
         <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
-          {title === "Courses" && <DashCourses />}
-          {title === "My Courses" && <MyCourse />}
-          {title === "Bookmarks" && <Bookmark />}
-          {title === "Notebook" && <Notebook />}
-          {title === "My Plan" && <Subscription />}
-          {title === "Profile" && <Profile />}
-          {title === "Cards" && <BankCard />}
+          {component === "Courses" && <DashCourses />}
+          {component === "My courses" && <MyCourse />}
+          {component === "Bookmarks" && <Bookmark />}
+          {component === "Notepad" && <Notebook />}
+          {component === "Billing" && <Subscription />}
+          {component === "Profile" && <Profile />}
+          {component === "Cards" && <BankCard />}
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };

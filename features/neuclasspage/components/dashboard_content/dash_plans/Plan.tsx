@@ -25,7 +25,6 @@ const Plan: React.FunctionComponent<PlanProps> = ({ title, premium }) => {
         {!premium && (
           <div>
             <p className="font-normal font-secondary">Minutes left</p>
-
             <p className="font-semibold text-xs">00: 34: 26</p>
           </div>
         )}
