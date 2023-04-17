@@ -38,7 +38,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
           <Subheader>Learning</Subheader>
           <div className="learning_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/courses">
+              <Link href="/neuclass/courses" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -54,7 +54,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                   Courses
                 </DashboardLink>
               </Link>
-              <Link href="/neuclass/my_courses">
+              <Link href="/neuclass/my_courses" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -70,7 +70,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                   My Courses
                 </DashboardLink>
               </Link>
-              <Link href="/neuclass/bookmarks">
+              <Link href="/neuclass/bookmarks" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -86,7 +86,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                   Bookmarks
                 </DashboardLink>
               </Link>
-              <Link href="/neuclass/notepad">
+              <Link href="/neuclass/notepad" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -109,7 +109,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
           <Subheader>Billing</Subheader>
           <div className="billing_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/cards">
+              <Link href="/neuclass/cards" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -125,7 +125,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                   Cards
                 </DashboardLink>
               </Link>
-              <Link href="/neuclass/billing">
+              <Link href="/neuclass/billing" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
@@ -148,7 +148,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
           <Subheader>Account</Subheader>
           <div className="account_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/profile">
+              <Link href="/neuclass/profile" onClick={updateTab}>
                 <DashboardLink
                   icon={
                     <Image
