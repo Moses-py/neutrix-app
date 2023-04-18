@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const AccordionFAQ = dynamic(() => import("./Accordion"));
@@ -9,12 +8,7 @@ const ParagraphText = dynamic(
 export default function FAQ() {
   return (
     <>
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        id="faq"
-      >
+      <section id="faq">
         <div className="md:container px-6 py-3">
           {/* SubHeading */}
           <div className="py-3">
@@ -31,7 +25,7 @@ export default function FAQ() {
         <div className="md:container">
           <AccordionFAQ />
         </div>
-      </motion.section>
+      </section>
     </>
   );
 }

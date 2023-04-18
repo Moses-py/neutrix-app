@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const BlogCard = dynamic(() => import("./BlogCard"));
@@ -10,13 +9,7 @@ const ParagraphText = dynamic(
 const Blog = () => {
   return (
     <>
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="my-[4.5rem] py-6"
-        id="blog"
-      >
+      <section className="my-[4.5rem] py-6" id="blog">
         <div className="md:container p-6">
           {/* SubHeading */}
           <div className="py-3">
@@ -51,12 +44,7 @@ const Blog = () => {
                 image="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHJvYm90fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 title="Megamind in Gotham"
               />
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
-                className="px-1 flex flex-col md:justify-center items-center"
-              >
+              <div className="px-1 flex flex-col md:justify-center items-center">
                 <div className="box">
                   <p className="text-sm">
                     Visit our blog page for more informative aricles
@@ -70,13 +58,13 @@ const Blog = () => {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
 
           {/* Blog articles grid */}
         </div>
-      </motion.section>
+      </section>
     </>
   );
 };

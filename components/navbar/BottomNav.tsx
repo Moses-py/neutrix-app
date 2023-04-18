@@ -33,65 +33,75 @@ const BottomNav = () => {
         } bg-textLight fixed bottom-0 z-[999] h-auto lg:hidden transition-all duration-[850ms] ease-in-out flex justify-center items-center py-[3rem]`}
       >
         <div className="container p-[2rem]">
-          <ul className="flex flex-col justify-evenly items-center gap-4 text-textLight text-[18px]">
-            <Link
-              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="/"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              <HomeIcon />
-              Home
-            </Link>
-            <Link
-              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="#about"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              <InfoIcon />
-              About
-            </Link>
-            <Link
-              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="#courses"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              <ExploreIcon />
-              Explore
-            </Link>
-            <Link
-              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="/neuclass/courses"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              <SchoolIcon />
-              Neuclass
-            </Link>
-            <Link
-              className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-              href="/blog"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              <RssFeedIcon />
-              Blog
-            </Link>
-            <div className=" mb-4 grid grid-cols-2 gap-4 w-full">
+          <ul className="flex flex-col justify-evenly items-center w-full gap-4 text-textLight text-[18px]">
+            <li className="w-full">
               <Link
-                href="/login"
-                className="w-full flex items-center justify-center gap-2 p-2 bg-[#121228] text-textLight text-center"
+                className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+                href="/"
+                onClick={() => setOpenNav(!openNav)}
               >
-                <LoginIcon />
-                Log in
+                <HomeIcon />
+                Home
               </Link>
-
+            </li>
+            <li className="w-full">
               <Link
-                href="/register"
-                className="w-full flex items-center gap-2 justify-center p-2 border border-[#121228] bg-transparent text-textDark text-center"
+                className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+                href="#about"
+                onClick={() => setOpenNav(!openNav)}
               >
-                <VpnKeyIcon />
-                Sign up
+                <InfoIcon />
+                About
               </Link>
-            </div>
+            </li>
+            <li className="w-full">
+              <Link
+                className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+                href="#courses"
+                onClick={() => setOpenNav(!openNav)}
+              >
+                <ExploreIcon />
+                Explore
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+                className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+                href="/neuclass/courses"
+                onClick={() => setOpenNav(!openNav)}
+              >
+                <SchoolIcon />
+                Neuclass
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+                className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
+                href="/blog"
+                onClick={() => setOpenNav(!openNav)}
+              >
+                <RssFeedIcon />
+                Blog
+              </Link>
+            </li>
           </ul>
+          <div className=" mb-4 grid grid-cols-2 gap-4 w-full my-3">
+            <Link
+              href="/login"
+              className="w-full flex items-center justify-center gap-2 p-2 bg-[#121228] text-textLight text-center"
+            >
+              <LoginIcon />
+              Log in
+            </Link>
+
+            <Link
+              href="/register"
+              className="w-full flex items-center gap-2 justify-center p-2 border border-[#121228] bg-transparent text-textDark text-center"
+            >
+              <VpnKeyIcon />
+              Sign up
+            </Link>
+          </div>
         </div>
       </div>
     </>

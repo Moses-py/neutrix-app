@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -29,12 +28,7 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
   }
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="card p-6 flex flex-col h-auto gap-6 bg-[#121228] border border-primary rounded-sm relative"
-      >
+      <div className="card p-6 flex flex-col h-auto gap-6 bg-[#121228] border border-primary rounded-sm relative">
         <span className="relative h-[50px] w-[50px] object-cover object-center">
           <Image src={`/${image}`} alt="logo" fill />
         </span>
@@ -52,7 +46,7 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
             Download Syllabus
           </button>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };

@@ -1,18 +1,11 @@
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 
 const TestimonialCard = dynamic(() => import("./TestimonialCard"));
 
 const Testimonial = () => {
   return (
     <>
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        id="testimonial"
-        className="my-[4.5rem]"
-      >
+      <section id="testimonial" className="my-[4.5rem]">
         <div className="md:container">
           <div className="relative mx-auto text-center my-[4.5rem]">
             <div className="headerText relative z-20">
@@ -51,7 +44,7 @@ const Testimonial = () => {
             />
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 };

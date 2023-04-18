@@ -19,7 +19,7 @@ const Profile = () => {
           <div className="profilebar mx-auto backdrop-blur-md bg-white/80 rounded-2xl p-[1rem] w-full relative top-[80%] left-0 border border-gray-300 shadow-lg">
             <div className="profile_pic flex items-center gap-4">
               <Image
-                src="/bruce-mars.jpg"
+                src="/bruce-mars.webp"
                 alt=""
                 height={80}
                 width={80}

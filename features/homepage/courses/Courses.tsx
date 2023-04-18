@@ -1,6 +1,5 @@
 import styles from "./courses.module.css";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const CourseCard = dynamic(() => import("./CourseCard"));
@@ -20,13 +19,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
 }) => {
   return (
     <>
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        id="courses"
-        className={`${styles.bg_courses} p-[5%] relative `}
-      >
+      <section id="courses" className={`${styles.bg_courses} p-[5%] relative `}>
         <div className="container rounded-lg p-4 md:p-[5%] flex lg:flex-row flex-col bg-[#121228] relative">
           <div className="p-4 w-full lg:w-1/3">
             <Subheading>What we offer</Subheading>
@@ -62,12 +55,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
               id={2}
             />
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="card p-6 flex flex-col gap-6 bg-[#121228] border border-primary rounded-sm relative"
-            >
+            <div className="card p-6 flex flex-col gap-6 bg-[#121228] border border-primary rounded-sm relative">
               <span>
                 <Image src={`/build.webp`} alt="" height={50} width={50} />
               </span>
@@ -84,10 +72,10 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
                   Customize
                 </button>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 };
