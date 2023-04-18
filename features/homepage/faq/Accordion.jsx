@@ -60,7 +60,7 @@ export default function AccordionFAQ() {
     return (
       <div key={item.title} onClick={() => clickHandler(item)}>
         <div
-          className={`${styles.title} w-100 border border-primary hover:bg-slate font-normal text-textDark md:leading-48 leading-28`}
+          className={`${styles.title} w-100 border border-gray-300 hover:bg-misc hover:text-white font-normal text-textDark md:leading-48 leading-28`}
         >
           <div className={`block ${styles.arrow_wrapper}`}>
             <i className="text-textDark">

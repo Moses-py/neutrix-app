@@ -10,10 +10,6 @@
   transition: all 0.2s ease-in;
 }
 
-.title:hover {
-  color: #000;
-}
-
 .title:active {
   background-color: rgba(0, 0, 0, 0.55);
 }

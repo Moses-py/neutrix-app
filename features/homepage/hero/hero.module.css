@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../../../public/globe_vector_2.jpg");
+  background-image: url("../../../public/globe_vector_2 _1_.webp");
   background-position: center;
   background-size: cover;
   position: relative;
@@ -15,10 +15,9 @@
   bottom: 0;
   left: 0;
   background-color: #000;
-  background-image: url("../../../public/617d26ca7de75b457a690c6f_Glow.png");
   background-position: center;
   background-size: cover;
-  opacity: 0.3;
+  opacity: 0.2;
   z-index: 0;
 }
 

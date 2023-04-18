@@ -1,5 +1,5 @@
 import Modal from "@mui/material/Modal";
-import { syllabusList } from "./courseSyllabus";
+import syllabusList from "./courseSyllabus";
 import CheckIcon from "@mui/icons-material/Check";
 
 interface ModalProps {
@@ -21,7 +21,7 @@ export default function Syllabus({ open, updateModal, syllabus }: ModalProps) {
           className={`container border border-primary w-[400px] h-[80vh] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-textLight overflow-y-scroll py-[2rem]`}
         >
           <p className="my-3 text-md font-bold">Course curiculum</p>
-          <ul className="">
+          <ul>
             {syllabusList.length > 0 &&
               syllabusList[syllabus].map((syllabusItem) => {
                 return (

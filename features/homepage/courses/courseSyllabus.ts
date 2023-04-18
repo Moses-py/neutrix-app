@@ -1,4 +1,4 @@
-export const syllabusList = [
+const syllabusList = [
   [
     "Introduction to Python programming",
     "Use of Anaconda and Jupyter Notebooks",
@@ -40,3 +40,5 @@ export const syllabusList = [
     "General mathematics",
   ],
 ];
+
+export default syllabusList;

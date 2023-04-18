@@ -1,17 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
-import Bookmark from "../components/dashboard_content/useful_links/Bookmarks";
-import DashCourses from "../components/dashboard_content/dash_courses/DashCourses";
-import MyCourse from "../components/dashboard_content/dash_my_courses/MyCourse";
 import MenuIcon from "@mui/icons-material/Menu";
-import Notebook from "../components/dashboard_content/dash_notebook/Notebook";
-import Subscription from "../components/dashboard_content/dash_plans/Subscription";
-import Profile from "../components/dashboard_content/dash_profile/Profile";
-import BankCard from "../components/dashboard_content/dash_card/BankCard";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { MainContext } from "@/context/Main";
 import { useContext } from "react";
+import dynamic from "next/dynamic";
+
+const Bookmark = dynamic(
+  () => import("../components/dashboard_content/useful_links/Bookmarks")
+);
+const DashCourses = dynamic(
+  () => import("../components/dashboard_content/dash_courses/DashCourses")
+);
+const MyCourse = dynamic(
+  () => import("../components/dashboard_content/dash_my_courses/MyCourse")
+);
+const Notebook = dynamic(
+  () => import("../components/dashboard_content/dash_notebook/Notebook")
+);
+const Subscription = dynamic(
+  () => import("../components/dashboard_content/dash_plans/Subscription")
+);
+const Profile = dynamic(
+  () => import("../components/dashboard_content/dash_profile/Profile")
+);
+const BankCard = dynamic(
+  () => import("../components/dashboard_content/dash_card/BankCard")
+);
 
 interface D_main {
   title?: string;
@@ -51,7 +65,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                   >
                     <span className="text-gray-400">John Doe</span>
                     <Image
-                      src="/icons/signed_in.png"
+                      src="/icons/signed_in.webp"
                       alt="signed_in_icon"
                       width={25}
                       height={25}

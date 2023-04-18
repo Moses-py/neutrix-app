@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 interface TestimonialCardProps {
   bg: boolean;
   image: string;
@@ -19,13 +20,13 @@ const TestimonialCard: React.FunctionComponent<TestimonialCardProps> = ({
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
         className={`lg:container w-100 px-4 py-8 sm:rounded-full ${
-          bg ? "bg-primary" : "border border-primary"
+          bg ? "bg-primary" : "border border-gray-300"
         }`}
       >
         <div className="content flex flex-col sm:flex-row gap-4 items-start md:items-center justify-center">
           <Image
             src={`/${image}`}
-            alt=""
+            alt={name}
             width={80}
             height={80}
             className="rounded-full"

@@ -12,7 +12,7 @@ const BackgroundImageSelector: React.FunctionComponent<
       <Image
         height={40}
         width={40}
-        src={`/backgrounds/${background}.jpg`}
+        src={`/backgrounds/${background}.webp`}
         alt="image"
         className="rounded-full cursor-pointer object-cover"
       />

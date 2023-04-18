@@ -9,13 +9,9 @@ const Register = () => {
   const [alert, setAlert] = useState(false);
 
   function handleSignup() {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      setAlert(true);
-    }, 2000);
+    setIsLoading(false);
   }
+
   return (
     <>
       <Head>

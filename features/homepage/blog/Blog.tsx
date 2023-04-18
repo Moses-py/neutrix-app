@@ -1,7 +1,11 @@
-import ParagraphText from "@/components/typography/ParagraphText";
 import Link from "next/link";
-import BlogCard from "./BlogCard";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const BlogCard = dynamic(() => import("./BlogCard"));
+const ParagraphText = dynamic(
+  () => import("@/components/typography/ParagraphText")
+);
 
 const Blog = () => {
   return (
@@ -21,7 +25,7 @@ const Blog = () => {
 
           {/* Heading */}
           <div className="mb-5">
-            <h1 className="leading-48 md:leading-64 p-0 m-0 text-fallback sm:text-[40px] md:text-xl lg:text-2xl font-primary">
+            <h1 className="text-misc leading-48 md:leading-64 p-0 m-0 text-fallback sm:text-[40px] md:text-xl lg:text-2xl font-primary">
               Our Blog
             </h1>
           </div>

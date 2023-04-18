@@ -3,17 +3,13 @@ import Spinner from "@/components/spinner/Spinner";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState(false);
 
   function handleLogin() {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      setAlert(true);
-    }, 2000);
+    setIsLoading(false);
   }
 
   return (

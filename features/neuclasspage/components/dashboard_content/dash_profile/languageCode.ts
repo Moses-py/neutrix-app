@@ -1,4 +1,4 @@
-export const languages = [
+const languages = [
   {
     code: "ab",
     name: "Abkhaz",
@@ -677,3 +677,5 @@ export const languages = [
     name: "Uzbek",
   },
 ];
+
+export default languages;

@@ -16,7 +16,7 @@ const Navbar: React.FunctionComponent = () => {
       >
         <motion.div className="flex items-center gap-3">
           <div className="bg-textLight w-[50px] h-[50px] rounded-full p-1">
-            <Image src="/triangle.png" alt="" width={50} height={50} />
+            <Image src="/triangle.webp" alt="" width={50} height={50} />
           </div>
           <h1 className="text-textLight lg:text-textDark leading-64 text-md font-primary">
             Neutrix

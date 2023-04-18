@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import BottomNav from "@/components/navbar/BottomNav";
 import Image from "next/image";
 import ArticleItem from "./ArticleItem";

@@ -1,14 +1,19 @@
-import Subheading from "@/components/typography/Subheading";
-import CourseCard from "./CourseCard";
 import styles from "./courses.module.css";
 import Image from "next/image";
-import ParagraphText from "@/components/typography/ParagraphText";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const CourseCard = dynamic(() => import("./CourseCard"));
+const Subheading = dynamic(() => import("@/components/typography/Subheading"));
+const ParagraphText = dynamic(
+  () => import("@/components/typography/ParagraphText")
+);
 
 interface CoursesProps {
   updateModal: () => void;
   updateId: (id: number) => void;
 }
+
 const Courses: React.FunctionComponent<CoursesProps> = ({
   updateModal,
   updateId,
@@ -23,13 +28,6 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
         className={`${styles.bg_courses} p-[5%] relative `}
       >
         <div className="container rounded-lg p-4 md:p-[5%] flex lg:flex-row flex-col bg-[#121228] relative">
-          <Image
-            className="absolute bottom-0 left-0"
-            src="/Holographic 3D shape 67 1.png"
-            height={500}
-            width={500}
-            alt=""
-          />
           <div className="p-4 w-full lg:w-1/3">
             <Subheading>What we offer</Subheading>
             <div className="">
@@ -42,7 +40,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
             <CourseCard
               title="Data Analysis"
               content="Learn exploratory and predictive data analysis snd big data using Python."
-              image="data_analysis.png"
+              image="data_analysis.webp"
               modal={updateModal}
               updateId={updateId}
               id={0}
@@ -50,7 +48,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
             <CourseCard
               title="Data Science and Machine Learning"
               content="Understand different machine learning algorithms for supervised and unsupervised learning."
-              image="machine_learning.png"
+              image="machine_learning.webp"
               modal={updateModal}
               updateId={updateId}
               id={1}
@@ -58,7 +56,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
             <CourseCard
               title="Mathematics"
               content="Learn different mathematical topics and concepts in data science and machine learning."
-              image="mathematics.png"
+              image="mathematics.webp"
               modal={updateModal}
               updateId={updateId}
               id={2}
@@ -71,7 +69,7 @@ const Courses: React.FunctionComponent<CoursesProps> = ({
               className="card p-6 flex flex-col gap-6 bg-[#121228] border border-primary rounded-sm relative"
             >
               <span>
-                <Image src={`/build.png`} alt="" height={50} width={50} />
+                <Image src={`/build.webp`} alt="" height={50} width={50} />
               </span>
               <Subheading>Build your curiculum</Subheading>
               <div className="mb-16">

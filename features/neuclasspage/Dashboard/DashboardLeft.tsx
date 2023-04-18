@@ -1,25 +1,22 @@
 import Image from "next/image";
-import Subheader from "../components/typography/Subheader";
-import DashboardLink from "../components/link/DashboardLink";
 import switchArray from "@/helpers/switchArray";
 import CloseIcon from "@mui/icons-material/Close";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { MainContext } from "@/context/Main";
 import { useContext } from "react";
+import dynamic from "next/dynamic";
 
-interface D_left {
-  setTabTitle: (text: string) => void;
-}
+const DashboardLink = dynamic(() => import("../components/link/DashboardLink"));
+const Subheader = dynamic(() => import("../components/typography/Subheader"));
 
-const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
-  const { updateTab, tabSelected, selectTab } = useContext(MainContext);
+const DashboardLeft: React.FunctionComponent = () => {
+  const { updateTab, tabSelected } = useContext(MainContext);
   return (
     <>
       <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
         <div className="flex justify-between items-center">
           <div className="logo flex flex-row gap-2 items-center mb-2">
-            <Image src="/triangle.png" alt="" width={30} height={30} />
+            <Image src="/triangle.webp" alt="" width={30} height={30} />
             <p className="text-xs font-semibold text-center flex justify-between items-center">
               Neuclass <span className="hidden lg:inline">Dashboard</span>
             </p>
@@ -42,7 +39,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/courses.png"
+                      src="/icons/courses.webp"
                       alt="courses_icon"
                       width={25}
                       height={25}
@@ -58,7 +55,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/my_courses.png"
+                      src="/icons/my_courses.webp"
                       alt="my_courses_icon"
                       width={25}
                       height={25}
@@ -74,7 +71,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/useful_link.png"
+                      src="/icons/useful_link.webp"
                       alt="useful_link_icon"
                       width={25}
                       height={25}
@@ -90,7 +87,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/notes.png"
+                      src="/icons/notes.webp"
                       alt="useful_link_icon"
                       width={25}
                       height={25}
@@ -113,7 +110,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/bank_card.png"
+                      src="/icons/bank_card.webp"
                       alt="bank_card__icon"
                       width={25}
                       height={25}
@@ -129,7 +126,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/subscription.png"
+                      src="/icons/subscription.webp"
                       alt="subscription_icon"
                       width={25}
                       height={25}
@@ -152,7 +149,7 @@ const DashboardLeft: React.FunctionComponent<D_left> = ({ setTabTitle }) => {
                 <DashboardLink
                   icon={
                     <Image
-                      src="/icons/profile.png"
+                      src="/icons/profile.webp"
                       alt="profile_icon"
                       width={25}
                       height={25}

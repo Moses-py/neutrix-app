@@ -1,7 +1,10 @@
-import BlogList from "@/features/blogpage/blogList/BlogList";
-import Hero from "@/features/blogpage/hero/Hero";
-import Footer from "@/features/homepage/footer/Footer";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+
+const Hero = dynamic(() => import("@/features/blogpage/hero/Hero"));
+const Footer = dynamic(() => import("@/features/homepage/footer/Footer"));
+const BlogList = dynamic(() => import("@/features/blogpage/blogList/BlogList"));
+
 export default function Blog() {
   return (
     <>

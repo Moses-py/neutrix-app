@@ -1,4 +1,6 @@
-import CourseCard from "./CourseCard";
+import dynamic from "next/dynamic";
+
+const CourseCard = dynamic(() => import("./CourseCard"));
 
 const DashCourses = () => {
   return (

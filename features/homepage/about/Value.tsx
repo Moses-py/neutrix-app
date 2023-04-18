@@ -1,8 +1,12 @@
-import Subheading from "@/components/typography/Subheading";
+import dynamic from "next/dynamic";
+
+const Subheading = dynamic(() => import("@/components/typography/Subheading"));
+
 interface ValueCardProps {
   title: string;
   children: React.ReactNode;
 }
+
 const ValueCard: React.FunctionComponent<ValueCardProps> = ({
   title,
   children,

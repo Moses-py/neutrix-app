@@ -1,6 +1,13 @@
-import Dashboard from "@/features/neuclasspage/Dashboard/Dashboard";
-import DashboardMain from "@/features/neuclasspage/Dashboard/DashboardMain";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+
+const Dashboard = dynamic(
+  () => import("@/features/neuclasspage/Dashboard/Dashboard")
+);
+
+const DashboardMain = dynamic(
+  () => import("@/features/neuclasspage/Dashboard/DashboardMain")
+);
 
 const Billing = () => {
   return (

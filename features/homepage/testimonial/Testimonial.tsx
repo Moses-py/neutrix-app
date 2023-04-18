@@ -1,5 +1,7 @@
-import TestimonialCard from "./TestimonialCard";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+
+const TestimonialCard = dynamic(() => import("./TestimonialCard"));
 
 const Testimonial = () => {
   return (
@@ -17,7 +19,7 @@ const Testimonial = () => {
               <p className="text-slate leading-24 text-sm p-0 m-0 font-secondary font-light">
                 What People have to say
               </p>
-              <h1 className="leading-48 md:leading-64 p-0 m-0 text-fallback sm:text-[40px] md:text-xl lg:text-2xl font-primary">
+              <h1 className="text-misc leading-48 md:leading-64 p-0 m-0 text-fallback sm:text-[40px] md:text-xl lg:text-2xl font-primary">
                 Testimonials
               </h1>
             </div>
@@ -25,25 +27,25 @@ const Testimonial = () => {
           <div className="p-6 lg:container testimonials grid lg:grid-cols-2 gap-6">
             <TestimonialCard
               bg={false}
-              image={"ada.JPG"}
+              image={"ada.webp"}
               name={"Ada Ada Chigbata"}
               position={"Student"}
             />
             <TestimonialCard
               bg={true}
-              image={"kk.jpg"}
+              image={"kk.webp"}
               name={"Kelechi"}
               position={"CEO, KK Wears"}
             />
             <TestimonialCard
               bg={true}
-              image={"peace.JPG"}
+              image={"peace.webp"}
               name={"Peace Ezeafulukwe"}
               position={"CEO, Openhouse"}
             />
             <TestimonialCard
               bg={false}
-              image={"Sambaz.jpg"}
+              image={"Sambaz.webp"}
               name={"Sambaz"}
               position={"Student"}
             />

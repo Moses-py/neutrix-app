@@ -1,5 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
-import SingleBankCard from "./SingleBankCard";
+import dynamic from "next/dynamic";
+
+const SingleBankCard = dynamic(() => import("./SingleBankCard"));
 
 const BankCard: React.FunctionComponent = () => {
   return (

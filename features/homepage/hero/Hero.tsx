@@ -1,9 +1,11 @@
-import Navbar from "@/components/navbar/Navbar";
-import Headertext from "@/components/typography/Headertext";
 import styles from "./hero.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("@/components/navbar/Navbar"));
+const Headertext = dynamic(() => import("@/components/typography/Headertext"));
 
 const Hero: React.FunctionComponent = () => {
   return (
@@ -11,20 +13,22 @@ const Hero: React.FunctionComponent = () => {
       <section
         className={`${styles.hero} relative h-auto pt-[10%] md:pt-[5%] lg:pt-[3%]`}
       >
-        <Image
-          className="hidden 2xl:block absolute bottom-0 left-0 "
-          src="/robot-hand-finger-pointing-ai-technology-backgrou-2022-09-16-09-23-42-utc 1.png"
-          height={300}
-          width={300}
-          alt=""
-        />
-        <Image
-          className="hidden 2xl:block absolute top-0 right-0 "
-          src="/robot-hand-finger-pointing-ai-technology-backgrou-2022-09-16-09-23-42-utc 1 (1).png"
-          height={300}
-          width={300}
-          alt=""
-        />
+        <div className="relative">
+          <Image
+            className="hidden 2xl:block absolute bottom-0 left-0 "
+            src="/robot-hand-finger-pointing-ai-technology-backgrou-2022-09-16-09-23-42-utc 1.webp"
+            fill
+            alt=""
+          />
+        </div>
+        <div className="relative">
+          <Image
+            className="hidden 2xl:block absolute top-0 right-0 "
+            src="/robot-hand-finger-pointing-ai-technology-backgrou-2022-09-16-09-23-42-utc 1 _1_.webp"
+            fill
+            alt=""
+          />
+        </div>
 
         <div className={`${styles.overlay}`} />
 

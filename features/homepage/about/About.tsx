@@ -1,9 +1,13 @@
-import ParagraphText from "@/components/typography/ParagraphText";
-import Subheading from "@/components/typography/Subheading";
 import Image from "next/image";
-import styles from "./about.module.css";
-import ValueCard from "./Value";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const Subheading = dynamic(() => import("@/components/typography/Subheading"));
+const ParagraphText = dynamic(
+  () => import("@/components/typography/ParagraphText")
+);
+
+const ValueCard = dynamic(() => import("./Value"));
 
 const About = () => {
   return (
@@ -16,11 +20,11 @@ const About = () => {
       >
         <div className="section my-[5rem] p-6 relative">
           <div
-            className={`${styles.bg_about} container md:p-[4.5rem] sm:p-[2rem] p-[1rem] relative`}
+            className={`bg-misc container md:p-[4.5rem] sm:p-[2rem] p-[1rem] relative rounded-lg`}
           >
             <Image
               className="absolute bottom-0 left-0"
-              src="/Holographic 3D shape 67 1.png"
+              src="/Holographic 3D shape 67 1.webp"
               height={700}
               width={700}
               alt=""

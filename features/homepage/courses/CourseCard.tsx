@@ -1,8 +1,12 @@
-import Button from "@/components/button/Button";
-import ParagraphText from "@/components/typography/ParagraphText";
-import Subheading from "@/components/typography/Subheading";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const Subheading = dynamic(() => import("@/components/typography/Subheading"));
+const ParagraphText = dynamic(
+  () => import("@/components/typography/ParagraphText")
+);
+
 interface CourseCardProps {
   title: string;
   content: string;
@@ -31,8 +35,8 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
         transition={{ duration: 1, delay: 0.2 }}
         className="card p-6 flex flex-col h-auto gap-6 bg-[#121228] border border-primary rounded-sm relative"
       >
-        <span>
-          <Image src={`/${image}`} alt="" height={50} width={50} />
+        <span className="relative h-[50px] w-[50px] object-cover object-center">
+          <Image src={`/${image}`} alt="logo" fill />
         </span>
         <Subheading>{title}</Subheading>
         <div className="mb-16">

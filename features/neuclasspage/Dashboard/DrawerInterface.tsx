@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import { MainContext } from "@/context/Main";
 
 interface DrawerInterfaceProps {

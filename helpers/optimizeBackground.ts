@@ -1,11 +1,11 @@
-import dash_1 from "../public/bg_large/dash_1.jpg";
-import dash_2 from "../public/bg_large/dash_2.jpg";
-import dash_3 from "../public/bg_large/dash_3.jpg";
-import dash_4 from "../public/bg_large/dash_4.jpg";
-import dash_5 from "../public/bg_large/dash_5.jpg";
-import dash_6 from "../public/bg_large/dash_6.jpg";
-import dash_7 from "../public/bg_large/dash_7.jpg";
-import bg_profile from "../public/bg_large/curved8.jpg";
+import dash_1 from "../public/bg_large/dash_1.webp";
+import dash_2 from "../public/bg_large/dash_2.webp";
+import dash_3 from "../public/bg_large/dash_3.webp";
+import dash_4 from "../public/bg_large/dash_4.webp";
+import dash_5 from "../public/bg_large/dash_5.webp";
+import dash_6 from "../public/bg_large/dash_6.webp";
+import dash_7 from "../public/bg_large/dash_7.webp";
+import bg_profile from "../public/bg_large/curved8.webp";
 
 export default function optimizeBg(bgString: string | undefined) {
   switch (bgString) {
