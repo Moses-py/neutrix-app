@@ -1,15 +1,114 @@
 import AlertFeedback from "@/components/alerts/Success";
 import Spinner from "@/components/spinner/Spinner";
+import { AlertColor } from "@mui/material";
+import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useState } from "react";
+
+type UserData = {
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+};
+
+type AlertType = {
+  open: boolean;
+  condition: AlertColor | undefined;
+  message: string;
+};
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [alert, setAlert] = useState(false);
+  const [alert, setAlert] = useState<AlertType>({
+    open: false,
+    condition: undefined,
+    message: "",
+  });
+  const router = useRouter();
 
-  function handleSignup() {
-    setIsLoading(false);
+  const [user_data, set_user_data] = useState<UserData>({
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+  });
+
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+    const field_name = e.target.name;
+    field_name === "first_name" &&
+      set_user_data((prev) => {
+        return { ...prev, first_name: e.target.value };
+      });
+    field_name === "last_name" &&
+      set_user_data((prev) => {
+        return { ...prev, last_name: e.target.value };
+      });
+    field_name === "email" &&
+      set_user_data((prev) => {
+        return { ...prev, email: e.target.value };
+      });
+    field_name === "password" &&
+      set_user_data((prev) => {
+        return { ...prev, password: e.target.value };
+      });
+    // setIsLoading(false);
+  }
+
+  async function register_user(e: FormEvent) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const response = await axios({
+      method: "POST",
+      url: "/api/register",
+      data: user_data,
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        setIsLoading(false);
+        set_user_data({
+          email: "",
+          password: "",
+          first_name: "",
+          last_name: "",
+        });
+        if (res.data.statusCode === 30) {
+          setAlert({
+            open: true,
+            condition: "warning",
+            message:
+              "User already exists...try again with a different email address",
+          });
+        }
+        if (res.data.statusCode === 20) {
+          setAlert({
+            open: true,
+            condition: "success",
+            message: res.data.message,
+          });
+        }
+        return res;
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setAlert({
+          open: true,
+          condition: "error",
+          message: "Error encountered ssomvkvksvksflv",
+        });
+        return error.response.data;
+      });
+
+    if (response.data.statusCode === 20) {
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
+    }
   }
 
   return (
@@ -29,12 +128,16 @@ const Register = () => {
             }}
           ></div>
           <div className="w-full p-8 lg:w-1/2 relative">
-            <AlertFeedback
-              open={alert}
-              setOpen={() => setAlert(false)}
-              message="Account created... Redirecting..."
-              status="success"
-            />
+            {alert.open === true && (
+              <AlertFeedback
+                open={true}
+                setOpen={() =>
+                  setAlert({ open: false, condition: undefined, message: "" })
+                }
+                message={alert.message}
+                status={alert.condition}
+              />
+            )}
 
             <Link
               href="/"
@@ -83,82 +186,83 @@ const Register = () => {
               <span className="border-b w-1/5 lg:w-1/4"></span>
             </div>
             {/* Form */}
+            <form action="" method="post" onSubmit={register_user}>
+              <div className="block lg:flex justify-between gap-2">
+                {/* First name */}
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-xs mb-2">
+                    First Name
+                  </label>
+                  <input
+                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    type="text"
+                    value={user_data.first_name}
+                    name="first_name"
+                    onChange={handleInputChange}
+                  />
+                </div>
 
-            <div className="block lg:flex justify-between gap-2">
-              {/* First name */}
+                {/* Last Name */}
+
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-xs mb-2">
+                    Last Name
+                  </label>
+                  <input
+                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    type="text"
+                    value={user_data.last_name}
+                    name="last_name"
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
               <div className="mt-4">
                 <label className="block text-gray-700 text-xs mb-2">
-                  First Name
+                  Email Address
                 </label>
                 <input
                   className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                   type="email"
+                  value={user_data.email}
+                  name="email"
+                  onChange={handleInputChange}
                 />
               </div>
 
-              {/* Last Name */}
-
-              <div className="mt-4">
-                <label className="block text-gray-700 text-xs mb-2">
-                  Last Name
-                </label>
-                <input
-                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                  type="email"
-                />
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="mt-4">
-              <label className="block text-gray-700 text-xs mb-2">
-                Email Address
-              </label>
-              <input
-                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="email"
-              />
-            </div>
-
-            <div className="lg:flex justify-between gap-2">
-              {/* Password */}
-              <div className="mt-4">
-                <div className="flex justify-between">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    Password
-                  </label>
+              <div className="w-full">
+                {/* Password */}
+                <div className="mt-4">
+                  <div className="flex justify-between">
+                    <label className="block text-gray-700 text-xs mb-2">
+                      Password
+                    </label>
+                  </div>
+                  <input
+                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    type="password"
+                    value={user_data.password}
+                    name="password"
+                    onChange={handleInputChange}
+                  />
                 </div>
-                <input
-                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                  type="password"
-                />
               </div>
 
-              {/* Confirm Password */}
-              <div className="mt-4">
-                <div className="flex justify-between">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    Confirm Password
-                  </label>
-                </div>
-                <input
-                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                  type="password"
-                />
+              <div className="mt-8">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
+                    isLoading && "cursor-not-allowed"
+                  }`}
+                >
+                  {isLoading ? <Spinner /> : <span>Sign up</span>}
+                </button>
               </div>
-            </div>
+            </form>
 
-            <div className="mt-8">
-              <button
-                disabled={isLoading}
-                className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
-                  isLoading && "cursor-not-allowed"
-                }`}
-                onClick={handleSignup}
-              >
-                {isLoading ? <Spinner /> : <span>Sign up</span>}
-              </button>
-            </div>
             {/* lOGIN REDIRECT */}
 
             <div className="mt-4 flex items-center justify-between">

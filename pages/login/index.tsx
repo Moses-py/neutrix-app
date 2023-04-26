@@ -1,15 +1,106 @@
 import AlertFeedback from "@/components/alerts/Success";
 import Spinner from "@/components/spinner/Spinner";
+import { AlertColor } from "@mui/material";
+import axios from "axios";
+import { error } from "console";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useState } from "react";
+
+type LoginData = {
+  email: string;
+  password: string;
+};
+
+type AlertType = {
+  open: boolean;
+  condition: AlertColor | undefined;
+  message: string;
+};
 
 const Login = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [alert, setAlert] = useState(false);
+  const [alert, setAlert] = useState<AlertType>({
+    open: false,
+    condition: undefined,
+    message: "",
+  });
+  const [login_data, set_login_data] = useState<LoginData>({
+    email: "",
+    password: "",
+  });
 
-  function handleLogin() {
-    setIsLoading(false);
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+    const field_name = e.target.name;
+    field_name === "email" &&
+      set_login_data((prev) => {
+        return { ...prev, email: e.target.value };
+      });
+    field_name === "password" &&
+      set_login_data((prev) => {
+        return { ...prev, password: e.target.value };
+      });
+    // setIsLoading(false);
+  }
+
+  async function submitHandler(e: FormEvent) {
+    e.preventDefault();
+    setIsLoading(true);
+    const response = await axios({
+      method: "POST",
+      data: login_data,
+      url: "/api/login",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        setIsLoading(false);
+        set_login_data({
+          email: "",
+          password: "",
+        });
+        if (res.data.statusCode === 30) {
+          setAlert({
+            open: true,
+            condition: "warning",
+            message: res.data.message,
+          });
+        }
+
+        if (res.data.statusCode === 20) {
+          setAlert({
+            open: true,
+            condition: "success",
+            message: res.data.message,
+          });
+        }
+        if (res.data.statusCode === 40) {
+          setAlert({
+            open: true,
+            condition: "error",
+            message: res.data.message,
+          });
+        }
+        return res;
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setAlert({
+          open: true,
+          condition: "error",
+          message: "Error encountered ssomvkvksvksflv",
+        });
+        return error.response.data;
+      });
+
+    if (response.data.statusCode === 20) {
+      setTimeout(() => {
+        router.push("/neuclass/courses");
+      }, 1500);
+    }
   }
 
   return (
@@ -30,12 +121,16 @@ const Login = () => {
           ></div>
 
           <div className="w-full p-8 lg:w-1/2 relative">
-            <AlertFeedback
-              open={alert}
-              setOpen={() => setAlert(false)}
-              message="An error occured. Please try again..."
-              status="error"
-            />
+            {alert.open === true && (
+              <AlertFeedback
+                open={true}
+                setOpen={() =>
+                  setAlert({ open: false, condition: undefined, message: "" })
+                }
+                message={alert.message}
+                status={alert.condition}
+              />
+            )}
 
             <Link
               href="/"
@@ -82,40 +177,50 @@ const Login = () => {
               </p>
               <span className="border-b w-1/5 lg:w-1/4"></span>
             </div>
-            <div className="mt-4">
-              <label className="block text-gray-700 text-xs mb-2">
-                Email Address
-              </label>
-              <input
-                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="email"
-              />
-            </div>
-            <div className="mt-4">
-              <div className="flex justify-between">
+            <form onSubmit={submitHandler}>
+              <div className="mt-4">
                 <label className="block text-gray-700 text-xs mb-2">
-                  Password
+                  Email Address
                 </label>
-                <a href="#" className="text-xs text-gray-500">
-                  Forget Password?
-                </a>
+                <input
+                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="email"
+                  value={login_data.email}
+                  name="email"
+                  onChange={handleInputChange}
+                />
               </div>
-              <input
-                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="password"
-              />
-            </div>
-            <div className="mt-8 text-center">
-              <button
-                disabled={isLoading}
-                className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
-                  isLoading && "cursor-not-allowed"
-                }`}
-                onClick={handleLogin}
-              >
-                {isLoading ? <Spinner /> : <span>Login</span>}
-              </button>
-            </div>
+              <div className="mt-4">
+                <div className="flex justify-between">
+                  <label className="block text-gray-700 text-xs mb-2">
+                    Password
+                  </label>
+                  {/* Forgot password */}
+                  <a href="#" className="text-xs text-gray-500">
+                    Forget Password?
+                  </a>
+                </div>
+                <input
+                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="password"
+                  value={login_data.password}
+                  name="password"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="mt-8 text-center">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
+                    isLoading && "cursor-not-allowed"
+                  }`}
+                >
+                  {isLoading ? <Spinner /> : <span>Login</span>}
+                </button>
+              </div>
+            </form>
+
             <div className="mt-4 flex items-center justify-between">
               <span className="border-b w-1/5 md:w-1/4"></span>
 

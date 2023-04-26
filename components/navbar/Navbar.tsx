@@ -27,9 +27,9 @@ const Navbar: React.FunctionComponent = () => {
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="#about">About</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            {/* <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/neuclass/courses">Neuclass</Link>
-            </li>
+            </li> */}
             <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
               <Link href="/blog">Blog</Link>
             </li>
