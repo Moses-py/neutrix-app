@@ -1,5 +1,5 @@
 import Image from "next/image";
-import optimizeBg from "@/helpers/optimizeBackground";
+import optimizeBg from "@/utils/optimizeBackground";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import CodeIcon from "@mui/icons-material/Code";
 import EmailPref from "./EmailPref";
@@ -7,7 +7,17 @@ import LanguagePref from "./LanguagePref";
 import { Tooltip } from "flowbite-react";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
-const Profile = () => {
+interface ProfileInterface {
+  data: {
+    email: string;
+    first_name: string;
+    last_name: string;
+    _id: string;
+  };
+}
+
+const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
+  const { email, last_name, first_name, _id } = data;
   return (
     <>
       <div className="wrapper font-secondary">
@@ -27,7 +37,7 @@ const Profile = () => {
               />
               <div>
                 <h3 className="text-misc text-[20px] font-bold font-secondary">
-                  Alec Benjamin
+                  {`${first_name} ${last_name}`}
                 </h3>
                 <p className="text-gray-600 font-secondary text-xs">Student</p>
               </div>
@@ -64,21 +74,19 @@ const Profile = () => {
             <div className="flex flex-col gap-4 text-gray-900 my-5">
               <p className="font-bold text-xs">
                 Fullname:{" "}
-                <span className="font-normal ml-3">Alec Benjamin</span>
+                <span className="font-normal ml-3">{`${first_name} ${last_name}`}</span>
               </p>
               <p className="font-bold text-xs">
-                UserID: <span className="font-normal ml-3">3492842</span>
+                UserID: <span className="font-normal ml-3">{_id}</span>
               </p>
               <p className="font-bold text-xs">
-                Email:{" "}
-                <span className="font-normal ml-3">AlBenjamin@laos.eu</span>
+                Email: <span className="font-normal ml-3">{email}</span>
               </p>
               <p className="font-bold text-xs">
-                Phone: <span className="font-normal ml-3">(907) 345 678 9</span>
+                Phone: <span className="font-normal ml-3">nil</span>
               </p>
               <p className="font-bold text-xs">
-                Location:{" "}
-                <span className="font-normal ml-3">Paris, France</span>
+                Location: <span className="font-normal ml-3">nil</span>
               </p>
             </div>
           </div>

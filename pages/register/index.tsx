@@ -63,7 +63,7 @@ const Register = () => {
 
     const response = await axios({
       method: "POST",
-      url: "/api/register",
+      url: "/api/auth/register",
       data: user_data,
       headers: {
         "Content-type": "application/json",
@@ -103,6 +103,8 @@ const Register = () => {
         });
         return error.response.data;
       });
+
+    console.log(response);
 
     if (response.data.statusCode === 20) {
       setTimeout(() => {
@@ -148,7 +150,9 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-gray-700 text-center">
               Neutrix
             </h2>
-            <p className="text-lg text-gray-600 text-center">Sign up</p>
+            <p className="text-sm text-gray-600 text-center">
+              Create an account
+            </p>
             <a
               href="#"
               className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"

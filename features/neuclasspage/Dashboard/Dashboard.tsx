@@ -1,15 +1,22 @@
 import { useContext } from "react";
-import useWindowSize from "@/helpers/useWindowSize";
+import useWindowSize from "@/utils/useWindowSize";
 import { MainContext } from "@/context/Main";
 import dynamic from "next/dynamic";
+import DashboardMain from "./DashboardMain";
 
 const DashboardLeft = dynamic(() => import("./DashboardLeft"));
 const DrawerInterface = dynamic(() => import("./DrawerInterface"));
 
 interface DashboardProps {
-  children: React.ReactNode;
+  data: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    _id: string;
+  };
 }
-const Dashboard: React.FunctionComponent<DashboardProps> = ({ children }) => {
+
+const Dashboard: React.FunctionComponent<DashboardProps> = ({ data }) => {
   const { openTab } = useContext(MainContext);
 
   const { width } = useWindowSize();
@@ -27,7 +34,7 @@ const Dashboard: React.FunctionComponent<DashboardProps> = ({ children }) => {
           )}
 
           {/* Main Dashboard content */}
-          {children}
+          <DashboardMain data={data} />
         </div>
       </section>
     </>

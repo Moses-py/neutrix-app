@@ -1,7 +1,7 @@
+import mongoConnect from "@/lib/mongo_connect";
 import bcrypt from "bcrypt";
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import mongoConnect from "./lib/mongo_connect";
 
 export default async function handler(
   req: NextApiRequest,

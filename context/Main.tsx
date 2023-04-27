@@ -5,6 +5,8 @@ interface MainContextProps {
   updateTab: () => void;
   tabSelected: number;
   selectTab: (id: number) => void;
+  title: string;
+  updateTitle: (tab_title: string) => void;
 }
 
 interface MainContextProviderProps {
@@ -16,6 +18,8 @@ export const MainContext = createContext<MainContextProps>({
   updateTab: () => {},
   tabSelected: 0,
   selectTab: () => {},
+  title: "Courses",
+  updateTitle: () => {},
 });
 
 export default function MainContextProvider({
@@ -23,6 +27,7 @@ export default function MainContextProvider({
 }: MainContextProviderProps) {
   const [openTab, setOpenTab] = useState(false);
   const [tabSelected, setTabSelected] = useState(0);
+  const [title, setTitle] = useState("Courses");
 
   const updateTab = () => {
     setOpenTab(!openTab);
@@ -32,9 +37,13 @@ export default function MainContextProvider({
     setTabSelected(id);
   };
 
+  const updateTitle = (tab_title: string) => {
+    setTitle(tab_title);
+  };
+
   return (
     <MainContext.Provider
-      value={{ openTab, updateTab, tabSelected, selectTab }}
+      value={{ openTab, updateTab, tabSelected, selectTab, title, updateTitle }}
     >
       {children}
     </MainContext.Provider>

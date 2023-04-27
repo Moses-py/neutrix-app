@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import BackgroundImageSelector from "./BackgroundImageSelector";
 import HideImageRoundedIcon from "@mui/icons-material/HideImageRounded";
-import optimizeBg from "@/helpers/optimizeBackground";
+import optimizeBg from "@/utils/optimizeBackground";
 
 interface NotebookInputContainerProps {
   noteList: (notes: {

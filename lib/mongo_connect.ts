@@ -1,9 +1,7 @@
 import { MongoClient } from "mongodb";
 
 export default async function mongoConnect() {
-  const client = new MongoClient(
-    "mongodb+srv://neutrix:devilwillcry1@neutrix.kvtkynb.mongodb.net/?retryWrites=true&w=majority"
-  );
+  const client = new MongoClient(process.env.MONGODB_URI);
   try {
     await client.connect();
     const db = client.db("neutrix_database");

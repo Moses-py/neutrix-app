@@ -64,16 +64,16 @@ const BottomNav = () => {
                 Explore
               </Link>
             </li>
-            {/* <li className="w-full">
+            <li className="w-full">
               <Link
                 className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"
-                href="/neuclass/courses"
+                href="/neuclass"
                 onClick={() => setOpenNav(!openNav)}
               >
                 <SchoolIcon />
                 Neuclass
               </Link>
-            </li> */}
+            </li>
             <li className="w-full">
               <Link
                 className="bg-[#121228] rounded-md flex items-center gap-2 w-full px-5 py-2 hover:bg-primary hover:text-textDark uppercase"

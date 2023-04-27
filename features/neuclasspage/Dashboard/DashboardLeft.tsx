@@ -1,5 +1,5 @@
 import Image from "next/image";
-import switchArray from "@/helpers/switchArray";
+import switchArray from "@/utils/switchArray";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { MainContext } from "@/context/Main";
@@ -10,7 +10,12 @@ const DashboardLink = dynamic(() => import("../components/link/DashboardLink"));
 const Subheader = dynamic(() => import("../components/typography/Subheader"));
 
 const DashboardLeft: React.FunctionComponent = () => {
-  const { updateTab, tabSelected } = useContext(MainContext);
+  const { updateTab, tabSelected, updateTitle } = useContext(MainContext);
+
+  function handleClick(tab_title: string) {
+    updateTitle(tab_title);
+    updateTab();
+  }
   return (
     <>
       <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
@@ -35,7 +40,7 @@ const DashboardLeft: React.FunctionComponent = () => {
           <Subheader>Learning</Subheader>
           <div className="learning_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/courses" onClick={updateTab}>
+              <button onClick={() => handleClick("Courses")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -50,8 +55,8 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Courses
                 </DashboardLink>
-              </Link>
-              <Link href="/neuclass/my_courses" onClick={updateTab}>
+              </button>
+              <button onClick={() => handleClick("My Courses")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -66,8 +71,8 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   My Courses
                 </DashboardLink>
-              </Link>
-              <Link href="/neuclass/bookmarks" onClick={updateTab}>
+              </button>
+              <button onClick={() => handleClick("Bookmarks")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -82,8 +87,8 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Bookmarks
                 </DashboardLink>
-              </Link>
-              <Link href="/neuclass/notepad" onClick={updateTab}>
+              </button>
+              <button onClick={() => handleClick("Notebook")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -98,7 +103,7 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Notebook
                 </DashboardLink>
-              </Link>
+              </button>
             </ul>
           </div>
         </div>
@@ -106,7 +111,7 @@ const DashboardLeft: React.FunctionComponent = () => {
           <Subheader>Billing</Subheader>
           <div className="billing_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/cards" onClick={updateTab}>
+              <button onClick={() => handleClick("Cards")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -121,8 +126,8 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Cards
                 </DashboardLink>
-              </Link>
-              <Link href="/neuclass/billing" onClick={updateTab}>
+              </button>
+              <button onClick={() => handleClick("My Plan")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -137,7 +142,7 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   My Plan
                 </DashboardLink>
-              </Link>
+              </button>
             </ul>
           </div>
         </div>
@@ -145,7 +150,7 @@ const DashboardLeft: React.FunctionComponent = () => {
           <Subheader>Account</Subheader>
           <div className="account_links">
             <ul className="flex flex-col">
-              <Link href="/neuclass/profile" onClick={updateTab}>
+              <button onClick={() => handleClick("Profile")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -160,7 +165,7 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Profile
                 </DashboardLink>
-              </Link>
+              </button>
             </ul>
           </div>
         </div>

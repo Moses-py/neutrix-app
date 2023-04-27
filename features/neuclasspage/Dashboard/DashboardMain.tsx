@@ -28,17 +28,16 @@ const BankCard = dynamic(
 );
 
 interface D_main {
-  title?: string;
-  setOpenTab?: () => void;
-  component: string;
+  data: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    _id: string;
+  };
 }
 
-const DashboardMain: React.FunctionComponent<D_main> = ({
-  title,
-  setOpenTab,
-  component,
-}) => {
-  const { updateTab } = useContext(MainContext);
+const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
+  const { updateTab, title } = useContext(MainContext);
   return (
     <>
       <div className="h-[95vh] w-full min-h-0 flex flex-col">
@@ -49,7 +48,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                 Neuclass
               </span>
               <span className="mx-1">/</span>
-              <span className="font-semibold">{component}</span>
+              <span className="font-semibold">{title}</span>
             </div>
             <div className="dash_links">
               <ul className="text-d_main font-semibold flex flex-row justify-evenly gap-[1rem]">
@@ -59,18 +58,17 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/login"
-                    className="flex flex-row items-center justify-evenly gap-1"
-                  >
-                    <span className="text-gray-400">John Doe</span>
+                  <p className="flex flex-row items-center justify-evenly gap-1">
+                    <span className="text-gray-400">
+                      {`${data.first_name} ${data.last_name}`}
+                    </span>
                     <Image
                       src="/icons/signed_in.webp"
                       alt="signed_in_icon"
                       width={25}
                       height={25}
                     />
-                  </Link>
+                  </p>
                 </li>
                 <li className="lg:hidden block" onClick={updateTab}>
                   <MenuIcon />
@@ -81,13 +79,13 @@ const DashboardMain: React.FunctionComponent<D_main> = ({
         </div>
         {/* Dashboard contents */}
         <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
-          {component === "Courses" && <DashCourses />}
-          {component === "My courses" && <MyCourse />}
-          {component === "Bookmarks" && <Bookmark />}
-          {component === "Notepad" && <Notebook />}
-          {component === "Billing" && <Subscription />}
-          {component === "Profile" && <Profile />}
-          {component === "Cards" && <BankCard />}
+          {title === "Courses" && <DashCourses />}
+          {title === "My Courses" && <MyCourse />}
+          {title === "Bookmarks" && <Bookmark />}
+          {title === "Notebook" && <Notebook />}
+          {title === "My Plan" && <Subscription />}
+          {title === "Profile" && <Profile data={data} />}
+          {title === "Cards" && <BankCard />}
         </div>
       </div>
     </>

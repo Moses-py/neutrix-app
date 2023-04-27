@@ -1,8 +1,8 @@
 import AlertFeedback from "@/components/alerts/Success";
 import Spinner from "@/components/spinner/Spinner";
+import { loginUser } from "@/utils/loginUser";
 import { AlertColor } from "@mui/material";
-import axios from "axios";
-import { error } from "console";
+import axios, { AxiosError } from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -51,7 +51,7 @@ const Login = () => {
     const response = await axios({
       method: "POST",
       data: login_data,
-      url: "/api/login",
+      url: "/api/auth/login",
       headers: {
         "Content-type": "application/json",
       },
@@ -88,18 +88,27 @@ const Login = () => {
       })
       .catch((error) => {
         setIsLoading(false);
+        if (error instanceof AxiosError) {
+          const errMsg = error.response?.data?.error;
+          setAlert({
+            open: true,
+            condition: "error",
+            message: errMsg,
+          });
+        }
         setAlert({
           open: true,
           condition: "error",
           message: "Error encountered ssomvkvksvksflv",
         });
-        return error.response.data;
+        return error.response?.data?.error;
       });
 
     if (response.data.statusCode === 20) {
-      setTimeout(() => {
-        router.push("/neuclass/courses");
-      }, 1500);
+      const loginRes = await loginUser(login_data.email, login_data.password);
+      if (loginRes && loginRes.ok) {
+        router.push("/neuclass");
+      }
     }
   }
 
@@ -111,7 +120,7 @@ const Login = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="lg:translate-y-[25%]">
+      <div className="translate-y-[25%]">
         <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
           <div
             className="hidden lg:block lg:w-1/2 bg-cover"
@@ -141,7 +150,7 @@ const Login = () => {
             <h2 className="text-xl font-semibold text-gray-700 text-center">
               Neutrix
             </h2>
-            <p className="text-lg text-gray-600 text-center">Welcome back!</p>
+            <p className="text-sm text-gray-600 text-center">Welcome back!</p>
             <a
               href="#"
               className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"

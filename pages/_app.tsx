@@ -2,6 +2,7 @@ import MainContextProvider from "@/context/Main";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Nunito, Nunito_Sans } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <main
         className={`${nunito.variable} font-sans ${nunitosans.variable} font-sans`}
       >
-        <Component {...pageProps} />
+        <SessionProvider session={pageProps.session}>
+          <Component {...pageProps} />
+        </SessionProvider>
       </main>
     </MainContextProvider>
   );

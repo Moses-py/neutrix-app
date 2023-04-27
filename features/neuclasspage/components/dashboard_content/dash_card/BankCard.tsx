@@ -18,8 +18,7 @@ const BankCard: React.FunctionComponent = () => {
           Add new card
         </button>
       </div>
-      <div className="flex gap-6 flex-wrap justify-center">
-        <SingleBankCard />
+      <div className="flex gap-6 flex-wrap">
         <SingleBankCard />
         <SingleBankCard />
       </div>
