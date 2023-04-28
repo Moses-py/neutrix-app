@@ -19,28 +19,42 @@ export default async function resendEmail(
 
     try {
       if (db) {
-        await db
+        const user = await db
           .collection("users")
-          .findOneAndUpdate(
-            { email: data.email },
-            { $set: { email_token: new_token } }
-          )
-          .then(async (response) => {
-            if (response) {
-              await sendMailVerification({
-                to: data.email,
-                subject: "Welcome onboard to Neutrix",
-                html: render(UserVerificationEmail(data.username, url_string), {
-                  pretty: true,
-                }),
-              });
+          .findOne({ email: data.email });
 
-              res.json({
-                statusCode: 20,
-                message: "Email resent successfully",
-              });
-            }
+        if (user && user.isVerified) {
+          res.json({
+            statusCode: 10,
+            message: "Email has been verified successfully, please login",
           });
+        } else {
+          await db
+            .collection("users")
+            .findOneAndUpdate(
+              { email: data.email },
+              { $set: { email_token: new_token } }
+            )
+            .then(async (response) => {
+              if (response) {
+                await sendMailVerification({
+                  to: data.email,
+                  subject: "Welcome onboard to Neutrix",
+                  html: render(
+                    UserVerificationEmail(data.username, url_string),
+                    {
+                      pretty: true,
+                    }
+                  ),
+                });
+
+                res.json({
+                  statusCode: 20,
+                  message: "Email resent successfully",
+                });
+              }
+            });
+        }
         client.close();
       }
     } catch (err) {

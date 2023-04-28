@@ -20,14 +20,8 @@ const Verify = ({ email, username }) => {
         "Content-type": "application/json",
       },
     }).then((res) => {
-      if (res.data.statusCode === 20) {
-        setMessage(res.data.message);
-      }
-      if (res.data.statusCode === 40) {
-        setMessage(res.data.message);
-      }
+      setMessage(res.data.message);
       setIsLoading(false);
-      console.log(res.data);
     });
   }
   return (
