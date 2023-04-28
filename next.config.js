@@ -8,6 +8,9 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  env: {
+    customUrl: "https://neutrix-app.vercel.app",
+  },
   headers() {
     return [
       {

@@ -49,31 +49,7 @@ const VerifyEmailAddress = ({ email }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const { db, client } = await mongoConnect();
-  const idList = await db
-    .collection("users")
-    .find()
-    .project({ email_token: 1, _id: 0 })
-    .toArray();
-
-  const dynamicId = idList.map((id) => {
-    return {
-      params: {
-        token: id.email_token,
-      },
-    };
-  });
-
-  client.close();
-
-  return {
-    paths: dynamicId,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context: { params: { token: any } }) {
+export async function getServerSideProps(context: { params: { token: any } }) {
   const id = context.params.token;
 
   const { db, client } = await mongoConnect();
@@ -82,18 +58,11 @@ export async function getStaticProps(context: { params: { token: any } }) {
     .collection("users")
     .findOne({ email_token: id });
 
-  if (verified_user.isVerified || !verified_user) {
+  if (verified_user.isVerified) {
     return {
       notFound: true,
     };
   }
-
-  await db
-    .collection("users")
-    .findOneAndUpdate(
-      { email: verified_user.email },
-      { $set: { isVerified: true } }
-    );
 
   client.close();
   return {

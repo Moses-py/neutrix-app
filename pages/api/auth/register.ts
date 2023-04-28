@@ -57,7 +57,7 @@ export default async function register_user(
                   .insertOne(updated_data)
                   .then(async (user) => {
                     if (user) {
-                      const url_string = `${process.env.NEXT_URL}/verify/auth/${updated_data.email_token}`;
+                      const url_string = `${process.env.customUrl}/verify/auth/${updated_data.email_token}`;
                       const username = `${updated_data.first_name} ${updated_data.last_name}`;
                       await sendMailVerification({
                         to: data.email,
