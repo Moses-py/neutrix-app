@@ -62,6 +62,13 @@ export async function getServerSideProps(context: { params: { token: any } }) {
     return {
       notFound: true,
     };
+  } else {
+    await db
+      .collection("users")
+      .findOneAndUpdate(
+        { email: verified_user.email },
+        { $set: { isVerified: true } }
+      );
   }
 
   client.close();
