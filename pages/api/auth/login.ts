@@ -28,18 +28,23 @@ export default async function handler(
                 if (result) {
                   res.send({
                     statusCode: 20,
-                    message: "Logged in successfully... redirecting...",
+                    message: "Login successful",
+                    verificationStatus: found_user.isVerified,
+                    token: found_user._id,
                   });
                 } else {
                   res.send({
                     statusCode: 40,
-                    message: "Incorrect credentials",
+                    message: "Invalid credentials provided",
                   });
                 }
               }
             );
           } else {
-            res.send({ statusCode: 30, message: "Account does not exist" });
+            res.send({
+              statusCode: 30,
+              message: "Invalid credentials provided",
+            });
           }
         });
       client.close();

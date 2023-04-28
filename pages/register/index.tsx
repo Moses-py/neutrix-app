@@ -1,24 +1,11 @@
 import AlertFeedback from "@/components/alerts/Success";
-import Spinner from "@/components/spinner/Spinner";
-import { AlertColor } from "@mui/material";
+import { AlertType, UserData } from "@/types/types";
 import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
-
-type UserData = {
-  email: string;
-  password: string;
-  first_name: string;
-  last_name: string;
-};
-
-type AlertType = {
-  open: boolean;
-  condition: AlertColor | undefined;
-  message: string;
-};
+import { BeatLoader } from "react-spinners";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,15 +14,21 @@ const Register = () => {
     condition: undefined,
     message: "",
   });
-  const router = useRouter();
-
+  const [password_match, setPassword_match] = useState("clear");
   const [user_data, set_user_data] = useState<UserData>({
     email: "",
     password: "",
+    confirm_password: "",
     first_name: "",
     last_name: "",
   });
 
+  const [buttonStatus, setButtonStatus] = useState("Please wait...");
+
+  // router object
+  const router = useRouter();
+
+  // handle input onchange events to store input values in state
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const field_name = e.target.name;
     field_name === "first_name" &&
@@ -54,17 +47,40 @@ const Register = () => {
       set_user_data((prev) => {
         return { ...prev, password: e.target.value };
       });
-    // setIsLoading(false);
+    field_name === "confirm_password" &&
+      set_user_data((prev) => {
+        return { ...prev, confirm_password: e.target.value };
+      });
   }
 
+  // utility function to compare passwords
+  function passwordChecker() {
+    if (
+      user_data.password.length < 1 &&
+      user_data.confirm_password.length < 1
+    ) {
+      setPassword_match("clear");
+    } else {
+      if (user_data.confirm_password != user_data.password) {
+        setPassword_match("no_match");
+      } else {
+        setPassword_match("match");
+      }
+    }
+  }
+
+  // submit handler function
   async function register_user(e: FormEvent) {
     e.preventDefault();
     setIsLoading(true);
+    setButtonStatus("Please wait...");
+    const { first_name, last_name, email, password } = user_data;
+    const exclude_c_pass = { first_name, last_name, email, password };
 
     const response = await axios({
       method: "POST",
       url: "/api/auth/register",
-      data: user_data,
+      data: exclude_c_pass,
       headers: {
         "Content-type": "application/json",
       },
@@ -76,13 +92,14 @@ const Register = () => {
           password: "",
           first_name: "",
           last_name: "",
+          confirm_password: "",
         });
+        setPassword_match("clear");
         if (res.data.statusCode === 30) {
           setAlert({
             open: true,
             condition: "warning",
-            message:
-              "User already exists...try again with a different email address",
+            message: "User already exists",
           });
         }
         if (res.data.statusCode === 20) {
@@ -99,17 +116,15 @@ const Register = () => {
         setAlert({
           open: true,
           condition: "error",
-          message: "Error encountered ssomvkvksvksflv",
+          message: "An error occured...please try again",
         });
         return error.response.data;
       });
-
-    console.log(response);
-
     if (response.data.statusCode === 20) {
-      setTimeout(() => {
-        router.push("/login");
-      }, 1500);
+      setButtonStatus("Redirecting...");
+      router.push(
+        `/verify/verificationStatus/${response.data.user.insertedId}`
+      );
     }
   }
 
@@ -143,7 +158,7 @@ const Register = () => {
 
             <Link
               href="/"
-              className="absolute right-2 top-2 text-[12px] font-bold underline text-gray-500"
+              className="absolute right-2 top-2 text-[11px] my-1 font-bold underline text-gray-500"
             >
               Go Home
             </Link>
@@ -183,11 +198,11 @@ const Register = () => {
             </a>
 
             <div className="mt-4 flex items-center justify-between">
-              <span className="border-b w-1/5 lg:w-1/4"></span>
+              <p className="border-b w-1/5 lg:w-1/4"></p>
               <p className="text-xs text-center text-gray-500 uppercase">
                 or signup with email
               </p>
-              <span className="border-b w-1/5 lg:w-1/4"></span>
+              <p className="border-b w-1/5 lg:w-1/4"></p>
             </div>
             {/* Form */}
             <form action="" method="post" onSubmit={register_user}>
@@ -198,6 +213,7 @@ const Register = () => {
                     First Name
                   </label>
                   <input
+                    required
                     className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                     type="text"
                     value={user_data.first_name}
@@ -213,6 +229,7 @@ const Register = () => {
                     Last Name
                   </label>
                   <input
+                    required
                     className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                     type="text"
                     value={user_data.last_name}
@@ -228,6 +245,7 @@ const Register = () => {
                   Email Address
                 </label>
                 <input
+                  required
                   className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                   type="email"
                   value={user_data.email}
@@ -236,7 +254,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="w-full">
+              <div className="w-full md:flex justify-between gap-2">
                 {/* Password */}
                 <div className="mt-4">
                   <div className="flex justify-between">
@@ -245,24 +263,82 @@ const Register = () => {
                     </label>
                   </div>
                   <input
-                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    required
+                    className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
+                      password_match === "no_match" && "border-red"
+                    } ${password_match === "match" && "border-green"}`}
                     type="password"
                     value={user_data.password}
                     name="password"
                     onChange={handleInputChange}
+                    onKeyUp={passwordChecker}
                   />
+                  {/* Password feedback */}
+                  {user_data.password && user_data.password.length < 10 && (
+                    <p className="text-red text-[11px] my-1">
+                      More than 10 characters required
+                    </p>
+                  )}
+                  {user_data.password && user_data.password.length >= 10 && (
+                    <p className="text-green text-[11px] my-1">
+                      Password length satisfied
+                    </p>
+                  )}
+                </div>
+                {/* Confirm password */}
+                <div className="mt-4">
+                  <div className="flex justify-between">
+                    <label className="block text-gray-700 text-xs mb-2">
+                      Confirm Password
+                    </label>
+                  </div>
+                  <input
+                    required
+                    disabled={user_data.password === ""}
+                    className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
+                      user_data.password === "" && "cursor-not-allowed"
+                    } ${password_match === "no_match" && "border-red"} ${
+                      password_match === "match" && "border-green"
+                    }`}
+                    value={user_data.confirm_password}
+                    type="password"
+                    name="confirm_password"
+                    onChange={handleInputChange}
+                    onKeyUp={passwordChecker}
+                  />
+                  {password_match === "no_match" && (
+                    <p className="text-red text-[11px] my-1">
+                      Please confirm your password
+                    </p>
+                  )}
+                  {password_match === "match" && (
+                    <p className="text-green text-[11px] my-1">
+                      Password confirmation successful
+                    </p>
+                  )}
                 </div>
               </div>
 
+              {/* Submit button */}
               <div className="mt-8">
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || password_match === "no_match"}
                   className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
-                    isLoading && "cursor-not-allowed"
-                  }`}
+                    isLoading ||
+                    (password_match === "no_match" && "cursor-not-allowed")
+                  } ${password_match === "match" && "cursor-pointer"}`}
                 >
-                  {isLoading ? <Spinner /> : <span>Sign up</span>}
+                  {isLoading ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <BeatLoader size={10} color="#fff" />
+                      <span className="text-[15px] font-secondary">
+                        {buttonStatus && buttonStatus}
+                      </span>
+                    </div>
+                  ) : (
+                    <span>Submit</span>
+                  )}
                 </button>
               </div>
             </form>
@@ -270,11 +346,11 @@ const Register = () => {
             {/* lOGIN REDIRECT */}
 
             <div className="mt-4 flex items-center justify-between">
-              <span className="border-b w-1/5 md:w-1/4"></span>
+              <p className="border-b w-1/5 md:w-1/4"></p>
               <Link href="/login" className="text-xs text-gray-500 uppercase">
                 or log in
               </Link>
-              <span className="border-b w-1/5 md:w-1/4"></span>
+              <p className="border-b w-1/5 md:w-1/4"></p>
             </div>
           </div>
         </div>

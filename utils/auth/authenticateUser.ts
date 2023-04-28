@@ -7,6 +7,5 @@ export const authenticateUser = async (ctx: {
   res: NextApiResponse;
 }) => {
   const session = await getServerSession(ctx.req, ctx.res, authOptions);
-
   return session;
 };

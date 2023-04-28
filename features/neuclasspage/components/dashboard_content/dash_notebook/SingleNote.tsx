@@ -1,4 +1,4 @@
-import optimizeBg from "@/utils/optimizeBackground";
+import optimizeBg from "@/utils/misc/optimizeBackground";
 
 export interface SingleNoteProps {
   title?: string;

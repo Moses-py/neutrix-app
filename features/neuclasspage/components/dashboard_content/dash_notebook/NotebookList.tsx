@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SingleNote from "./SingleNote";
-import optimizeBg from "@/utils/optimizeBackground";
+import optimizeBg from "@/utils/misc/optimizeBackground";
 import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 

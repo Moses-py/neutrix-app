@@ -1,5 +1,5 @@
 import Image from "next/image";
-import switchArray from "@/utils/switchArray";
+import switchArray from "@/utils/misc/switchArray";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { MainContext } from "@/context/Main";

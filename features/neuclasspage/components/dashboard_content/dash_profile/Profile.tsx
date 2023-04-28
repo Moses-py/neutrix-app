@@ -1,5 +1,5 @@
 import Image from "next/image";
-import optimizeBg from "@/utils/optimizeBackground";
+import optimizeBg from "@/utils/misc/optimizeBackground";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import CodeIcon from "@mui/icons-material/Code";
 import EmailPref from "./EmailPref";

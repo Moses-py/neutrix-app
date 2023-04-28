@@ -1,12 +1,12 @@
 import AlertFeedback from "@/components/alerts/Success";
-import Spinner from "@/components/spinner/Spinner";
-import { loginUser } from "@/utils/loginUser";
+import { loginUser } from "@/utils/auth/loginUser";
 import { AlertColor } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 type LoginData = {
   email: string;
@@ -31,6 +31,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [buttonStatus, setButtonStatus] = useState("Please wait...");
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const field_name = e.target.name;
@@ -48,6 +49,7 @@ const Login = () => {
   async function submitHandler(e: FormEvent) {
     e.preventDefault();
     setIsLoading(true);
+    setButtonStatus("Please wait...");
     const response = await axios({
       method: "POST",
       data: login_data,
@@ -57,7 +59,6 @@ const Login = () => {
       },
     })
       .then((res) => {
-        setIsLoading(false);
         set_login_data({
           email: "",
           password: "",
@@ -68,14 +69,7 @@ const Login = () => {
             condition: "warning",
             message: res.data.message,
           });
-        }
-
-        if (res.data.statusCode === 20) {
-          setAlert({
-            open: true,
-            condition: "success",
-            message: res.data.message,
-          });
+          setIsLoading(false);
         }
         if (res.data.statusCode === 40) {
           setAlert({
@@ -83,6 +77,7 @@ const Login = () => {
             condition: "error",
             message: res.data.message,
           });
+          setIsLoading(false);
         }
         return res;
       })
@@ -99,15 +94,26 @@ const Login = () => {
         setAlert({
           open: true,
           condition: "error",
-          message: "Error encountered ssomvkvksvksflv",
+          message: "An error occured...please try again",
         });
         return error.response?.data?.error;
       });
 
-    if (response.data.statusCode === 20) {
+    if (response.data.statusCode === 20 && !response.data.verificationStatus) {
+      router.push(`/verify/verificationStatus/${response.data.token}`);
+    }
+
+    if (response.data.statusCode === 20 && response.data.verificationStatus) {
+      setAlert({
+        open: true,
+        condition: "success",
+        message: response.data.message,
+      });
+      setButtonStatus("Redirecting...");
       const loginRes = await loginUser(login_data.email, login_data.password);
       if (loginRes && loginRes.ok) {
         router.push("/neuclass");
+        setIsLoading(false);
       }
     }
   }
@@ -225,7 +231,16 @@ const Login = () => {
                     isLoading && "cursor-not-allowed"
                   }`}
                 >
-                  {isLoading ? <Spinner /> : <span>Login</span>}
+                  {isLoading ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <BeatLoader size={10} color="#fff" />
+                      <span className="text-[15px] font-secondary">
+                        {buttonStatus && buttonStatus}
+                      </span>
+                    </div>
+                  ) : (
+                    <span>Login</span>
+                  )}
                 </button>
               </div>
             </form>

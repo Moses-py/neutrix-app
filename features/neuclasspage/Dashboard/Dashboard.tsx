@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import useWindowSize from "@/utils/useWindowSize";
+import useWindowSize from "@/utils/misc/useWindowSize";
 import { MainContext } from "@/context/Main";
 import dynamic from "next/dynamic";
 import DashboardMain from "./DashboardMain";
