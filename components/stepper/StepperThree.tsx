@@ -46,7 +46,7 @@ const StepperThree: React.FunctionComponent<StepperProp> = ({
           message={message}
           status={condition}
         />
-        <h2 className="text-lg font-bold mb-4">Create a secure password?</h2>
+        <h2 className="text-lg font-bold mb-4">Create a secure password</h2>
         <p className="text-gray-600 mb-6 w-full lg:w-1/3">
           Everything checked out, please go ahead and create a new secure
           password.

@@ -107,19 +107,39 @@ export default async function handlePasswordRecovery(
     if (!db) {
       throw new Error("System Error");
     }
-    await bcrypt.hash(payload.password, 10).then(async (hash: string) => {
-      const updatePassword = await db
-        .collection("users")
-        .findOneAndUpdate(
-          { email: payload.email },
-          { $set: { password: hash } }
-        );
 
-      if (!updatePassword) {
+    await bcrypt.hash(payload.password, 10).then(async (hash: string) => {
+      const retrieveOldPassword = await db
+        .collection("users")
+        .findOne({ email: payload.email });
+
+      if (!retrieveOldPassword) {
         throw new Error("System Error");
       }
 
-      res.status(200).json({ message: "Password successfully updated" });
+      await bcrypt
+        .compare(hash, retrieveOldPassword.password)
+        .then((isEqual) => {
+          if (isEqual) {
+            res.status(202).json({
+              message:
+                "Please input a password different from your previous password",
+            });
+          } else {
+            const updatePassword = db
+              .collection("users")
+              .findOneAndUpdate(
+                { email: payload.email },
+                { $set: { password: hash } }
+              );
+
+            if (!updatePassword) {
+              throw new Error("System Error");
+            }
+
+            res.status(200).json({ message: "Password successfully updated" });
+          }
+        });
     });
   }
 
