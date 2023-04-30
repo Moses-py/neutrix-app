@@ -62,7 +62,6 @@ export default function PasswordRecoveryStepper() {
           }, 2000);
         } else {
           setLoading(false);
-          console.log("Working");
           setAlert({
             open: true,
             message: res.data.message,
