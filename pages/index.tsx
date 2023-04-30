@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
-import Script from "next/script";
 import dynamic from "next/dynamic";
+import Modal from "@/components/modal/PaaswordRecoveryModal";
 
 // Dyanmic imports
 const Hero = dynamic(() => import("@/features/homepage/hero/Hero"));

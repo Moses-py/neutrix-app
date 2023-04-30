@@ -1,29 +1,40 @@
 import mongoConnect from "@/lib/mongo_connect";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import AlertFeedback from "@/components/alerts/Success";
 import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/router";
 
 const Verify = ({ email, username }) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const router = useRouter();
+
   async function resendLink() {
     setIsLoading(true);
     await axios({
       method: "POST",
-      url: "/api/auth/resendEmail",
+      url: "/api/verification/resendEmail",
       data: { email, username },
       headers: {
         "Content-type": "application/json",
       },
-    }).then((res) => {
-      setMessage(res.data.message);
-      setIsLoading(false);
-    });
+    })
+      .then((res) => {
+        setMessage(res.data.message);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if (err instanceof AxiosError) {
+          router.push("/error-500");
+        }
+      });
   }
+
   return (
     <>
       <div className="wrapper w-full h-full font-secondary p-5">

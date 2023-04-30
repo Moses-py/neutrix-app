@@ -1,11 +1,12 @@
 import AlertFeedback from "@/components/alerts/Success";
 import { AlertType, UserData } from "@/types/types";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { BeatLoader } from "react-spinners";
+import Image from "next/image";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +23,9 @@ const Register = () => {
     first_name: "",
     last_name: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [buttonStatus, setButtonStatus] = useState("Please wait...");
 
@@ -73,7 +77,7 @@ const Register = () => {
   async function register_user(e: FormEvent) {
     e.preventDefault();
     setIsLoading(true);
-    setButtonStatus("Please wait...");
+    setButtonStatus("Signing you up...");
     const { first_name, last_name, email, password } = user_data;
     const exclude_c_pass = { first_name, last_name, email, password };
 
@@ -99,7 +103,7 @@ const Register = () => {
           setAlert({
             open: true,
             condition: "warning",
-            message: "User already exists",
+            message: "Ooops! Seems a user with this email already exists",
           });
         }
         if (res.data.statusCode === 20) {
@@ -113,13 +117,12 @@ const Register = () => {
       })
       .catch((error) => {
         setIsLoading(false);
-        setAlert({
-          open: true,
-          condition: "error",
-          message: "An error occured...please try again",
-        });
+        if (error instanceof AxiosError) {
+          router.push("/error-500");
+        }
         return error.response.data;
       });
+
     if (response.data.statusCode === 20) {
       setButtonStatus("Redirecting...");
       router.push(
@@ -136,7 +139,7 @@ const Register = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="lg:translate-y-[25%]">
+      <div className="lg:translate-y-[10%]">
         <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
           <div
             className="hidden lg:block lg:w-1/2 bg-cover"
@@ -254,71 +257,114 @@ const Register = () => {
                 />
               </div>
 
-              <div className="w-full md:flex justify-between gap-2">
-                {/* Password */}
-                <div className="mt-4">
-                  <div className="flex justify-between">
-                    <label className="block text-gray-700 text-xs mb-2">
-                      Password
-                    </label>
-                  </div>
-                  <input
-                    required
-                    className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
-                      password_match === "no_match" && "border-red"
-                    } ${password_match === "match" && "border-green"}`}
-                    type="password"
-                    value={user_data.password}
-                    name="password"
-                    onChange={handleInputChange}
-                    onKeyUp={passwordChecker}
-                  />
-                  {/* Password feedback */}
-                  {user_data.password && user_data.password.length < 10 && (
-                    <p className="text-red text-[11px] my-1">
-                      More than 10 characters required
-                    </p>
-                  )}
-                  {user_data.password && user_data.password.length >= 10 && (
-                    <p className="text-green text-[11px] my-1">
-                      Password length satisfied
-                    </p>
+              {/* Password */}
+              <div className="mt-4 w-full relative">
+                <div className="flex justify-between">
+                  <label className="block text-gray-700 text-xs mb-2">
+                    Password
+                  </label>
+                </div>
+                <div className="absolute inset-y-0 top-[32px] right-2 flex items-center pl-3">
+                  {showPassword ? (
+                    <Image
+                      src="/icons/hide_eye.png"
+                      height={20}
+                      width={20}
+                      alt="lock"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className=" cursor-pointer"
+                    />
+                  ) : (
+                    <Image
+                      src="/icons/eye.png"
+                      height={20}
+                      width={20}
+                      alt="lock"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className=" cursor-pointer"
+                    />
                   )}
                 </div>
-                {/* Confirm password */}
-                <div className="mt-4">
-                  <div className="flex justify-between">
-                    <label className="block text-gray-700 text-xs mb-2">
-                      Confirm Password
-                    </label>
-                  </div>
-                  <input
-                    required
-                    disabled={user_data.password === ""}
-                    className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
-                      user_data.password === "" && "cursor-not-allowed"
-                    } ${password_match === "no_match" && "border-red"} ${
-                      password_match === "match" && "border-green"
-                    }`}
-                    value={user_data.confirm_password}
-                    type="password"
-                    name="confirm_password"
-                    onChange={handleInputChange}
-                    onKeyUp={passwordChecker}
-                  />
-                  {password_match === "no_match" && (
-                    <p className="text-red text-[11px] my-1">
-                      Please confirm your password
-                    </p>
-                  )}
-                  {password_match === "match" && (
-                    <p className="text-green text-[11px] my-1">
-                      Password confirmation successful
-                    </p>
-                  )}
-                </div>
+                <input
+                  required
+                  className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
+                    password_match === "no_match" && "border-red"
+                  } ${password_match === "match" && "border-green"}`}
+                  type={!showPassword ? "password" : "text"}
+                  value={user_data.password}
+                  name="password"
+                  onChange={handleInputChange}
+                  onKeyUp={passwordChecker}
+                />
               </div>
-
+              {/* Password feedback */}
+              {user_data.password && user_data.password.length < 10 && (
+                <p className="text-red text-[11px] my-1">
+                  More than 10 characters required
+                </p>
+              )}
+              {user_data.password && user_data.password.length >= 10 && (
+                <p className="text-green text-[11px] my-1">
+                  Password length satisfied
+                </p>
+              )}
+              {/* Confirm password */}
+              <div className="mt-4 relative w-full">
+                <div className="flex justify-between">
+                  <label className="block text-gray-700 text-xs mb-2">
+                    Confirm Password
+                  </label>
+                </div>
+                <div className="absolute inset-y-0 top-[32px] right-2 flex items-center pl-3">
+                  {showConfirmPassword ? (
+                    <Image
+                      src="/icons/hide_eye.png"
+                      height={20}
+                      width={20}
+                      alt="lock"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className=" cursor-pointer"
+                    />
+                  ) : (
+                    <Image
+                      src="/icons/eye.png"
+                      height={20}
+                      width={20}
+                      alt="lock"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className=" cursor-pointer"
+                    />
+                  )}
+                </div>
+                <input
+                  required
+                  disabled={user_data.password === ""}
+                  className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
+                    user_data.password === "" && "cursor-not-allowed"
+                  } ${password_match === "no_match" && "border-red"} ${
+                    password_match === "match" && "border-green"
+                  }`}
+                  value={user_data.confirm_password}
+                  type={!showConfirmPassword ? "password" : "text"}
+                  name="confirm_password"
+                  onChange={handleInputChange}
+                  onKeyUp={passwordChecker}
+                />
+              </div>
+              {password_match === "no_match" && (
+                <p className="text-red text-[11px] my-1">
+                  Please confirm your password
+                </p>
+              )}
+              {password_match === "match" && (
+                <p className="text-green text-[11px] my-1">
+                  Password confirmation successful
+                </p>
+              )}
               {/* Submit button */}
               <div className="mt-8">
                 <button

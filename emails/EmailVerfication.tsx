@@ -14,11 +14,10 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-export const UserVerificationEmail = (username: string, email_link: string) => {
+const UserVerificationEmail = (username: string, email_link: string) => {
   return (
     <Html>
       <Head />
-      <Preview>Welcome onboard!</Preview>
       <Tailwind>
         <Body className="bg-white my-auto mx-auto font-sans">
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">

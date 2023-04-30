@@ -73,13 +73,13 @@ export default async function register_user(
                       client.close();
                       res.status(201).json({
                         statusCode: 20,
-                        message: "Registration successful",
+                        message: "Successfully created an account for you.",
                         user,
                       });
                     } else {
                       res.json({
                         statusCode: 40,
-                        message: "Error encountered",
+                        message: "Error encountered, please try again",
                       });
                     }
                   });

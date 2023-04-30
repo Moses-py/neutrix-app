@@ -28,22 +28,22 @@ export default async function handler(
                 if (result) {
                   res.send({
                     statusCode: 20,
-                    message: "Login successful",
+                    message: "Login successful, redirecting you in a moment...",
                     verificationStatus: found_user.isVerified,
                     token: found_user._id,
                   });
                 } else {
                   res.send({
                     statusCode: 40,
-                    message: "Invalid credentials provided",
+                    message: "Sorry, your credentials are invalid",
                   });
                 }
               }
             );
           } else {
             res.send({
-              statusCode: 30,
-              message: "Invalid credentials provided",
+              statusCode: 40,
+              message: "Sorry, your credentials are invalid",
             });
           }
         });
