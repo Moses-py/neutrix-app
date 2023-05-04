@@ -22,6 +22,7 @@ const Register = () => {
     confirm_password: "",
     first_name: "",
     last_name: "",
+    phonenumber: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -55,6 +56,10 @@ const Register = () => {
       set_user_data((prev) => {
         return { ...prev, confirm_password: e.target.value };
       });
+    field_name === "phonenumber" &&
+      set_user_data((prev) => {
+        return { ...prev, phonenumber: e.target.value };
+      });
   }
 
   // utility function to compare passwords
@@ -78,8 +83,14 @@ const Register = () => {
     e.preventDefault();
     setIsLoading(true);
     setButtonStatus("Signing you up...");
-    const { first_name, last_name, email, password } = user_data;
-    const exclude_c_pass = { first_name, last_name, email, password };
+    const { first_name, last_name, email, password, phonenumber } = user_data;
+    const exclude_c_pass = {
+      first_name,
+      last_name,
+      email,
+      password,
+      phonenumber,
+    };
 
     const response = await axios({
       method: "POST",
@@ -97,6 +108,7 @@ const Register = () => {
           first_name: "",
           last_name: "",
           confirm_password: "",
+          phonenumber: "",
         });
         setPassword_match("clear");
         if (res.data.statusCode === 30) {
@@ -139,264 +151,245 @@ const Register = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="lg:translate-y-[10%]">
-        <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-          <div
-            className="hidden lg:block lg:w-1/2 bg-cover"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1527769929977-c341ee9f2033?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naW58ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')`,
-            }}
-          ></div>
-          <div className="w-full p-8 lg:w-1/2 relative">
-            {alert.open === true && (
-              <AlertFeedback
-                open={true}
-                setOpen={() =>
-                  setAlert({ open: false, condition: undefined, message: "" })
-                }
-                message={alert.message}
-                status={alert.condition}
-              />
-            )}
-
+      <div className="px-4">
+        <div className="rounded-lg md:w-1/2 mx-auto bg-white rounded-t-lg py-8">
+          <div className="mb-8 relative">
             <Link
               href="/"
-              className="absolute right-2 top-2 text-[11px] my-1 font-bold underline text-gray-500"
+              className="absolute right-4 top-2 text-[12px] font-bold underline text-gray-500"
             >
               Go Home
             </Link>
-            <h2 className="text-xl font-semibold text-gray-700 text-center">
-              Neutrix
+            <h2 className="text-xl text-center flex justify-center font-semibold text-gray-700 w-full">
+              <Image src="/triangle.webp" alt="" width={50} height={50} />
             </h2>
             <p className="text-sm text-gray-600 text-center">
-              Create an account
+              Ready to get started?
             </p>
-            <a
-              href="#"
-              className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
-            >
-              <div className="px-4 py-3">
-                <svg className="h-6 w-6" viewBox="0 0 40 40">
-                  <path
-                    d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
-                    fill="#FFC107"
-                  />
-                  <path
-                    d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z"
-                    fill="#FF3D00"
-                  />
-                  <path
-                    d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z"
-                    fill="#4CAF50"
-                  />
-                  <path
-                    d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
-                    fill="#1976D2"
-                  />
-                </svg>
-              </div>
-              <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-                Sign up with Google
-              </h1>
-            </a>
-
-            <div className="mt-4 flex items-center justify-between">
-              <p className="border-b w-1/5 lg:w-1/4"></p>
-              <p className="text-xs text-center text-gray-500 uppercase">
-                or signup with email
-              </p>
-              <p className="border-b w-1/5 lg:w-1/4"></p>
-            </div>
-            {/* Form */}
-            <form action="" method="post" onSubmit={register_user}>
-              <div className="block lg:flex justify-between gap-2">
-                {/* First name */}
-                <div className="mt-4">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    First Name
-                  </label>
-                  <input
-                    required
-                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                    type="text"
-                    value={user_data.first_name}
-                    name="first_name"
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                {/* Last Name */}
-
-                <div className="mt-4">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    Last Name
-                  </label>
-                  <input
-                    required
-                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                    type="text"
-                    value={user_data.last_name}
-                    name="last_name"
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="mt-4">
-                <label className="block text-gray-700 text-xs mb-2">
-                  Email Address
-                </label>
-                <input
-                  required
-                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                  type="email"
-                  value={user_data.email}
-                  name="email"
-                  onChange={handleInputChange}
+          </div>
+          <div className="w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 ">
+            <div className="w-full px-4 py-8 relative">
+              {alert.open === true && (
+                <AlertFeedback
+                  open={true}
+                  setOpen={() =>
+                    setAlert({ open: false, condition: undefined, message: "" })
+                  }
+                  message={alert.message}
+                  status={alert.condition}
                 />
-              </div>
+              )}
 
-              {/* Password */}
-              <div className="mt-4 w-full relative">
-                <div className="flex justify-between">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    Password
-                  </label>
-                </div>
-                <div className="absolute inset-y-0 top-[32px] right-2 flex items-center pl-3">
-                  {showPassword ? (
-                    <Image
-                      src="/icons/hide_eye.png"
-                      height={20}
-                      width={20}
-                      alt="lock"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className=" cursor-pointer"
-                    />
-                  ) : (
-                    <Image
-                      src="/icons/eye.png"
-                      height={20}
-                      width={20}
-                      alt="lock"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className=" cursor-pointer"
-                    />
-                  )}
-                </div>
-                <input
-                  required
-                  className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
-                    password_match === "no_match" && "border-red"
-                  } ${password_match === "match" && "border-green"}`}
-                  type={!showPassword ? "password" : "text"}
-                  value={user_data.password}
-                  name="password"
-                  onChange={handleInputChange}
-                  onKeyUp={passwordChecker}
-                />
+              <div className="mt-4 flex items-center justify-between">
+                <p className="border-b w-1/5 lg:w-1/4"></p>
+                <p className="text-xs text-center text-gray-500 uppercase">
+                  Create an account
+                </p>
+                <p className="border-b w-1/5 lg:w-1/4"></p>
               </div>
-              {/* Password feedback */}
-              {user_data.password && user_data.password.length < 10 && (
-                <p className="text-red text-[11px] my-1">
-                  More than 10 characters required
-                </p>
-              )}
-              {user_data.password && user_data.password.length >= 10 && (
-                <p className="text-green text-[11px] my-1">
-                  Password length satisfied
-                </p>
-              )}
-              {/* Confirm password */}
-              <div className="mt-4 relative w-full">
-                <div className="flex justify-between">
-                  <label className="block text-gray-700 text-xs mb-2">
-                    Confirm Password
-                  </label>
-                </div>
-                <div className="absolute inset-y-0 top-[32px] right-2 flex items-center pl-3">
-                  {showConfirmPassword ? (
-                    <Image
-                      src="/icons/hide_eye.png"
-                      height={20}
-                      width={20}
-                      alt="lock"
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                      className=" cursor-pointer"
+              {/* Form */}
+              <form onSubmit={register_user}>
+                <div className="block lg:flex gap-2">
+                  {/* First name */}
+                  <div className="mt-4 w-full">
+                    <input
+                      required
+                      className="appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                      type="text"
+                      value={user_data.first_name}
+                      name="first_name"
+                      onChange={handleInputChange}
+                      placeholder="First name"
                     />
-                  ) : (
-                    <Image
-                      src="/icons/eye.png"
-                      height={20}
-                      width={20}
-                      alt="lock"
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                      className=" cursor-pointer"
+                  </div>
+
+                  {/* Last Name */}
+
+                  <div className="mt-4 w-full">
+                    <input
+                      required
+                      className="appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                      type="text"
+                      value={user_data.last_name}
+                      name="last_name"
+                      onChange={handleInputChange}
+                      placeholder="Last name"
                     />
-                  )}
+                  </div>
                 </div>
-                <input
-                  required
-                  disabled={user_data.password === ""}
-                  className={`bg-gray-200 text-gray-700 focus:border-transparent focus:ring-0 border border-gray-300 rounded py-2 px-4 block w-full appearance-none ${
-                    user_data.password === "" && "cursor-not-allowed"
-                  } ${password_match === "no_match" && "border-red"} ${
-                    password_match === "match" && "border-green"
-                  }`}
-                  value={user_data.confirm_password}
-                  type={!showConfirmPassword ? "password" : "text"}
-                  name="confirm_password"
-                  onChange={handleInputChange}
-                  onKeyUp={passwordChecker}
-                />
-              </div>
-              {password_match === "no_match" && (
-                <p className="text-red text-[11px] my-1">
-                  Please confirm your password
-                </p>
-              )}
-              {password_match === "match" && (
-                <p className="text-green text-[11px] my-1">
-                  Password confirmation successful
-                </p>
-              )}
-              {/* Submit button */}
-              <div className="mt-8">
-                <button
-                  type="submit"
-                  disabled={isLoading || password_match === "no_match"}
-                  className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
-                    isLoading ||
-                    (password_match === "no_match" && "cursor-not-allowed")
-                  } ${password_match === "match" && "cursor-pointer"}`}
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <BeatLoader size={10} color="#fff" />
-                      <span className="text-[15px] font-secondary">
-                        {buttonStatus && buttonStatus}
-                      </span>
+
+                {/* Email and phone number*/}
+                <div className="block lg:flex gap-2">
+                  <div className="mt-4 w-full">
+                    <input
+                      required
+                      className="appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                      type="email"
+                      value={user_data.email}
+                      name="email"
+                      onChange={handleInputChange}
+                      placeholder="Email"
+                    />
+                  </div>
+
+                  <div className="mt-4 w-full">
+                    <input
+                      required
+                      className="appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                      type="number"
+                      placeholder="Phone number"
+                      value={user_data.phonenumber}
+                      name="phonenumber"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+
+                {/* Password */}
+                <div className="block lg:flex gap-2">
+                  <div className="full-box relative w-full ">
+                    <div className="mt-4 relative">
+                      <div className="box">
+                        <div className="absolute inset-y-0 right-4 flex items-center pl-3">
+                          {showPassword ? (
+                            <Image
+                              src="/icons/hide_eye.png"
+                              height={20}
+                              width={20}
+                              alt="lock"
+                              onClick={() => setShowPassword(!showPassword)}
+                              className=" cursor-pointer"
+                            />
+                          ) : (
+                            <Image
+                              src="/icons/eye.png"
+                              height={20}
+                              width={20}
+                              alt="lock"
+                              onClick={() => setShowPassword(!showPassword)}
+                              className=" cursor-pointer"
+                            />
+                          )}
+                        </div>
+                        <input
+                          required
+                          className={`appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight ${
+                            password_match === "no_match" && "border-red"
+                          } ${password_match === "match" && "border-green"}`}
+                          type={!showPassword ? "password" : "text"}
+                          value={user_data.password}
+                          name="password"
+                          onChange={handleInputChange}
+                          onKeyUp={passwordChecker}
+                          placeholder="Password"
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    <span>Submit</span>
-                  )}
-                </button>
+                    {/* Password feedback */}
+                    {user_data.password && user_data.password.length < 10 && (
+                      <p className="text-red text-[11px] my-1">
+                        More than 10 characters required
+                      </p>
+                    )}
+                    {user_data.password && user_data.password.length >= 10 && (
+                      <p className="text-green text-[11px] my-1">
+                        Password length satisfied
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="full-box relative w-full ">
+                    <div className="mt-4 relative">
+                      <div className="box">
+                        <div className="absolute inset-y-0 right-4 flex items-center pl-3">
+                          {showConfirmPassword ? (
+                            <Image
+                              src="/icons/hide_eye.png"
+                              height={20}
+                              width={20}
+                              alt="lock"
+                              onClick={() =>
+                                setShowConfirmPassword(!showConfirmPassword)
+                              }
+                              className=" cursor-pointer"
+                            />
+                          ) : (
+                            <Image
+                              src="/icons/eye.png"
+                              height={20}
+                              width={20}
+                              alt="lock"
+                              onClick={() =>
+                                setShowConfirmPassword(!showConfirmPassword)
+                              }
+                              className=" cursor-pointer"
+                            />
+                          )}
+                        </div>
+                        <input
+                          required
+                          disabled={user_data.password === ""}
+                          className={`appearance-none placeholder:text-gray-400 border pl-4 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight ${
+                            user_data.password === "" && "cursor-not-allowed"
+                          } ${password_match === "no_match" && "border-red"} ${
+                            password_match === "match" && "border-green"
+                          }`}
+                          value={user_data.confirm_password}
+                          type={!showConfirmPassword ? "password" : "text"}
+                          name="confirm_password"
+                          onChange={handleInputChange}
+                          onKeyUp={passwordChecker}
+                          placeholder="Confirm password"
+                        />
+                      </div>
+                    </div>
+                    {password_match === "no_match" && (
+                      <p className="text-red text-[11px] my-1">
+                        Please confirm your password
+                      </p>
+                    )}
+                    {password_match === "match" && (
+                      <p className="text-green text-[11px] my-1">
+                        Password confirmation successful
+                      </p>
+                    )}
+                  </div>
+                  {/* Confirm password */}
+                </div>
+
+                {/* Submit button */}
+                <div className="mt-8">
+                  <button
+                    type="submit"
+                    disabled={isLoading || password_match === "no_match"}
+                    className={`bg-gray-700 text-white py-2 px-4 w-full rounded ${
+                      isLoading ||
+                      (password_match === "no_match" && "cursor-not-allowed")
+                    } ${password_match === "match" && "cursor-pointer"}`}
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <BeatLoader size={10} color="#fff" />
+                        <span className="text-[15px] font-secondary">
+                          {buttonStatus && buttonStatus}
+                        </span>
+                      </div>
+                    ) : (
+                      <span>Submit</span>
+                    )}
+                  </button>
+                </div>
+              </form>
+
+              {/* lOGIN REDIRECT */}
+
+              <div className="mt-4 flex items-center justify-between">
+                <p className="border-b w-1/5 md:w-1/4"></p>
+                <Link href="/login" className="text-xs text-gray-500 underline">
+                  Log in to your account
+                </Link>
+                <p className="border-b w-1/5 md:w-1/4"></p>
               </div>
-            </form>
-
-            {/* lOGIN REDIRECT */}
-
-            <div className="mt-4 flex items-center justify-between">
-              <p className="border-b w-1/5 md:w-1/4"></p>
-              <Link href="/login" className="text-xs text-gray-500 uppercase">
-                or log in
-              </Link>
-              <p className="border-b w-1/5 md:w-1/4"></p>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export const steps = [
   "Verify email address",
   "Enter vrification code",
@@ -49,7 +51,7 @@ export const handleStep =
 export const handleComplete = (
   completed: any,
   setCompleted: (arg0: any) => void,
-  setActiveStep,
+  setActiveStep: { (value: SetStateAction<number>): void; (arg0: any): void },
   activeStep: number
 ) => {
   const newCompleted = completed;
