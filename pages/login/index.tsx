@@ -158,7 +158,7 @@ const Login = () => {
             <div className="w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 lg:px-12">
               <div className="mt-4 flex items-center justify-between">
                 <span className="border-b w-1/5 lg:w-1/4"></span>
-                <p className="text-center text-sm text-gray-400 font-light">
+                <p className="text-center text-sm text-gray-400 font-light my-4">
                   {loginBy === "email" && "Sign in with email"}
                   {loginBy === "phone" && "Sign in with phone number"}
                 </p>
@@ -176,7 +176,7 @@ const Login = () => {
                 />
               )}
               {/* Check box */}
-              <div className="flex gap-[3rem] w-full">
+              <div className="flex gap-[2rem] w-full my-4">
                 <div className="flex items-center border-gray-200 rounded dark:border-gray-700">
                   <input
                     defaultChecked
@@ -189,7 +189,7 @@ const Login = () => {
                   />
                   <label
                     htmlFor="bordered-radio-1"
-                    className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="w-full py-4 ml-2 text-xs font-medium text-gray-400 dark:text-gray-300"
                   >
                     Email
                   </label>
@@ -205,7 +205,7 @@ const Login = () => {
                   />
                   <label
                     htmlFor="bordered-radio-2"
-                    className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="w-full py-4 ml-2 text-xs font-medium text-gray-400 dark:text-gray-300"
                   >
                     Phone number
                   </label>
@@ -232,7 +232,7 @@ const Login = () => {
                       </div>{" "}
                       <input
                         required
-                        className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                        className="appearance-none placeholder:text-gray-400 border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
                         type="email"
                         value={login_data.email}
                         name="email"
@@ -261,7 +261,7 @@ const Login = () => {
                       </div>
                       <input
                         required
-                        className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
+                        className="appearance-none placeholder:text-gray-400 border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600  leading-tight"
                         type="text"
                         value={login_data.phonenumber}
                         name="phone"
@@ -307,7 +307,7 @@ const Login = () => {
                   </div>{" "}
                   <input
                     required
-                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight"
+                    className="appearance-none placeholder:text-gray-400 border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight"
                     type={!showPassword ? "password" : "text"}
                     value={login_data.password}
                     name="password"

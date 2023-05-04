@@ -180,9 +180,9 @@ const Register = () => {
                 />
               )}
 
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-4 flex items-center justify-between my-4">
                 <p className="border-b w-1/5 lg:w-1/4"></p>
-                <p className="text-xs text-center text-gray-500 uppercase">
+                <p className="text-xs text-center text-gray-400 uppercase">
                   Create an account
                 </p>
                 <p className="border-b w-1/5 lg:w-1/4"></p>
