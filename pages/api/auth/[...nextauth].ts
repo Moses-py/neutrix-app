@@ -42,16 +42,24 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid Credentials");
         }
         client.close();
+        // const { email, first_name, last_name, phonenumber } = user;
+        // const severedUserData = {
+        //   email,
+        //   first_name,
+        //   last_name,
+        //   phonenumber,
+        // };
         return user as any;
       },
     }),
   ],
   pages: {
     signIn: "/login",
+    signOut: "/login",
   },
   session: {
     strategy: "jwt" as SessionStrategy,
-    maxAge: 10,
+    maxAge: 3600,
   },
   callbacks: {
     jwt: async ({ token, user }) => {

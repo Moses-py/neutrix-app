@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MainContext } from "@/context/Main";
 import { useContext } from "react";
 import dynamic from "next/dynamic";
+import AccountDropdown from "./AccountDropdown";
 
 const Bookmark = dynamic(
   () => import("../components/dashboard_content/useful_links/Bookmarks")
@@ -23,16 +24,14 @@ const Subscription = dynamic(
 const Profile = dynamic(
   () => import("../components/dashboard_content/dash_profile/Profile")
 );
-const BankCard = dynamic(
-  () => import("../components/dashboard_content/dash_card/BankCard")
-);
 
 interface D_main {
   data: {
     first_name: string;
     last_name: string;
     email: string;
-    _id: string;
+    phonenumber: string;
+    id: string;
   };
 }
 
@@ -52,21 +51,15 @@ const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
             </div>
             <div className="dash_links">
               <ul className="text-d_main font-semibold flex flex-row justify-evenly gap-[1rem]">
-                <li className="block">
+                {/* <li className="block">
                   <Link href="/" className="">
                     Home
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <p className="flex flex-row items-center justify-evenly gap-1">
-                    <span className="text-gray-400">
-                      {`${data.first_name} ${data.last_name}`}
-                    </span>
-                    <Image
-                      src="/icons/signed_in.webp"
-                      alt="signed_in_icon"
-                      width={25}
-                      height={25}
+                    <AccountDropdown
+                      user={`${data.first_name} ${data.last_name}`}
                     />
                   </p>
                 </li>
@@ -79,13 +72,12 @@ const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
         </div>
         {/* Dashboard contents */}
         <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
-          {title === "Courses" && <DashCourses />}
-          {title === "My Courses" && <MyCourse />}
+          {title === "Courses" && <DashCourses user={data} />}
+          {title === "My Courses" && <MyCourse user={data} />}
           {title === "Bookmarks" && <Bookmark />}
           {title === "Notebook" && <Notebook />}
-          {title === "My Plan" && <Subscription />}
+          {title === "My Plan" && <Subscription data={data} />}
           {title === "Profile" && <Profile data={data} />}
-          {title === "Cards" && <BankCard />}
         </div>
       </div>
     </>

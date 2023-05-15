@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 import mongoConnect from "@/lib/mongo_connect";
@@ -12,18 +11,19 @@ export default async function register_user(
   res: NextApiResponse
 ) {
   const data = req.body;
+  const { db, client } = await mongoConnect();
   if (req.method === "POST") {
     try {
-      const { db, client } = await mongoConnect();
-
       await db
         .collection("users")
-        .findOne({ email: data.email })
+        .findOne({
+          $or: [{ email: data.email }, { phonenumber: data.phonenumber }],
+        })
         .then(async (result) => {
           if (result) {
             res.json({
               statusCode: 30,
-              message: "User already exists",
+              message: "User account already exists",
             });
           } else {
             try {

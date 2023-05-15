@@ -90,6 +90,7 @@ const Register = () => {
       email,
       password,
       phonenumber,
+      courses: [],
     };
 
     const response = await axios({
@@ -115,7 +116,7 @@ const Register = () => {
           setAlert({
             open: true,
             condition: "warning",
-            message: "Ooops! Seems a user with this email already exists",
+            message: "A user with similar email or phonenumber already exists",
           });
         }
         if (res.data.statusCode === 20) {

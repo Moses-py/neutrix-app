@@ -1,11 +1,18 @@
 import Plan from "./Plan";
 
-const FreePlan = () => {
+const FreePlan = ({ plans }) => {
   return (
     <>
       <div className="grid sm:grid-cols-2 gap-3">
-        <Plan title={"Data Analysis"} premium={false} />
-        <Plan title={"Mathematics"} premium={false} />
+        {plans.length > 0 &&
+          plans.map((plan) => {
+            return (
+              <>
+                <Plan title={plan.courseTitle} premium={false} />
+              </>
+            );
+          })}
+        {plans.length < 1 && <p>No Plans subscribed</p>}
       </div>
     </>
   );

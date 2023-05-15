@@ -1,10 +1,18 @@
 import Plan from "./Plan";
 
-const PremiumPlan = () => {
+const PremiumPlan = ({ plans }) => {
   return (
     <>
       <div className="flex">
-        <Plan title={"Data Science and Machine Learning"} premium={true} />
+        {plans.length > 0 &&
+          plans.map((plan) => {
+            return (
+              <>
+                <Plan title={plan.courseTitle} premium={true} />
+              </>
+            );
+          })}
+        {plans.length < 1 && <p>No Plans subscribed</p>}
       </div>
     </>
   );

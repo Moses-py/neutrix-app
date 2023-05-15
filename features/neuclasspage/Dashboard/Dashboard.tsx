@@ -12,7 +12,9 @@ interface DashboardProps {
     first_name: string;
     last_name: string;
     email: string;
-    _id: string;
+    id: string;
+    phonenumber: string;
+    courses: [];
   };
 }
 

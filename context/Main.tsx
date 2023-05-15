@@ -30,7 +30,9 @@ export default function MainContextProvider({
   children,
 }: MainContextProviderProps) {
   const [openTab, setOpenTab] = useState(false);
+  // State to manage selected tab on the left side navigation
   const [tabSelected, setTabSelected] = useState(0);
+  // State to manage the title of the current tab in dashboard main
   const [title, setTitle] = useState("Courses");
   // Modal
   const [isOpen, setIsOpen] = useState(true);

@@ -4,13 +4,29 @@ interface CourseCardProps {
   image?: string;
   content?: string;
   title?: string;
+  updateSelect: () => void;
+  syllabusView: () => void;
+  updateSelectedCourse: () => void;
+  updateAddCoursePopup: () => void;
 }
 
 const CourseCard: React.FunctionComponent<CourseCardProps> = ({
   image,
   content,
   title,
+  updateSelect,
+  syllabusView,
+  updateAddCoursePopup,
+  updateSelectedCourse,
 }) => {
+  function handleViewClick() {
+    updateSelect();
+    syllabusView();
+  }
+  function handleAddClick() {
+    updateSelectedCourse();
+    updateAddCoursePopup();
+  }
   return (
     <>
       <div
@@ -24,10 +40,16 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
           </h1>
           <p className="my-6 w-full xl:w-1/2">{content}</p>
           <div className="cta flex flex-row gap-4">
-            <button className="px-5 py-3 my-3 bg-misc rounded-xl ">
+            <button
+              className="px-5 py-3 my-3 bg-misc rounded-xl "
+              onClick={handleAddClick}
+            >
               Add Course
             </button>
-            <button className="px-5 py-3 my-3 bg-textLight text-misc rounded-xl ">
+            <button
+              className="px-5 py-3 my-3 bg-textLight text-misc rounded-xl "
+              onClick={handleViewClick}
+            >
               View syllabus
             </button>
           </div>

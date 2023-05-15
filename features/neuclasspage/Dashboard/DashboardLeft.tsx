@@ -111,7 +111,7 @@ const DashboardLeft: React.FunctionComponent = () => {
           <Subheader>Billing</Subheader>
           <div className="billing_links">
             <ul className="flex flex-col">
-              <button onClick={() => handleClick("Cards")}>
+              {/* <button onClick={() => handleClick("Cards")}>
                 <DashboardLink
                   icon={
                     <Image
@@ -126,7 +126,7 @@ const DashboardLeft: React.FunctionComponent = () => {
                 >
                   Cards
                 </DashboardLink>
-              </button>
+              </button> */}
               <button onClick={() => handleClick("My Plan")}>
                 <DashboardLink
                   icon={

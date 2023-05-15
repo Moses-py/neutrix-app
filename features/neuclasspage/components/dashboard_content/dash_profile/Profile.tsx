@@ -12,12 +12,13 @@ interface ProfileInterface {
     email: string;
     first_name: string;
     last_name: string;
-    _id: string;
+    id: string;
+    phonenumber: string;
   };
 }
 
 const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
-  const { email, last_name, first_name, _id } = data;
+  const { email, last_name, first_name, id, phonenumber } = data;
   return (
     <>
       <div className="wrapper font-secondary">
@@ -36,7 +37,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
                 className="rounded-lg"
               />
               <div>
-                <h3 className="text-misc text-[20px] font-bold font-secondary">
+                <h3 className="text-misc text-[20px] font-semibold font-secondary">
                   {`${first_name} ${last_name}`}
                 </h3>
                 <p className="text-gray-600 font-secondary text-xs">Student</p>
@@ -49,7 +50,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
         <div className="grid md:grid-cols-2 xl:grid-cols-3 mt-[5rem] gap-6">
           <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200">
             <div className="flex justify-between items-center my-2">
-              <h4 className="text-sm font-bold font-misc">
+              <h4 className="text-sm font-semibold font-misc">
                 Profile information
               </h4>
               <Tooltip
@@ -72,21 +73,18 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
             {/* Profile details */}
 
             <div className="flex flex-col gap-4 text-gray-900 my-5">
-              <p className="font-bold text-xs">
+              <p className="font-semibold text-xs">
                 Fullname:{" "}
                 <span className="font-normal ml-3">{`${first_name} ${last_name}`}</span>
               </p>
-              <p className="font-bold text-xs">
-                UserID: <span className="font-normal ml-3">{_id}</span>
+              <p className="font-semibold text-xs">
+                UserID: <span className="font-normal ml-3">{id}</span>
               </p>
-              <p className="font-bold text-xs">
+              <p className="font-semibold text-xs">
                 Email: <span className="font-normal ml-3">{email}</span>
               </p>
-              <p className="font-bold text-xs">
-                Phone: <span className="font-normal ml-3">nil</span>
-              </p>
-              <p className="font-bold text-xs">
-                Location: <span className="font-normal ml-3">nil</span>
+              <p className="font-semibold text-xs">
+                Phone: <span className="font-normal ml-3">{phonenumber}</span>
               </p>
             </div>
           </div>
@@ -94,7 +92,9 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
           {/* Platform Settings */}
           <div className="p-6 rounded-xl bg-white/30 border border-gray-200">
             <div className="flex justify-between items-center my-2">
-              <h4 className="text-sm font-bold font-misc">Platform Settings</h4>
+              <h4 className="text-sm font-semibold font-misc">
+                Platform Settings
+              </h4>
               <button className="hover:scale-110">
                 <CodeIcon />
               </button>
@@ -103,7 +103,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
             <EmailPref />
             {/* Language Pref */}
             <div className="language_pref">
-              <h4 className="text-xs font-bold font-misc mb-4">
+              <h4 className="text-xs font-semibold font-misc mb-4">
                 Language Preferences
               </h4>
               <span className="text-gray-400 text-xs mt-10 mb-5">
@@ -118,7 +118,9 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
           {/* Misc */}
           <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200">
             <div className="flex justify-between items-center my-2">
-              <h4 className="text-sm font-bold font-misc">Saying Goodbye?</h4>
+              <h4 className="text-sm font-semibold font-misc">
+                Saying Goodbye?
+              </h4>
               <Tooltip
                 content="Don't go"
                 className="text-xs font-secondary text-gray-900"
@@ -130,7 +132,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
             </div>
             {/* Delete container */}
             <div className="delete-acc">
-              <h4 className="text-xs font-bold font-misc my-4">
+              <h4 className="text-xs font-semibold font-misc my-4">
                 Delete Account
               </h4>
               <span className="text-gray-400 text-xs mt-10 mb-5">

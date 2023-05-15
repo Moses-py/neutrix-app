@@ -39,12 +39,20 @@ function subscriptionTabProps(index: number) {
   };
 }
 
-const Subscription = () => {
+const Subscription = ({ data }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const { courses } = data;
+  const free = courses.filter((course) => {
+    return course.free;
+  });
+  const premium = courses.filter((course) => {
+    return course.premium;
+  });
   return (
     <>
       <div className="header pb-[2rem]">
@@ -65,10 +73,10 @@ const Subscription = () => {
           </Tabs>
         </Box>
         <SubscriptionTabs value={value} index={0}>
-          <FreePlan />
+          <FreePlan plans={free} />
         </SubscriptionTabs>
         <SubscriptionTabs value={value} index={1}>
-          <PremiumPlan />
+          <PremiumPlan plans={premium} />
         </SubscriptionTabs>
       </Box>
     </>
