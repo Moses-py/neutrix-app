@@ -28,11 +28,12 @@ const AddCourseFormModal = ({ selectedCourse, user, onClose }) => {
     setButtonText("Activating");
 
     if (!check_course) {
+      
       const formData = {
         email: user.email,
         courseData: [
           ...user.courses,
-          { courseTitle: selectedCourse, free: true, premium: false },
+          { courseTitle: selectedCourse, package: "free", booked: false },
         ],
       };
 

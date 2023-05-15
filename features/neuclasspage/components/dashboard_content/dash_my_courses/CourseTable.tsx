@@ -1,8 +1,6 @@
-import { MainContext } from "@/context/Main";
 import Link from "next/link";
-import { useContext } from "react";
 
-const CourseTable = ({ user }) => {
+const CourseTable = ({ user, openCalendlyAction, bookingStatus }) => {
   const { courses } = user;
   return (
     <>
@@ -14,14 +12,15 @@ const CourseTable = ({ user }) => {
                 Course name
               </th>
               <th scope="col" className="px-6 py-3">
+                Book a session
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Free
               </th>
               <th scope="col" className="px-6 py-3">
                 Premium
               </th>
-              <th scope="col" className="px-6 py-3">
-                Book a session
-              </th>
+
               <th scope="col" className="px-6 py-3">
                 Upgrade to premium
               </th>
@@ -39,6 +38,16 @@ const CourseTable = ({ user }) => {
                       {course.courseTitle}
                     </th>
                     <td className="px-6 py-4">
+                      <button
+                        role="button"
+                        type="button"
+                        className="font-semibold border border-gray-300 rounded-md px-4 py-2 hover:bg-gray-400 hover:text-white"
+                        onClick={openCalendlyAction}
+                      >
+                        Book
+                      </button>
+                    </td>
+                    <td className="px-6 py-4">
                       <span className="bg-green/80 text-white text-xs px-5 py-1.5 rounded-full">
                         {course.free && "Active"}
                       </span>
@@ -48,11 +57,7 @@ const CourseTable = ({ user }) => {
                         {!course.premium && "Inactive"}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
-                      <Link href="#" className="font-semibold hover:underline">
-                        Book
-                      </Link>
-                    </td>
+
                     <td className="px-6 py-4">
                       <Link href="#" className="font-semibold hover:underline">
                         Upgrade
