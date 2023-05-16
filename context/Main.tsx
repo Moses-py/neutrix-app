@@ -9,6 +9,8 @@ interface MainContextProps {
   updateTitle: (tab_title: string) => void;
   isOpen: boolean;
   toggleModal: () => void;
+  storedCourseId: string;
+  updateStoredCourseId: (id: string) => void;
 }
 
 interface MainContextProviderProps {
@@ -24,6 +26,8 @@ export const MainContext = createContext<MainContextProps>({
   updateTitle: () => {},
   isOpen: false,
   toggleModal: () => {},
+  storedCourseId: "",
+  updateStoredCourseId: () => {},
 });
 
 export default function MainContextProvider({
@@ -36,6 +40,8 @@ export default function MainContextProvider({
   const [title, setTitle] = useState("Courses");
   // Modal
   const [isOpen, setIsOpen] = useState(true);
+  // Store course id of booked course
+  const [storedCourseId, setStoredCourseId] = useState(null);
 
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -52,6 +58,9 @@ export default function MainContextProvider({
     setTitle(tab_title);
   };
 
+  const updateStoredCourseId = (id: string) => {
+    setStoredCourseId(id);
+  };
   return (
     <MainContext.Provider
       value={{
@@ -63,6 +72,8 @@ export default function MainContextProvider({
         updateTitle,
         toggleModal,
         isOpen,
+        storedCourseId,
+        updateStoredCourseId,
       }}
     >
       {children}

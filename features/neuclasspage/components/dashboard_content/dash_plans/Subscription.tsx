@@ -48,10 +48,10 @@ const Subscription = ({ data }) => {
 
   const { courses } = data;
   const free = courses.filter((course) => {
-    return course.free;
+    return course.status === "free";
   });
   const premium = courses.filter((course) => {
-    return course.premium;
+    return course.status === "premium";
   });
   return (
     <>
@@ -62,7 +62,7 @@ const Subscription = ({ data }) => {
       </div>
 
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider", paddingY: "1rem" }}>
           <Tabs
             value={value}
             onChange={handleChange}

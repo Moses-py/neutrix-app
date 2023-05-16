@@ -1,11 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MainContext } from "@/context/Main";
 import { useContext } from "react";
 import dynamic from "next/dynamic";
 import AccountDropdown from "./AccountDropdown";
-import Calendly from "@/components/calendly/Calendly";
 
 const Bookmark = dynamic(
   () => import("../components/dashboard_content/useful_links/Bookmarks")
@@ -52,11 +49,6 @@ const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
             </div>
             <div className="dash_links">
               <ul className="text-d_main font-semibold flex flex-row justify-evenly gap-[1rem]">
-                {/* <li className="block">
-                  <Link href="/" className="">
-                    Home
-                  </Link>
-                </li> */}
                 <li>
                   <p className="flex flex-row items-center justify-evenly gap-1">
                     <AccountDropdown

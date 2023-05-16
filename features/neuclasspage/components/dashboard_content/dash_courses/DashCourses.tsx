@@ -61,7 +61,7 @@ const DashCourses = ({ user }) => {
               towards your personal needs.
             </p>
             <div className="cta flex flex-row gap-4">
-              <button className="px-5 py-3 my-3 bg-textLight border border-misc text-textDark rounded-md ">
+              <button className="px-3 py-2 my-3 bg-textLight border border-misc text-textDark rounded-md ">
                 Customize
               </button>
             </div>

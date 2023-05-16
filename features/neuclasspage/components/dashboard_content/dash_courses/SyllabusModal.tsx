@@ -14,7 +14,7 @@ const CurriculumModal: React.FunctionComponent<CurriculumModalProps> = ({
 }) => {
   return (
     <div
-      className={`bg-gray-200 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full `}
+      className={`bg-gray-200 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%)] max-h-full `}
     >
       <div className="h-[600px]">
         <div className="overflow-y-auto h-full relative">

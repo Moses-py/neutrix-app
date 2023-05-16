@@ -29,13 +29,16 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
           {/* Profile bar */}
           <div className="profilebar mx-auto backdrop-blur-md bg-white/80 rounded-2xl p-[1rem] w-full relative top-[80%] left-0 border border-gray-300 shadow-lg">
             <div className="profile_pic flex items-center gap-4">
-              <Image
+              <div className="h-[80px] w-[80px] rounded-lg border border-gray-300 flex justify-center items-center">
+                <h1 className="font-primary tracking-tighter font-bold text-lg text-gray-500">{`${first_name[0]} ${last_name[0]}`}</h1>
+              </div>
+              {/* <Image
                 src="/bruce-mars.webp"
                 alt=""
                 height={80}
                 width={80}
                 className="rounded-lg"
-              />
+              /> */}
               <div>
                 <h3 className="text-misc text-[20px] font-semibold font-secondary">
                   {`${first_name} ${last_name}`}
@@ -65,10 +68,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
 
             {/* Profile intro */}
             <p className="text-gray-500 font-secondary text-xs my-6">
-              Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer
-              is no. If two equally difficult paths, choose the one more painful
-              in the short term (pain avoidance is creating an illusion of
-              equality).
+              {`Hi ${first_name} ${last_name}, welcome to your profile. If you wish to update any of your information, please click the icon on the top-right corner of this pane and make your necessary adjustments. Happy Learning!!!`}
             </p>
             {/* Profile details */}
 

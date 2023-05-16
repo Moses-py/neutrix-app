@@ -1,14 +1,14 @@
 import MainContextProvider from "@/context/Main";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Nunito, Nunito_Sans } from "next/font/google";
+import { Nunito, Nunito_Sans, Source_Sans_Pro } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { Router } from "next/router";
 import { useEffect } from "react";
 import NProgress from "nprogress";
 import "../styles/nprogress.css";
 
-const nunito = Nunito({
+const source_sans_pro = Source_Sans_Pro({
   subsets: ["latin"],
   variable: "--font-nunito",
   weight: ["200", "400"],
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <MainContextProvider>
       <main
-        className={`${nunito.variable} font-sans ${nunitosans.variable} font-sans`}
+        className={`${source_sans_pro.variable} font-sans ${nunitosans.variable} font-sans`}
       >
         <SessionProvider session={pageProps.session}>
           <Component {...pageProps} />

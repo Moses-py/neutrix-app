@@ -1,8 +1,8 @@
 import AlertFeedback from "@/components/alerts/Success";
-import { MainContext } from "@/context/Main";
+import generateString from "@/utils/misc/generateString";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { FormEvent, useState, useContext } from "react";
+import { FormEvent, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 const AddCourseFormModal = ({ selectedCourse, user, onClose }) => {
@@ -28,12 +28,17 @@ const AddCourseFormModal = ({ selectedCourse, user, onClose }) => {
     setButtonText("Activating");
 
     if (!check_course) {
-      
+      const rand_id = generateString(10);
       const formData = {
         email: user.email,
         courseData: [
           ...user.courses,
-          { courseTitle: selectedCourse, package: "free", booked: false },
+          {
+            course_id: rand_id,
+            courseTitle: selectedCourse,
+            status: "free",
+            booked: false,
+          },
         ],
       };
 

@@ -13,7 +13,7 @@ const Plan: React.FunctionComponent<PlanProps> = ({ title, premium }) => {
             {premium ? "Lifetime Premium plan" : "45-minute Free trial session"}
           </p>
           {/* Course Title */}
-          <h1 className="font-bold text-sm font-secondary leading-32">
+          <h1 className="font-semibold text-sm font-secondary leading-32">
             {title}
           </h1>
         </div>
