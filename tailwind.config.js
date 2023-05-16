@@ -63,7 +63,7 @@ module.exports = {
       },
       colors: {
         primary: "#54f2f2",
-        // slate: "#81AFDD",
+        slate: "#81AFDD",
         navbarDark: "#080818",
         textGrey: "#777777",
         textLight: "#F1F1F1",
