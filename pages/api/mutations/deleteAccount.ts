@@ -16,17 +16,16 @@ export default async function updateCourseStatus(
   try {
     await db
       .collection("users")
-      .findOneAndUpdate(
-        { email: data.email },
-        { $set: { courses: data.courseData } },
-        { returnDocument: "after" }
-      )
+      .deleteOne({ email: data.email })
       .then((data) => {
         client.close();
         if (!data) {
-          res.json({ message: "Operation failed" });
+          throw new Error("Operation failed");
         }
-        res.json({ message: "Successfully activated free session", data });
+        res.json({
+          statusCode: 20,
+          message: "Account successfully deleted, Goodbye!",
+        });
       });
   } catch (err) {
     res.send(err);

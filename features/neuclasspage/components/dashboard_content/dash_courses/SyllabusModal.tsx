@@ -14,12 +14,12 @@ const CurriculumModal: React.FunctionComponent<CurriculumModalProps> = ({
 }) => {
   return (
     <div
-      className={`bg-gray-200 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%)] max-h-full `}
+      className={`backdrop-blur-md bg-gray-300/30 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%)]`}
     >
-      <div className="h-[600px]">
+      <div className="h-[550px]">
         <div className="overflow-y-auto h-full relative">
           <div
-            className="bg-gray-100 border"
+            className=" bg-gray-100  border border-black"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"

@@ -6,6 +6,9 @@ import EmailPref from "./EmailPref";
 import LanguagePref from "./LanguagePref";
 import { Tooltip } from "flowbite-react";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { useState } from "react";
+import UpdateUserDataModal from "./UpdateUserDataModal";
+import DeleteUserModal from "./DeleteUserModal";
 
 interface ProfileInterface {
   data: {
@@ -19,9 +22,23 @@ interface ProfileInterface {
 
 const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
   const { email, last_name, first_name, id, phonenumber } = data;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   return (
     <>
-      <div className="wrapper font-secondary">
+      <div className="wrapper font-secondary relative">
+        {modalOpen && (
+          <UpdateUserDataModal
+            onClose={() => setModalOpen(false)}
+            user={data}
+            open={modalOpen}
+          />
+        )}
+        <DeleteUserModal
+          open={deleteModalOpen}
+          close={() => setDeleteModalOpen(false)}
+          user={data.email}
+        />
         <div
           className={`bgImage container h-[300px] w-full bg-no-repeat bg-center bg-cover rounded-xl relative`}
           style={{ backgroundImage: `url(${optimizeBg("bg_profile")})` }}
@@ -32,13 +49,6 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
               <div className="h-[80px] w-[80px] rounded-lg border border-gray-300 flex justify-center items-center">
                 <h1 className="font-primary tracking-tighter font-bold text-lg text-gray-500">{`${first_name[0]} ${last_name[0]}`}</h1>
               </div>
-              {/* <Image
-                src="/bruce-mars.webp"
-                alt=""
-                height={80}
-                width={80}
-                className="rounded-lg"
-              /> */}
               <div>
                 <h3 className="text-misc text-[20px] font-semibold font-secondary">
                   {`${first_name} ${last_name}`}
@@ -60,7 +70,10 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
                 content="Edit Settings"
                 className="text-xs font-secondary text-gray-900"
               >
-                <button className="hover:scale-110">
+                <button
+                  className="hover:scale-110"
+                  onClick={() => setModalOpen(true)}
+                >
                   <ManageAccountsIcon />
                 </button>
               </Tooltip>
@@ -142,6 +155,7 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
                 <button
                   type="button"
                   className="text-white bg-red hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-4 py-1.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 my-6"
+                  onClick={() => setDeleteModalOpen(true)}
                 >
                   Delete my account
                 </button>
@@ -149,9 +163,6 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
             </div>
           </div>
         </div>
-
-        {/* Delete account */}
-        <div className="delete_account"></div>
       </div>
     </>
   );
