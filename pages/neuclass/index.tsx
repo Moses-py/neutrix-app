@@ -4,12 +4,23 @@ import mongoConnect from "@/lib/mongo_connect";
 import { authenticateUser } from "@/utils/auth/authenticateUser";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
+import { useContext } from "react";
+import { MainContext } from "@/context/Main";
+import { useEffectOnce } from "usehooks-ts";
 
 const Dashboard = dynamic(
   () => import("@/features/neuclasspage/Dashboard/Dashboard")
 );
 
 const Neuclass = ({ user_data }) => {
+  const { updateNote, updateUser, updateBookmark } = useContext(MainContext);
+
+  useEffectOnce(() => {
+    updateUser(user_data.email);
+    updateNote(user_data.notes);
+    updateBookmark(user_data.bookmarks);
+  });
+
   return (
     <>
       <Head>
@@ -56,8 +67,16 @@ export async function getServerSideProps(ctx: {
 
   if (!found_user) throw new Error("Request resource not found");
 
-  const { email, first_name, last_name, phonenumber, _id, courses } =
-    found_user;
+  const {
+    email,
+    first_name,
+    last_name,
+    phonenumber,
+    _id,
+    courses,
+    notes,
+    bookmarks,
+  } = found_user;
 
   const updated_resource = {
     email,
@@ -66,6 +85,8 @@ export async function getServerSideProps(ctx: {
     phonenumber,
     courses,
     id: _id.toString(),
+    notes,
+    bookmarks,
   };
 
   client.close();

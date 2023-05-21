@@ -91,6 +91,8 @@ const Register = () => {
       password,
       phonenumber,
       courses: [],
+      notes: [],
+      bookmarks: [],
     };
 
     const response = await axios({

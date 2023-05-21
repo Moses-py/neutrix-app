@@ -5,21 +5,19 @@ import HideImageRoundedIcon from "@mui/icons-material/HideImageRounded";
 import optimizeBg from "@/utils/misc/optimizeBackground";
 
 interface NotebookInputContainerProps {
-  noteList: (notes: {
-    title?: string;
-    content?: string;
-    image?: string;
-  }) => void;
+  noteList: (note) => void;
+  user: string;
 }
 
 const NotebookInputContainer: React.FunctionComponent<
   NotebookInputContainerProps
-> = ({ noteList }) => {
+> = ({ noteList, user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [background, setBackground] = useState("transparent");
 
   const [noteInput, setNoteInput] = useState({
+    email: user,
     title: "",
     content: "",
     image: "",
@@ -28,8 +26,7 @@ const NotebookInputContainer: React.FunctionComponent<
   useEffect(() => {
     setNoteInput((prev) => {
       return {
-        title: prev.title,
-        content: prev.content,
+        ...prev,
         image: background,
       };
     });
@@ -54,8 +51,9 @@ const NotebookInputContainer: React.FunctionComponent<
   }
 
   function handleSave() {
-    noteList(noteInput);
+    noteList([noteInput]);
     setNoteInput({
+      email: user,
       title: "",
       content: "",
       image: "",
@@ -67,6 +65,7 @@ const NotebookInputContainer: React.FunctionComponent<
 
   function cancel() {
     setNoteInput({
+      email: user,
       title: "",
       content: "",
       image: "",

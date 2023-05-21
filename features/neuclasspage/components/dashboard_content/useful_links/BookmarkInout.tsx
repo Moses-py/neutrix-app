@@ -1,16 +1,16 @@
+import { MainContext } from "@/context/Main";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-interface BookmarkInputProps {
-  submitHandler: (text: string) => void;
-}
-const BookmarkInput: React.FunctionComponent<BookmarkInputProps> = ({
-  submitHandler,
-}) => {
+const BookmarkInput: React.FunctionComponent = () => {
   const [typedBookmark, setTypedBookmark] = useState("");
-  function submitBookmark(e: React.FormEvent<HTMLFormElement>) {
+  const { updateBookmark } = useContext(MainContext);
+
+  function submitBookmark(e: React.FormEvent) {
     e.preventDefault();
-    submitHandler(typedBookmark);
+    if (typedBookmark !== "") {
+      updateBookmark([typedBookmark]);
+    }
     setTypedBookmark("");
   }
   return (

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NotebookInputContainer from "./NotebookInputContainer";
 import NotebookList from "./NotebookList";
+import { MainContext } from "@/context/Main";
 
-const Notebook: React.FunctionComponent = () => {
-  const [notelist, setNoteList] = useState([{}]);
+const Notebook = ({ user }) => {
+  const { noteList, updateNote } = useContext(MainContext);
   return (
     <>
       <div className="header pb-[2rem]">
@@ -12,14 +13,23 @@ const Notebook: React.FunctionComponent = () => {
         </h1>
       </div>
       <NotebookInputContainer
-        noteList={(notes) =>
-          setNoteList((prev) => {
-            return [...prev, notes];
-          })
-        }
+        noteList={(notes) => updateNote(notes)}
+        user={user}
       />
       <div className="list relative">
-        <NotebookList notes={notelist} />
+        {noteList.length > 0 ? (
+          <>
+            <NotebookList notes={noteList} />
+          </>
+        ) : (
+          <>
+            <div className="container flex items-center justify-center">
+              <p className="text-xs text-gray-400 italic font-secondary leading-[400px] 2xl:leading-[600px]">
+                No new notes...
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

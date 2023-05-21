@@ -1,20 +1,15 @@
+import { MainContext } from "@/context/Main";
 import BookmarkBar from "./BookmarkBar";
 import BookmarkInput from "./BookmarkInout";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 const Bookmark = () => {
-  const [links, setLinks] = useState<string[]>([]);
-
-  function addLink(text: string) {
-    setLinks((prev) => {
-      return [...prev, text];
-    });
+  const { bookmarks } = useContext(MainContext);
+  let bookmarkData = [];
+  for (let index = bookmarks.length - 1; index >= 0; index--) {
+    bookmarkData.push(bookmarks[index]);
   }
 
-  function deleteLink(id: number) {
-    const filteredList = links.filter((link) => link != links[id]);
-    setLinks(filteredList);
-  }
   return (
     <>
       <div className="header pb-[2rem]">
@@ -23,20 +18,13 @@ const Bookmark = () => {
         </h1>
       </div>
       <div className="bookmark mb-[1rem]">
-        <BookmarkInput submitHandler={addLink} />
+        <BookmarkInput />
       </div>
       <hr className="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-      {links.length > 0 ? (
+      {bookmarkData.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[2rem]">
-          {links.map((link, index) => {
-            return (
-              <BookmarkBar
-                url={link}
-                key={index}
-                identity={index}
-                deleteItem={deleteLink}
-              />
-            );
+          {bookmarkData.map((bookmark, index) => {
+            return <BookmarkBar url={bookmark} key={index} identity={index} />;
           })}
         </div>
       ) : (

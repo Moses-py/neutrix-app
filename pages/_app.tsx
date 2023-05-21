@@ -44,14 +44,14 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <MainContextProvider>
-      <main
-        className={`${source_sans_pro.variable} font-sans ${nunitosans.variable} font-sans`}
-      >
-        <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
+      <MainContextProvider>
+        <main
+          className={`${source_sans_pro.variable} font-sans ${nunitosans.variable} font-sans`}
+        >
           <Component {...pageProps} />
-        </SessionProvider>
-      </main>
-    </MainContextProvider>
+        </main>
+      </MainContextProvider>
+    </SessionProvider>
   );
 }

@@ -68,7 +68,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
           {title === "Courses" && <DashCourses user={data} />}
           {title === "My Courses" && <MyCourse user={data} />}
           {title === "Bookmarks" && <Bookmark />}
-          {title === "Notebook" && <Notebook />}
+          {title === "Notebook" && <Notebook user={data.email} />}
           {title === "My Plan" && <Subscription data={data} />}
           {title === "Profile" && <Profile data={data} />}
         </div>

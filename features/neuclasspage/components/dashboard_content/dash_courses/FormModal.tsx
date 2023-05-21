@@ -93,7 +93,7 @@ const AddCourseFormModal = ({ selectedCourse, user, onClose }) => {
       <div
         id="authentication-modal"
         aria-hidden="true"
-        className="bg-gray-200 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        className="backdrop-blur-lg bg-gray-300/30 fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden flex justify-center items-center overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
       >
         <div className="relative w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">

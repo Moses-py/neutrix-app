@@ -72,18 +72,21 @@ const NotebookList: React.FunctionComponent<NotebookListProps> = ({
           style={{
             backgroundImage: `url(${optimizeBg(modalData.note.image)})`,
           }}
-          className={`container rounded-lg relative bg-no-repeat bg-center bg-cover w-full md:w-[80vw] lg:w-[50vw] xl:w-[30vw] h-[100%] bg-textLight overflow-y-scroll pt-[2rem] pb-[5rem]`}
+          className={`container rounded-lg relative bg-no-repeat bg-center bg-cover w-full md:w-[80vw] lg:w-[50vw] xl:w-[30vw] h-auto sm:max-h-[60vh] max-h-[70vh] bg-textLight overflow-y-scroll pt-[2rem] pb-[5rem]`}
         >
-          <p className="my-4 font-secondary font-bold text-md break-all">
-            {modalData.note.title}
-          </p>
-          <p className="my-4 font-secondary font-normal text-xs break-all">
-            {modalData.note.content}
-          </p>
+          <div className="relative z-20">
+            <p className="my-4 font-secondary font-bold text-md break-word">
+              {modalData.note.title}
+            </p>
+
+            <p className="my-4 font-secondary text-xs break-word text-gray-800 font-semibold">
+              {modalData.note.content}
+            </p>
+          </div>
 
           {/* Footer */}
 
-          <div className="fixed z-50 h-auto max-w-lg -translate-x-1/2 bg-white border rounded-full border-gray-200 bottom-8 left-1/2 dark:bg-gray-700 dark:border-gray-600">
+          <div className="fixed z-50 h-auto max-w-lg -translate-x-1/2 bg-white border rounded-full border-gray-200 bottom-10 left-1/2 dark:bg-gray-700 dark:border-gray-600">
             <div
               className="grid place-items-center p-2"
               onClick={() => setModalData({ note: {}, open: false })}

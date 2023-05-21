@@ -42,13 +42,7 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid Credentials");
         }
         client.close();
-        // const { email, first_name, last_name, phonenumber } = user;
-        // const severedUserData = {
-        //   email,
-        //   first_name,
-        //   last_name,
-        //   phonenumber,
-        // };
+
         return user as any;
       },
     }),
