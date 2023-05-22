@@ -156,21 +156,13 @@ const Register = () => {
 
       <div className="px-4">
         <div className="rounded-lg md:w-1/2 mx-auto bg-white rounded-t-lg py-8">
-          <div className="mb-8 relative">
+          <div className="relative w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 ">
             <Link
               href="/"
-              className="absolute right-4 top-2 text-[12px] font-bold underline text-gray-500"
+              className="absolute right-4 top-4 text-[12px] font-bold underline text-gray-500"
             >
               Go Home
             </Link>
-            <h2 className="text-xl text-center flex justify-center font-semibold text-gray-700 w-full">
-              <Image src="/triangle.webp" alt="" width={50} height={50} />
-            </h2>
-            <p className="text-sm text-gray-600 text-center">
-              Ready to get started?
-            </p>
-          </div>
-          <div className="w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 ">
             <div className="w-full px-4 py-8 relative">
               {alert.open === true && (
                 <AlertFeedback

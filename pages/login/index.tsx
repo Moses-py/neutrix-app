@@ -142,20 +142,13 @@ const Login = () => {
       <div className="">
         <div className="rounded-lg lg:w-1/2 mx-auto bg-white rounded-t-lg py-8">
           <div className="w-full py-8 px-4 relative ">
-            <div className="mb-8 relative">
+            <div className="relative w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 lg:px-12">
               <Link
                 href="/"
-                className="absolute right-2 top-2 text-[12px] font-bold underline text-gray-500"
+                className="absolute right-4 top-4 text-[12px] font-bold underline text-gray-500"
               >
                 Go Home
               </Link>
-              <h2 className="text-xl text-center flex justify-center font-semibold text-gray-700 w-full">
-                <Image src="/triangle.webp" alt="" width={50} height={50} />
-              </h2>
-              <p className="text-sm text-gray-600 text-center">Welcome back!</p>
-            </div>
-
-            <div className="w-full bg-gray-100 rounded-b-lg pb-12 pt-6 px-4 lg:px-12">
               <div className="mt-4 flex items-center justify-between">
                 <span className="border-b w-1/5 lg:w-1/4"></span>
                 <p className="text-center text-sm text-gray-400 font-light my-4">

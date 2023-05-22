@@ -1,10 +1,14 @@
 import Image from "next/image";
-import { StepperProp } from "./StepperOne";
 import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 
 const StepperFour: React.FunctionComponent = () => {
   // Router
   const router = useRouter();
+  const handleEndRecovery = () => {
+    signOut();
+    router.push("/login");
+  };
   return (
     <>
       <div className="my-[3rem]">
@@ -16,7 +20,7 @@ const StepperFour: React.FunctionComponent = () => {
 
         <div className="my-5">
           <button
-            onClick={() => router.push("/login")}
+            onClick={handleEndRecovery}
             type="button"
             className="text-[#050708] bg-transparent border border-[#050708] hover:bg-gray-300 hover:border-gray-300 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2"
           >
