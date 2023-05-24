@@ -10,29 +10,29 @@ const Navbar: React.FunctionComponent = () => {
         className={`md:${styles.navbar} w-full px-8 lg:px-0 md:container flex flex-row relative justify-between items-center z-10 my-4`}
       >
         <div className="flex items-center gap-3">
-          <h1 className="lg:text-textDark leading-64 text-lg font-primary font-bold uppercase">
+          <h1 className="lg:text-misc leading-64 text-lg font-primary font-bold uppercase">
             Neutrix
           </h1>
         </div>
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
           <ul className="flex flex-row items-center justify-between">
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs font-semibold text-misc hover:cursor-default hover:text-orange">
               <Link href="/">Home</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs font-semibold text-misc hover:cursor-default hover:text-orange">
               <Link href="#about">About</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs font-semibold text-misc hover:cursor-default hover:text-orange">
               <Link href="/neuclass">Neuclass</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs font-semibold text-misc hover:cursor-default hover:text-orange">
               <Link href="/blog">Blog</Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs font-semibold text-misc hover:cursor-default hover:text-orange">
               <Link href="#courses">Explore</Link>
             </li>
-            <li className="mx-2 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-2 text-xs flex items-center text-misc hover:cursor-default hover:text-orange">
               <Link href="/login" className="flex items-center gap-2">
                 <button
                   type="button"
@@ -43,7 +43,7 @@ const Navbar: React.FunctionComponent = () => {
                 </button>
               </Link>
             </li>
-            <li className="mx-4 text-sm text-textDark hover:cursor-default hover:text-orange">
+            <li className="mx-4 text-xs text-misc hover:cursor-default hover:text-orange">
               <Link href="/register" className="flex items-center gap-2">
                 <button
                   type="button"

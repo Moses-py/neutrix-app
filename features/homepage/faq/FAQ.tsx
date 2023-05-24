@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const AccordionFAQ = dynamic(() => import("./Accordion"));
+const Accordion = dynamic(() => import("./Accordion"));
 const ParagraphText = dynamic(
   () => import("@/components/typography/ParagraphText")
 );
@@ -22,8 +22,8 @@ export default function FAQ() {
             </h1>
           </div>
         </div>
-        <div className="md:container">
-          <AccordionFAQ />
+        <div className="md:container px-2">
+          <Accordion />
         </div>
       </section>
     </>

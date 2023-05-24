@@ -1,7 +1,5 @@
-import { useState } from "react";
-import styles from "./accordion.module.css";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Disclosure } from "@headlessui/react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 let data = [
   {
     title: "Who is eligible for the courses?",
@@ -45,55 +43,38 @@ let data = [
   },
 ];
 
-export default function AccordionFAQ() {
-  const [accordion, setAccordion] = useState(data);
-
-  function clickHandler(item) {
-    const newAccordion = accordion.slice();
-    const index = newAccordion.indexOf(item);
-
-    newAccordion[index].open = !newAccordion[index].open;
-    setAccordion(newAccordion);
-  }
-
-  const accordionItems = accordion.map((item) => {
-    return (
-      <div key={item.title} onClick={() => clickHandler(item)}>
-        <div
-          className={`${styles.title} w-100 border border-gray-300 hover:bg-misc hover:text-white font-normal text-textDark md:leading-48 leading-28`}
-        >
-          <div className={`block ${styles.arrow_wrapper}`}>
-            <i className="text-textDark">
-              {item.open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-            </i>
-          </div>
-          <span className={styles.title_text}>{item.title}</span>
-        </div>
-        <div
-          className={
-            item.open
-              ? `${styles.content} ${styles.content_open} w-100 text-xs`
-              : `${styles.content} text-xs`
-          }
-        >
-          <div
-            className={
-              item.open
-                ? `${styles.content_text} ${styles.content_text_open} `
-                : `${styles.content_text} `
-            }
-          >
-            {" "}
-            {item.content}
-          </div>
-        </div>
-      </div>
-    );
-  });
+export default function Accordion() {
   return (
     <>
-      <div className={`${styles.accordion} md:p-0 py-0 px-6 w-100`}>
-        {accordionItems}
+      <div className="w-full">
+        <div className="w-full rounded-2xl bg-white p-2 max-w-full">
+          {data.map((item) => {
+            return (
+              <>
+                <Disclosure>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button
+                        key={data.indexOf(item)}
+                        className="flex w-full justify-between rounded-lg my-3 bg-misc px-4 py-5 text-left text-xs font-normal text-white hover:bg-misc/90 focus:outline-none focus-visible:ring focus-visible:ring-purple/50 focus-visible:ring-opacity-75"
+                      >
+                        <span>{item.title}</span>
+                        <ExpandMoreIcon
+                          className={`${
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-purple-500`}
+                        />
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="px-4 pt-4 pb-2 my-2 rounded-lg text-sm text-gray-900 border border-gray-300">
+                        {item.content}
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );
