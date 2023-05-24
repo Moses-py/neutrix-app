@@ -126,7 +126,7 @@ const VerifyEmailAddress = ({ email }) => {
 
           setTimeout(() => {
             router.push("/login");
-          }, 2000);
+          }, 3000);
         }
       })
       .catch(() => {

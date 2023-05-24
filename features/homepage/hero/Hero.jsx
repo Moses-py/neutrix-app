@@ -11,21 +11,6 @@ const Hero = () => {
       <section
         className={`${styles.hero} relative h-auto pt-[10%] md:pt-[5%] lg:pt-[3%]`}
       >
-        <div className="sketchfab-embed-wrapper w-full h-full absolute top-0 right-0 left-0">
-          {" "}
-          <iframe
-            title="Of Planes and Satellites"
-            allowFullScreen
-            mozallowfullscreen="true"
-            webkitallowfullscreen="true"
-            allow="autoplay; fullscreen; xr-spatial-tracking"
-            xr-spatial-tracking
-            className="w-full h-full"
-            src="https://sketchfab.com/models/894ad84ceb8b444a91fbc05f20530bcd/embed?autospin=1&autostart=1&annotations_visible=0&annotation_cycle=20&ui_animations=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&dnt=1"
-          >
-            {" "}
-          </iframe>{" "}
-        </div>
         <div className="relative">
           <Image
             className="hidden 2xl:block absolute bottom-0 left-0 "

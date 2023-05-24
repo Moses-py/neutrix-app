@@ -14,3 +14,9 @@ export type AlertType = {
   condition: AlertColor | undefined;
   message: string;
 };
+
+export type LoginData = {
+  email?: string;
+  password: string;
+  phonenumber?: string;
+};

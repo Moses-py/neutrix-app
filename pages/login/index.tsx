@@ -8,25 +8,14 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import Image from "next/image";
-
-type LoginData = {
-  email?: string;
-  password: string;
-  phonenumber?: string;
-};
-
-type AlertType = {
-  open: boolean;
-  condition: AlertColor | undefined;
-  message: string;
-};
+import { AlertType, LoginData } from "@/types/types";
 
 const Login = () => {
   // Next router
   const router = useRouter();
 
   // Button Loading state
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Feedback alert
   const [alert, setAlert] = useState<AlertType>({
@@ -35,7 +24,7 @@ const Login = () => {
     message: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // Form input data state
   const [login_data, set_login_data] = useState<LoginData>({
@@ -45,11 +34,11 @@ const Login = () => {
   });
 
   // Button text state
-  const [buttonStatus, setButtonStatus] = useState("Please wait...");
+  const [buttonStatus, setButtonStatus] = useState<string>("Please wait...");
 
   // Radio form state
 
-  const [loginBy, setLoginBy] = useState("email");
+  const [loginBy, setLoginBy] = useState<string>("email");
 
   // Function to update the date in login_data state depending on user input
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
@@ -124,7 +113,10 @@ const Login = () => {
         message: response.data.message,
       });
       setButtonStatus("Redirecting...");
-      const loginRes = await loginUser(response.data.email, login_data.password);
+      const loginRes = await loginUser(
+        response.data.email,
+        login_data.password
+      );
       if (loginRes && loginRes.ok) {
         router.push("/neuclass");
         setIsLoading(false);
