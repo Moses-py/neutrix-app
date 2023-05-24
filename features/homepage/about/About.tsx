@@ -14,7 +14,7 @@ const About = () => {
       <section id="about">
         <div className="section my-[5rem] p-6 relative">
           <div
-            className={`bg-misc container md:p-[4.5rem] sm:p-[2rem] p-[1rem] relative rounded-lg`}
+            className={`bg-misc lg:container md:p-[4.5rem] sm:p-[2rem] p-[1rem] relative rounded-lg`}
           >
             <Image
               className="absolute bottom-0 left-0"

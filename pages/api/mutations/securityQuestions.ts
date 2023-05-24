@@ -18,7 +18,11 @@ export default async function updateNotes(
       .updateOne(
         { email: data.email },
         {
-          $set: { securityQuestions: data.securityQuestions, isVerified: true },
+          $set: {
+            securityQuestions: data.securityQuestions,
+            isVerified: true,
+            email_token: null,
+          },
         }
       )
       .then((data) => {

@@ -13,10 +13,20 @@ export default function Document() {
           referrerPolicy="no-referrer"
         />
       </Head>
+      <Script
+        disable-devtool-auto
+        src="https://cdn.jsdelivr.net/npm/disable-devtool"
+        disable-menu="xxx"
+        clear-log="true"
+        disable-select="true"
+        disable-copy="true"
+        disable-cut="true"
+        disable-paste="true"
+      />
       <body>
         <Main />
-        <NextScript />
 
+        <NextScript />
       </body>
     </Html>
   );

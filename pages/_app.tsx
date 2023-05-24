@@ -21,6 +21,7 @@ const nunitosans = Nunito_Sans({
 });
 export default function App({ Component, pageProps }: AppProps) {
   const router = Router;
+
   NProgress.configure({
     showSpinner: false,
     trickleSpeed: 200,

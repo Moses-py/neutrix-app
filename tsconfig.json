@@ -18,6 +18,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongo_connect.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/mongo_connect.ts",
+    "features/homepage/hero/Hero.jsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -115,7 +115,7 @@ const VerifyEmailAddress = ({ email }) => {
         if (response) {
           setButtonState({
             loading: true,
-            text: "Successful verified...redirecting",
+            text: "Successfully verified...redirecting",
             color: "green",
           });
           setQ_A({

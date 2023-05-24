@@ -60,8 +60,8 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
         </div>
 
         {/* Details Grid */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 mt-[5rem] gap-6">
-          <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200">
+        <div className="lg:container grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 mt-[5rem] gap-6 ">
+          <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200 w-full">
             <div className="flex justify-between items-center my-2">
               <h4 className="text-sm font-semibold font-misc">
                 Profile information
@@ -103,33 +103,9 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
           </div>
 
           {/* Platform Settings */}
-          <div className="p-6 rounded-xl bg-white/30 border border-gray-200">
-            <div className="flex justify-between items-center my-2">
-              <h4 className="text-sm font-semibold font-misc">
-                Platform Settings
-              </h4>
-              <button className="hover:scale-110">
-                <CodeIcon />
-              </button>
-            </div>
-            {/* Email Pref */}
-            <EmailPref />
-            {/* Language Pref */}
-            <div className="language_pref">
-              <h4 className="text-xs font-semibold font-misc mb-4">
-                Language Preferences
-              </h4>
-              <span className="text-gray-400 text-xs mt-10 mb-5">
-                Select your language. This language will be used for e-mails you
-                receive from us and browsing our site.
-              </span>
-
-              <LanguagePref />
-            </div>
-          </div>
 
           {/* Misc */}
-          <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200">
+          <div className="profile_info p-6 rounded-xl bg-white/30 border border-gray-200 w-full">
             <div className="flex justify-between items-center my-2">
               <h4 className="text-sm font-semibold font-misc">
                 Saying Goodbye?
