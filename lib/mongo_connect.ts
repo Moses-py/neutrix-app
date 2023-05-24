@@ -7,6 +7,11 @@ export default async function mongoConnect() {
     const db = client.db("neutrix_database");
     return { db, client };
   } catch (error) {
-    throw new Error("Unable to establish database connection");
+    return {
+      redirect: {
+        destination: "/505",
+        permanent: false,
+      },
+    };
   }
 }
