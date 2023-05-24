@@ -64,7 +64,7 @@ const DashboardMain: React.FunctionComponent<D_main> = ({ data }) => {
           </div>
         </div>
         {/* Dashboard contents */}
-        <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] px-[1rem] flex-1 overflow-y-scroll relative">
+        <div className="pb-[3rem] pt-[1rem] lg:px-0 sm:px-[2rem] mt-[3rem] px-[1rem] flex-1 overflow-y-scroll relative">
           {title === "Courses" && <DashCourses user={data} />}
           {title === "My Courses" && <MyCourse user={data} />}
           {title === "Bookmarks" && <Bookmark />}
