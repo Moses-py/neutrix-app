@@ -1,4 +1,5 @@
-import React from "react";
+import { MainContext } from "@/context/Main";
+import React, { useContext } from "react";
 
 interface CourseCardProps {
   image?: string;
@@ -8,6 +9,7 @@ interface CourseCardProps {
   syllabusView: () => void;
   updateSelectedCourse: () => void;
   updateAddCoursePopup: () => void;
+  isAdded: boolean;
 }
 
 const CourseCard: React.FunctionComponent<CourseCardProps> = ({
@@ -18,14 +20,21 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
   syllabusView,
   updateAddCoursePopup,
   updateSelectedCourse,
+  isAdded,
 }) => {
+  const { updateTitle, selectTab } = useContext(MainContext);
   function handleViewClick() {
     updateSelect();
     syllabusView();
   }
   function handleAddClick() {
-    updateSelectedCourse();
-    updateAddCoursePopup();
+    if (!isAdded) {
+      updateSelectedCourse();
+      updateAddCoursePopup();
+    } else {
+      updateTitle("My Courses");
+      selectTab(1);
+    }
   }
   return (
     <>
@@ -44,7 +53,7 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
               className="px-3 py-2 my-3 bg-misc rounded-md "
               onClick={handleAddClick}
             >
-              Add Course
+              {isAdded ? "View Course" : "Add Course"}
             </button>
             <button
               className="px-3 py-2 my-3 bg-textLight text-misc rounded-md text-xs "

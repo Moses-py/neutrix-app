@@ -76,6 +76,7 @@ export async function getServerSideProps(ctx: {
     courses,
     notes,
     bookmarks,
+    username,
   } = found_user;
 
   const updated_resource = {
@@ -87,6 +88,7 @@ export async function getServerSideProps(ctx: {
     id: _id.toString(),
     notes,
     bookmarks,
+    username,
   };
 
   client.close();

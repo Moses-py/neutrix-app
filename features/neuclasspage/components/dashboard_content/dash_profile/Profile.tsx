@@ -1,9 +1,6 @@
 import Image from "next/image";
 import optimizeBg from "@/utils/misc/optimizeBackground";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import CodeIcon from "@mui/icons-material/Code";
-import EmailPref from "./EmailPref";
-import LanguagePref from "./LanguagePref";
 import { Tooltip } from "flowbite-react";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import { useState } from "react";
@@ -17,6 +14,7 @@ interface ProfileInterface {
     last_name: string;
     id: string;
     phonenumber: string;
+    username: string;
   };
 }
 
@@ -86,6 +84,22 @@ const Profile: React.FunctionComponent<ProfileInterface> = ({ data }) => {
             {/* Profile details */}
 
             <div className="flex flex-col gap-4 text-gray-900 my-5">
+              <p className="font-semibold text-xs">
+                Username:{" "}
+                {data.username ? (
+                  <span className="font-normal ml-3">{data.username}</span>
+                ) : (
+                  <>
+                    {" "}
+                    <span
+                      className=" ml-3 underline font-bold cursor-pointer"
+                      onClick={() => setModalOpen(true)}
+                    >
+                      create a username
+                    </span>
+                  </>
+                )}
+              </p>
               <p className="font-semibold text-xs">
                 Fullname:{" "}
                 <span className="font-normal ml-3">{`${first_name} ${last_name}`}</span>

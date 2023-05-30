@@ -18,12 +18,17 @@ const DashboardLeft: React.FunctionComponent = () => {
   }
   return (
     <>
-      <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[100vh] md:h-[95vh] bg-white lg:bg-transparent">
-        <div className="flex justify-between items-center">
+      <div className=" px-[1rem] min-w-[300px] w-[1/6] pt-[1rem] h-[calc(100vh - 1rem)] md:h-[95vh] bg-white lg:bg-transparent">
+        <div className="flex sm:flex-col sm:justify-start justify-between sm:items-start items-center sm:my-0 my-3">
+          <Link href="/">
+            <h1 className="lg:text-misc leading-36 text-sm font-primary font-bold uppercase">
+              Neutrix
+            </h1>
+          </Link>
           <div className="logo flex flex-row gap-2 items-center mb-2">
-            <Image src="/triangle.webp" alt="" width={30} height={30} />
+            {/* <Image src="/triangle.webp" alt="" width={30} height={30} /> */}
             <p className="text-xs font-semibold text-center flex justify-between items-center">
-              Neuclass <span className="hidden lg:inline">Dashboard</span>
+              <span className="hidden lg:inline">Neuclass Dashboard</span>
             </p>
           </div>
           <span className="lg:hidden block mb-2" onClick={updateTab}>

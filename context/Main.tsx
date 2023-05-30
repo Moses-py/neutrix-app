@@ -20,6 +20,8 @@ interface MainContextProps {
   updateUser: (email: string) => void;
   updateBookmark: (bookmark: string[]) => void;
   bookmarks: string[];
+  updateActivatePremModal: () => void;
+  activatePrem: boolean;
 }
 
 interface MainContextProviderProps {
@@ -44,6 +46,8 @@ export const MainContext = createContext<MainContextProps>({
   updateUser: () => {},
   updateBookmark: () => {},
   bookmarks: [],
+  updateActivatePremModal: () => {},
+  activatePrem: false,
 });
 
 export default function MainContextProvider({
@@ -57,7 +61,7 @@ export default function MainContextProvider({
   const [tabSelected, setTabSelected] = useState(0);
   // State to manage the title of the current tab in dashboard main
   const [title, setTitle] = useState("Courses");
-  // Modal
+  // Modal open state
   const [isOpen, setIsOpen] = useState(true);
   // Store course id of booked course
   const [storedCourseId, setStoredCourseId] = useState(null);
@@ -65,10 +69,17 @@ export default function MainContextProvider({
   const [noteList, setNoteList] = useState([]);
   // Temporary storage for bookmarks
   const [bookmarks, setBookmarks] = useState([]);
+  //Open activate premium modal
+  const [activatePrem, setActivePrem] = useState(false);
 
-  function toggleModal() {
+  const updateActivatePremModal = () => {
+    setActivePrem(!activatePrem);
+  };
+
+  const toggleModal = () => {
     setIsOpen(!isOpen);
-  }
+  };
+
   const updateTab = () => {
     setOpenTab(!openTab);
   };
@@ -107,6 +118,7 @@ export default function MainContextProvider({
     });
     setNoteList(filteredNote);
     const deleteData = { email: user, noteTitle };
+
     const deleteUserNote = async () => {
       await axios({
         method: "POST",
@@ -160,7 +172,6 @@ export default function MainContextProvider({
         if (data) return;
       });
     };
-
     updateUserNote();
 
     return;
@@ -211,6 +222,8 @@ export default function MainContextProvider({
         updateUser,
         updateBookmark,
         bookmarks,
+        updateActivatePremModal,
+        activatePrem,
       }}
     >
       {children}

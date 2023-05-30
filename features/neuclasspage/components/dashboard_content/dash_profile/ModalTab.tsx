@@ -18,8 +18,7 @@ type AlertType = {
 export default function ModalTab({ user, close }) {
   const [loading, setLoading] = useState(false);
   const [updateDetails, setUpdateDetails] = useState({
-    first_name: user.first_name,
-    last_name: user.last_name,
+    username: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -43,14 +42,7 @@ export default function ModalTab({ user, close }) {
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const field_name = e.target.name;
-    field_name === "first_name" &&
-      setUpdateDetails((prev) => {
-        return { ...prev, first_name: e.target.value };
-      });
-    field_name === "last_name" &&
-      setUpdateDetails((prev) => {
-        return { ...prev, last_name: e.target.value };
-      });
+    field_name === "username" && setUpdateDetails({ username: e.target.value });
     field_name === "password" &&
       setPass((prev) => {
         return { ...prev, password: e.target.value };
@@ -222,27 +214,38 @@ export default function ModalTab({ user, close }) {
         <Tab.Panels className="mt-2 w-full xxxs:w-[300px] xxs:w-[400px] xs:w-[450px] sm:w-[600px]">
           <Tab.Panel className="bg-white p-4 rounded-lg">
             <form onSubmit={handleGeneralDataSubmit}>
+              <div>
+                <input
+                  type="text"
+                  id="Username"
+                  className="bg-gray-50 border border-gray-300 text-black placeholder:text-black text-xs rounded-lg block w-full p-2.5"
+                  placeholder="Set a unique username"
+                  name="username"
+                  onChange={handleInputChange}
+                  value={updateDetails.username}
+                />
+              </div>
               <div className="grid gap-6 my-2 md:grid-cols-2">
                 <div>
                   <input
+                    disabled
                     type="text"
                     id="first_name"
-                    className="bg-gray-50 border border-gray-300 text-black placeholder:text-black text-xs rounded-lg block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-400 placeholder:text-black text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
                     placeholder={user.first_name}
                     name="first_name"
-                    onChange={handleInputChange}
-                    value={updateDetails.first_name}
+                    value={user.first_name}
                   />
                 </div>
                 <div>
                   <input
+                    disabled
                     type="text"
                     id="last_name"
-                    className="bg-gray-50 border border-gray-300 text-black placeholder:text-black text-xs rounded-lg block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-400 placeholder:text-black text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
                     placeholder={user.last_name}
                     name="last_name"
-                    onChange={handleInputChange}
-                    value={updateDetails.last_name}
+                    value={user.last_name}
                   />
                 </div>
               </div>
@@ -250,7 +253,7 @@ export default function ModalTab({ user, close }) {
                 <input
                   type="tel"
                   id="phone"
-                  className="bg-gray-50 border border-gray-300 text-gray-500 placeholder:text-gray-300 text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
+                  className="bg-gray-50 border border-gray-300 text-gray-500 placeholder:text-gray-400 text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
                   placeholder={user.phonenumber}
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                   disabled
@@ -261,7 +264,7 @@ export default function ModalTab({ user, close }) {
                 <input
                   type="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-500 placeholder:text-gray-300 text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
+                  className="bg-gray-50 border border-gray-300 text-gray-500 placeholder:text-gray-400 text-xs rounded-lg block w-full p-2.5 cursor-not-allowed"
                   placeholder={user.email}
                   disabled
                 />

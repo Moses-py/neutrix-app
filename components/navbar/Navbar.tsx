@@ -7,12 +7,14 @@ const Navbar: React.FunctionComponent = () => {
   return (
     <>
       <div
-        className={`md:${styles.navbar} w-full px-8 lg:px-0 md:container flex flex-row relative justify-between items-center z-10 my-4`}
+        className={`md:${styles.navbar} w-full px-8 lg:px-0 md:container flex flex-row relative justify-between items-center z-10 my-2`}
       >
         <div className="flex items-center gap-3">
-          <h1 className="lg:text-misc leading-64 text-lg font-primary font-bold uppercase">
-            Neutrix
-          </h1>
+          <Link href="/">
+            <h1 className="lg:text-misc leading-64 text-lg font-primary font-bold uppercase">
+              Neutrix
+            </h1>
+          </Link>
         </div>
 
         <nav className="hidden lg:flex flex-row justify-center items-center">
@@ -36,10 +38,10 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="/login" className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg text-xs px-5 py-1.5 text-center inline-flex items-center  mb-2"
+                  className="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none font-semibold focus:ring-[#050708]/50 rounded-lg text-[13px] px-5 py-1.5 text-center inline-flex items-center  mb-2"
                 >
                   <PasswordIcon className="mr-3 text-xs" />
-                  Sign in
+                  sign in
                 </button>
               </Link>
             </li>
@@ -47,10 +49,10 @@ const Navbar: React.FunctionComponent = () => {
               <Link href="/register" className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg text-xs px-5 py-1.5 text-center inline-flex items-center  mr-2 mb-2"
+                  className="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none font-semibold focus:ring-[#050708]/50 rounded-lg text-[13px] px-5 py-1.5 text-center inline-flex items-center  mr-2 mb-2"
                 >
                   <VpnKeyIcon className="mr-3 text-xs" />
-                  Sign up
+                  sign up
                 </button>
               </Link>
             </li>

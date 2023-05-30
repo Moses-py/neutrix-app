@@ -6,7 +6,8 @@ export type UserData = {
   first_name: string;
   last_name: string;
   confirm_password?: string;
-  phonenumber: string
+  phonenumber: string;
+  username?: string;
 };
 
 export type AlertType = {

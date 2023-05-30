@@ -3,12 +3,6 @@ import bcrypt from "bcrypt";
 import NextAuth, { NextAuthOptions, SessionStrategy } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-type IUser = {
-  email: string;
-  password: string;
-  first_name: string;
-  last_name: string;
-};
 export const authOptions: NextAuthOptions = {
   // Auth provider array
   providers: [
@@ -43,7 +37,7 @@ export const authOptions: NextAuthOptions = {
         }
         client.close();
 
-        return user as any;
+        return user as any
       },
     }),
   ],

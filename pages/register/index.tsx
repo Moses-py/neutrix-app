@@ -93,6 +93,7 @@ const Register = () => {
       courses: [],
       notes: [],
       bookmarks: [],
+      username: "",
     };
 
     const response = await axios({

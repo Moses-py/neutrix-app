@@ -4,7 +4,7 @@ export default async function mongoConnect() {
   const client = new MongoClient(process.env.MONGODB_URI);
   try {
     await client.connect();
-    const db = client.db("neutrix_database");
+    const db = client.db("neutrix");
     return { db, client };
   } catch (error) {
     return {

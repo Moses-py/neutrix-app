@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import CurriculumModal from "./SyllabusModal";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import AddCourseFormModal from "./FormModal";
+import { MainContext } from "@/context/Main";
 
 const CourseCard = dynamic(() => import("./CourseCard"));
 
@@ -10,6 +11,13 @@ const DashCourses = ({ user }) => {
   const [openSyllabus, setOpenSyllabus] = useState(false);
   const [openAddCourse, setOpenAddCourse] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const { updateActivatePremModal } = useContext(MainContext);
+
+  const { courses } = user;
+  const added_courses = courses.map((course: { courseTitle: string }) => {
+    return course.courseTitle;
+  });
 
   return (
     <>
@@ -27,6 +35,7 @@ const DashCourses = ({ user }) => {
           syllabusView={() => setOpenSyllabus(true)}
           updateSelectedCourse={() => setSelectedCourse("Mathematics")}
           updateAddCoursePopup={() => setOpenAddCourse(true)}
+          isAdded={added_courses.includes("Mathematics")}
         />
         <CourseCard
           image="https://plus.unsplash.com/premium_photo-1676494236605-9ff657d14a80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTB8fG1hY2hpbmUlMjBsZWFybmluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60"
@@ -38,6 +47,7 @@ const DashCourses = ({ user }) => {
             setSelectedCourse("Data Science & machine Learning")
           }
           updateAddCoursePopup={() => setOpenAddCourse(true)}
+          isAdded={added_courses.includes("Data Science & machine Learning")}
         />
         <CourseCard
           image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGF0YSUyMGFuYWx5c2lzfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
@@ -47,6 +57,7 @@ const DashCourses = ({ user }) => {
           syllabusView={() => setOpenSyllabus(true)}
           updateSelectedCourse={() => setSelectedCourse("Data Analysis")}
           updateAddCoursePopup={() => setOpenAddCourse(true)}
+          isAdded={added_courses.includes("Data Analysis")}
         />
         <div
           className={`p-[1rem] rounded-xl relative bg-cover bg-center h-full w-full bg-[url('https://images.unsplash.com/photo-1615869442320-fd02a129c77c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGJ1aWxkfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60')]`}
@@ -61,7 +72,10 @@ const DashCourses = ({ user }) => {
               towards your personal needs.
             </p>
             <div className="cta flex flex-row gap-4">
-              <button className="px-3 py-2 my-3 bg-textLight border border-misc text-textDark rounded-md ">
+              <button
+                className="px-3 py-2 my-3 bg-textLight border border-misc text-textDark rounded-md "
+                onClick={updateActivatePremModal}
+              >
                 Customize
               </button>
             </div>

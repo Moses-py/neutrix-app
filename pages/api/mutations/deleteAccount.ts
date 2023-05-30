@@ -1,5 +1,4 @@
 import mongoConnect from "@/lib/mongo_connect";
-import { ReturnDocument } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function updateCourseStatus(
