@@ -16,6 +16,7 @@ interface DashboardProps {
     id: string;
     phonenumber: string;
     courses: [];
+    username: string;
   };
 }
 

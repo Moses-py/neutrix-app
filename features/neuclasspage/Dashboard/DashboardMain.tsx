@@ -30,6 +30,7 @@ interface D_main {
     email: string;
     phonenumber: string;
     id: string;
+    username: string;
   };
 }
 
